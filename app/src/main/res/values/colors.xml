@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="themeColor">#26C6DA</color>
+    <color name="contentColor">#00131D</color>
+    <color name="defaultBackground">#FFFFFF</color>
+
+    <color name="ic_launcher_background">@color/themeColor</color>
+
+    <color name="colorPrimary">@color/defaultBackground</color>
+    <color name="colorPrimaryDark">@color/defaultBackground</color>
+    <color name="colorAccent">@color/contentColor</color>
+
+
+    <!-- Toolbar -->
+    <color name="toolbar_background">#FFFFFF</color>
+
+
+    <!-- Post Item View -->
+    <color name="postitem_textcolor">@color/contentColor</color>
+    <color name="postitem_background">@color/defaultBackground</color>
+
+
+    <!-- Loadable Content View -->
+    <color name="loadablecontent_loadingcolor">#B5E8EE</color>
+    
+</resources>

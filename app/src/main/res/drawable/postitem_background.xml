@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:top="@dimen/postitem_margin_vertical"
+        android:bottom="@dimen/postitem_margin_vertical">
+
+        <shape
+            android:shape="rectangle">
+
+            <solid android:color="@color/postitem_background"/>
+            <corners android:radius="@dimen/postitem_background_radius"/>
+            <padding android:left="@dimen/postitem_padding_horizontal"
+                android:right="@dimen/postitem_padding_horizontal"
+                android:top="@dimen/postitem_padding_vertical"
+                android:bottom="@dimen/postitem_padding_vertical"/>
+
+        </shape>
+    </item>
+</layer-list>

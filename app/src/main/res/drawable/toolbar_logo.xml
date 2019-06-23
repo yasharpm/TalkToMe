@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:width="@dimen/toolbar_logo_size" android:height="@dimen/toolbar_logo_size">
+        <shape
+            android:shape="rectangle">
+
+            <solid android:color="@color/themeColor"/>
+            <corners android:radius="@dimen/toolbar_logo_cornerradius"/>
+
+        </shape>
+    </item>
+
+    <item android:drawable="@drawable/logo" android:width="@dimen/toolbar_logo_logosize" android:height="@dimen/toolbar_logo_logosize" android:gravity="center"/>
+
+</layer-list>

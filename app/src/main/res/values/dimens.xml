@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Toolbar -->
+    <dimen name="toolbar_actionsize">36dp</dimen>
+    <dimen name="toolbar_appname_height">18dp</dimen>
+    <dimen name="toolbar_logo_size">24dp</dimen>
+    <dimen name="toolbar_logo_margin">8dp</dimen>
+    <dimen name="toolbar_padding_horizontal">16dp</dimen>
+    <dimen name="toolbar_height">48dp</dimen>
+    <dimen name="toolbar_logo_cornerradius">2dp</dimen>
+    <dimen name="toolbar_logo_logosize">12dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+
+    <!-- Post Item View -->
+    <dimen name="postitem_textsize">16sp</dimen>
+    <dimen name="postitem_lineheight">24sp</dimen>
+    <dimen name="postitem_padding_horizontal">24dp</dimen>
+    <dimen name="postitem_padding_vertical">8dp</dimen>
+    <dimen name="postitem_margin_vertical">4dp</dimen>
+    <dimen name="postitem_background_radius">8dp</dimen>
+    <dimen name="postitem_elevation">2dp</dimen>
+
+
+    <!-- Loadable Content View -->
+    <dimen name="loadablecontent_loadareaheight">56dp</dimen>
+    <dimen name="loadablecontent_loadingsize">40dp</dimen>
+
+</resources>
