@@ -1,6 +1,10 @@
 package com.yashoid.talktome.post;
 
-public interface Post {
+import com.yashoid.talktome.Basics;
+
+public interface Post extends Basics {
+
+    String TYPE_POST = "Post";
 
     String ID = "id";
     String CONTENT = "content";

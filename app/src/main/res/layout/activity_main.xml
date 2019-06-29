@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.yashoid.talktome.view.ViewBunch
+        <com.yashoid.talktome.view.viewbunch.ViewBunch
             android:id="@+id/viewbunch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

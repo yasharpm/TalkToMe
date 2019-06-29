@@ -3,6 +3,7 @@ package com.yashoid.talktome;
 import android.app.Application;
 
 import com.yashoid.mmv.Managers;
+import com.yashoid.talktome.post.PostList;
 
 public class TalkToMeApplication extends Application {
 
@@ -11,6 +12,8 @@ public class TalkToMeApplication extends Application {
         super.onCreate();
 
         Managers.bindLifeCycle(this);
+
+        Managers.addTypeProvider(new PostList.PostListTypeProvider());
     }
 
 }

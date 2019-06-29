@@ -2,7 +2,6 @@ package com.yashoid.talktome.post;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Paint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -12,11 +11,11 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 
 import com.yashoid.mmv.Model;
+import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.view.Fonts;
-import com.yashoid.talktome.view.ViewBunch;
 
-public class PostItemView extends AppCompatTextView implements ViewBunch.ViewBunchItem, Post {
+public class PostItemView extends AppCompatTextView implements Post, Target {
 
     private Model mModel;
 
@@ -60,11 +59,6 @@ public class PostItemView extends AppCompatTextView implements ViewBunch.ViewBun
     }
 
     @Override
-    public Model getModel() {
-        return mModel;
-    }
-
-    @Override
     public void onFeaturesChanged(String... featureNames) {
         onModelChanged();
     }
@@ -74,15 +68,10 @@ public class PostItemView extends AppCompatTextView implements ViewBunch.ViewBun
     }
 
     @Override
-    public int measureHeight(int width) {
-        int widthSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY);
-        int heightSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
-
-        measure(widthSpec, heightSpec);
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         measureMaxLines();
-
-        return getMeasuredHeight();
     }
 
     private void measureMaxLines() {
@@ -94,12 +83,10 @@ public class PostItemView extends AppCompatTextView implements ViewBunch.ViewBun
         mMaxLines = getLayout().getLineCount();
     }
 
-    @Override
     public int getLines() {
         return mLines == -1 ? mMaxLines : mLines;
     }
 
-    @Override
     public void setMaximumAllowedLines(int maxLines) {
         mLines = maxLines;
 

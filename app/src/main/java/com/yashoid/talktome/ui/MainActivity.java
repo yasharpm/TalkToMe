@@ -3,25 +3,23 @@ package com.yashoid.talktome.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
 
+import com.yashoid.mmv.Managers;
+import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.talktome.post.Post;
-import com.yashoid.talktome.post.PostItemView;
+import com.yashoid.mmv.Target;
+import com.yashoid.talktome.post.PostList;
+import com.yashoid.talktome.post.PostListViewBunchAdapter;
 import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.R;
-import com.yashoid.talktome.view.ViewBunch;
+import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Target, PostList {
 
     private LoadableContentView mLoadableContent;
     private ViewBunch mViewBunch;
+
+    private Model mPostListModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,47 +31,52 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStateChanged(int state) {
                 if (state == LoadableContentView.STATE_LOADING) {
-                    mViewBunch.load(new ViewBunch.OnLoadCallback() {
-                        @Override
-                        public void onLoadResult(boolean success) {
-                            mLoadableContent.stopLoading();
-                        }
-                    });
+                    int modelState = mPostListModel.get(STATE);
+
+                    if (modelState == STATE_LOADING) {
+                        return;
+                    }
+
+                    mPostListModel.perform(GET_MODELS, mViewBunch.getRequiredItemCount());
                 }
             }
         });
 
+        ModelFeatures postListFeatures = new ModelFeatures.Builder()
+                .add(TYPE, TYPE_POST_LIST)
+                .build();
+
         mViewBunch = findViewById(R.id.viewbunch);
+        mViewBunch.setAdapter(new PostListViewBunchAdapter(postListFeatures));
 
-        mViewBunch.setAdapter(new ViewBunch.ViewBunchAdapter() {
-            @Override
-            public void getBunch(final int count, final ViewBunch.BunchCallback callback) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        List<ModelFeatures> bunch = new ArrayList<>();
+        Managers.registerTarget(this, postListFeatures);
+    }
 
-                        for (int i = 0; i < count; i++) {
-                            ModelFeatures post = new ModelFeatures.Builder()
-                                    .add(Post.ID, i)
-                                    .add(Post.CONTENT, "این یک آزمایش واقعی به زبان سلیس فارسی میباشد \nکه میتواند خطاهای موجود را \nنمایان سازد!")
-                                    .build();
+    @Override
+    public void setModel(Model model) {
+        mPostListModel = model;
 
-                            bunch.add(post);
-                        }
+        onModelChanged();
+    }
 
-                        callback.onBunchResult(true, bunch);
-                    }
-                }, 1000);
-            }
+    @Override
+    public void onFeaturesChanged(String... featureNames) {
+        onModelChanged();
+    }
 
-            @Override
-            public ViewBunch.ViewBunchItem createItem() {
-                return new PostItemView(MainActivity.this);
-            }
-        });
+    private void onModelChanged() {
+        int state = mPostListModel.get(STATE);
 
-        mLoadableContent.startLoading();
+        switch (state) {
+            case STATE_LOADING:
+            case STATE_IDLE:
+                mLoadableContent.startLoading();
+                break;
+            case STATE_SUCCESS:
+            case STATE_FAILURE:
+                mLoadableContent.stopLoading();
+                break;
+        }
     }
 
 }
