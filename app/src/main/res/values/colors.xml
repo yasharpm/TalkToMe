@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <color name="themeColor">#26C6DA</color>
     <color name="contentColor">#00131D</color>
     <color name="defaultBackground">#FFFFFF</color>
@@ -11,6 +10,24 @@
     <color name="colorPrimary">@color/defaultBackground</color>
     <color name="colorPrimaryDark">@color/defaultBackground</color>
     <color name="colorAccent">@color/contentColor</color>
+
+
+    <!-- Indicator Colors -->
+    <array name="indicatorColors">
+        <item>#FFD8A8</item>
+        <item>#FFEC99</item>
+        <item>#D8F5A2</item>
+        <item>#B2F2BB</item>
+        <item>#96F2D7</item>
+        <item>#99E9F2</item>
+        <item>#A5D8FF</item>
+        <item>#BAC8FF</item>
+        <item>#D0BFFF</item>
+        <item>#FCC2D7</item>
+        <item>#FFC9C9</item>
+        <item>#FFD8A8</item>
+        <!--<item>#E9ECEF</item>-->
+    </array>
 
 
     <!-- Toolbar -->

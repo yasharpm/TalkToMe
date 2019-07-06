@@ -15,8 +15,8 @@ import java.util.List;
 
 public class ViewBunch extends ViewGroup {
 
-    private static final int MINIMUM_VIEWS_TO_SHOW = 4;
-    private static final int MAXIMUM_VIEWS_TO_SHOW = 5;
+    private static final int MINIMUM_VIEWS_TO_SHOW = 6;
+    private static final int MAXIMUM_VIEWS_TO_SHOW = 8;
 
     public interface ViewBunchAdapter {
 
@@ -36,6 +36,12 @@ public class ViewBunch extends ViewGroup {
 
     }
 
+    public interface OnItemClickListener {
+
+        void onItemClicked(ViewBunch parent, ViewBunchItem item, int position);
+
+    }
+
     public interface ViewBunchItem {
 
         int getLines();
@@ -49,6 +55,8 @@ public class ViewBunch extends ViewGroup {
     private ViewBunchAdapter mAdapter;
 
     private List<ViewBunchItem> mItems = new ArrayList<>();
+
+    private OnItemClickListener mOnItemClickListener = null;
 
     public ViewBunch(Context context) {
         super(context);
@@ -100,6 +108,10 @@ public class ViewBunch extends ViewGroup {
         }
     }
 
+    public ViewBunchAdapter getAdapter() {
+        return mAdapter;
+    }
+
     private DataSetObserver mAdapterObserver = new DataSetObserver() {
 
         @Override
@@ -125,7 +137,11 @@ public class ViewBunch extends ViewGroup {
         while (mItems.size() < count) {
             ViewBunchItem item = mAdapter.createItem(this);
 
-            addView(item.getView());
+            View view = item.getView();
+
+            addView(view);
+
+            view.setOnClickListener(mOnItemViewClickListener);
 
             mItems.add(item);
         }
@@ -210,83 +226,33 @@ public class ViewBunch extends ViewGroup {
         return maxLinesItem;
     }
 
-//    @Nullable
-//    @Override
-//    protected Parcelable onSaveInstanceState() {
-//        final int childCount = getChildCount();
-//
-//        int[] ids = new int[childCount];
-//
-//        for (int i = 0; i < childCount; i++) {
-//            ViewBunchItem child = (ViewBunchItem) getChildAt(i);
-//
-//            Model model = child.getModel();
-//
-//            ids[i] = model.get(Post.ID);
-//        }
-//
-//        return new SavedState(super.onSaveInstanceState(), ids);
-//    }
-//
-//    @Override
-//    protected void onRestoreInstanceState(Parcelable state) {
-//        SavedState savedState = (SavedState) state;
-//
-//        super.onRestoreInstanceState(savedState.getSuperState());
-//
-//        int[] ids = savedState.mIds;
-//
-//        List<ModelFeatures> posts = new ArrayList<>(ids.length);
-//
-//        for (int i = 0; i < ids.length; i++) {
-//            ModelFeatures features = new ModelFeatures.Builder()
-//                    .add(Post.TYPE, Post.TYPE_POST)
-//                    .add(Post.ID, ids[i])
-//                    .build();
-//
-//            posts.add(features);
-//        }
-//
-//        onBunchResult(true, posts);
-//    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mOnItemClickListener = listener;
+    }
 
-    private static class SavedState extends BaseSavedState {
-
-        private int[] mIds;
-
-        private SavedState(Parcel source) {
-            super(source);
-
-            mIds = source.createIntArray();
-        }
-
-        public SavedState(Parcelable superState, int[] ids) {
-            super(superState);
-
-            mIds = ids;
-        }
+    private OnClickListener mOnItemViewClickListener = new OnClickListener() {
 
         @Override
-        public void writeToParcel(Parcel out, int flags) {
-            super.writeToParcel(out, flags);
-
-            out.writeIntArray(mIds);
+        public void onClick(View v) {
+            notifyItemClicked(v);
         }
 
-        public static Creator<SavedState> CREATOR = new Creator<SavedState>() {
+    };
 
-            @Override
-            public SavedState createFromParcel(Parcel source) {
-                return new SavedState(source);
+    private void notifyItemClicked(View view) {
+        if (mOnItemClickListener == null) {
+            return;
+        }
+
+        for (int i = 0; i < mItems.size(); i++) {
+            ViewBunchItem item = mItems.get(i);
+
+            if (item.getView() == view) {
+                mOnItemClickListener.onItemClicked(this, item, i);
+
+                return;
             }
-
-            @Override
-            public SavedState[] newArray(int size) {
-                return new SavedState[size];
-            }
-
-        };
-
+        }
     }
 
 }

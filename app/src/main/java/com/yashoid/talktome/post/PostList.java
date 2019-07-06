@@ -1,11 +1,14 @@
 package com.yashoid.talktome.post;
 
+import android.content.Context;
 import android.os.Handler;
 
 import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
+import com.yashoid.network.NetworkOperator;
 import com.yashoid.talktome.list.ModelList;
+import com.yashoid.talktome.network.GetNotesOperation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +19,12 @@ public interface PostList extends ModelList {
 
     class PostListTypeProvider extends ModelListTypeProvider {
 
-        public PostListTypeProvider() {
+        private Context mContext;
+
+        public PostListTypeProvider(Context context) {
             super(TYPE_POST_LIST);
+
+            mContext = context;
         }
 
         @Override
@@ -31,25 +38,24 @@ public interface PostList extends ModelList {
 
             final int count = (int) params[0];
 
-            new Handler().postDelayed(new Runnable() {
+            NetworkOperator.getInstance().post(new GetNotesOperation(mContext, count, new GetNotesOperation.GetNotesCallback() {
+
                 @Override
-                public void run() {
-                    List<ModelFeatures> bunch = new ArrayList<>();
+                public void onGetNotesResult(List<ModelFeatures> posts, Exception exception) {
+                    if (exception == null) {
+                        for (int i = 0; i < posts.size(); i++) {
+                            posts.get(i).set(TYPE, Post.TYPE_POST);
+                        }
 
-                    for (int i = 0; i < count; i++) {
-                        ModelFeatures post = new ModelFeatures.Builder()
-                                .add(TYPE, Post.TYPE_POST)
-                                .add(Post.ID, i)
-                                .add(Post.CONTENT, "این یک آزمایش واقعی به زبان سلیس فارسی میباشد \nکه میتواند خطاهای موجود را \nنمایان سازد!")
-                                .build();
-
-                        bunch.add(post);
+                        model.set(MODEL_LIST, posts);
+                        model.set(STATE, STATE_SUCCESS);
                     }
-
-                    model.set(MODEL_LIST, bunch);
-                    model.set(STATE, STATE_SUCCESS);
+                    else {
+                        model.set(STATE, STATE_FAILURE);
+                    }
                 }
-            }, 1000);
+
+            }));
         }
 
     }

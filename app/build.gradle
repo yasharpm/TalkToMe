@@ -28,7 +28,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.yashoid:sequencelayout:1.2.1'
-    implementation 'com.yashoid:mmv:1.1.0'
+    implementation 'com.yashoid:mmv:1.2.0'
     implementation 'com.yashoid:office:1.2.0'
-    implementation 'com.yashoid:network:1.3.1'
+    implementation 'com.yashoid:network:1.3.2'
 }

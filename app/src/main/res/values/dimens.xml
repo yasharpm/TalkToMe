@@ -11,17 +11,20 @@
     <dimen name="toolbar_height">48dp</dimen>
     <dimen name="toolbar_logo_cornerradius">2dp</dimen>
     <dimen name="toolbar_logo_logosize">12dp</dimen>
-    <dimen name="toolbar_elevation">8dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
 
 
     <!-- Post Item View -->
     <dimen name="postitem_textsize">16sp</dimen>
     <dimen name="postitem_lineheight">24sp</dimen>
-    <dimen name="postitem_padding_horizontal">24dp</dimen>
+    <dimen name="postitem_padding_left">24dp</dimen>
+    <dimen name="postitem_padding_right">8dp</dimen>
     <dimen name="postitem_padding_vertical">16dp</dimen>
     <dimen name="postitem_margin_vertical">4dp</dimen>
     <dimen name="postitem_background_radius">8dp</dimen>
-    <dimen name="postitem_elevation">6dp</dimen>
+    <dimen name="postitem_elevation">1dp</dimen>
+    <dimen name="postitem_indicator_size">8dp</dimen>
+    <dimen name="postitem_indicator_margin">8dp</dimen>
 
 
     <!-- Loadable Content View -->

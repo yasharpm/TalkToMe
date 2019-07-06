@@ -9,16 +9,19 @@ import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.post.PostList;
+import com.yashoid.talktome.post.PostListPagerAdapter;
 import com.yashoid.talktome.post.PostListViewBunchAdapter;
 import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.view.contentpager.ContentPager;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
-public class MainActivity extends AppCompatActivity implements Target, PostList {
+public class MainActivity extends AppCompatActivity implements Target, PostList, ViewBunch.OnItemClickListener {
 
     private LoadableContentView mLoadableContent;
     private ViewBunch mViewBunch;
 
+    private ModelFeatures mPostListFeatures;
     private Model mPostListModel;
 
     @Override
@@ -42,14 +45,15 @@ public class MainActivity extends AppCompatActivity implements Target, PostList 
             }
         });
 
-        ModelFeatures postListFeatures = new ModelFeatures.Builder()
+        mPostListFeatures = new ModelFeatures.Builder()
                 .add(TYPE, TYPE_POST_LIST)
                 .build();
 
         mViewBunch = findViewById(R.id.viewbunch);
-        mViewBunch.setAdapter(new PostListViewBunchAdapter(postListFeatures));
+        mViewBunch.setAdapter(new PostListViewBunchAdapter(mPostListFeatures));
+        mViewBunch.setOnItemClickListener(this);
 
-        Managers.registerTarget(this, postListFeatures);
+        Managers.registerTarget(this, mPostListFeatures);
     }
 
     @Override
@@ -77,6 +81,16 @@ public class MainActivity extends AppCompatActivity implements Target, PostList 
                 mLoadableContent.stopLoading();
                 break;
         }
+    }
+
+    @Override
+    public void onItemClicked(ViewBunch parent, ViewBunch.ViewBunchItem item, int position) {
+        PostListViewBunchAdapter adapter = (PostListViewBunchAdapter) parent.getAdapter();
+
+        ContentPager contentPager = new ContentPager(this);
+        contentPager.setAdapter(new PostListPagerAdapter(getSupportFragmentManager(), mPostListFeatures));
+        contentPager.setStartPage(adapter.getCount() - position - 1);
+        contentPager.show(item.getView());
     }
 
 }

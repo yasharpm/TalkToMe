@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Horizontal>
+        <Span id="text_content" size="100%"/>
+    </Horizontal>
+
+    <Vertical>
+        <Span id="text_content" size="100%"/>
+    </Vertical>
+
+</Sequences>
