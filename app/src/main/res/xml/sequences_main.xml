@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Vertical>
+        <Span id="toolbar" size="wrap"/>
+        <Span id="loadableContent" size="1w"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span id="toolbar" size="100%"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span id="loadableContent" size="100%"/>
+    </Horizontal>
+
+    <Vertical>
+        <Span id="overlay" size="100%"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span id="overlay" size="100%"/>
+    </Horizontal>
+
+</Sequences>

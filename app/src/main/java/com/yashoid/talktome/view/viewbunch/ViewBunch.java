@@ -56,6 +56,8 @@ public class ViewBunch extends ViewGroup {
 
     private List<ViewBunchItem> mItems = new ArrayList<>();
 
+    private int mVisibleItemCount = 0;
+
     private OnItemClickListener mOnItemClickListener = null;
 
     public ViewBunch(Context context) {
@@ -79,6 +81,10 @@ public class ViewBunch extends ViewGroup {
 
     public int getRequiredItemCount() {
         return MAXIMUM_VIEWS_TO_SHOW;
+    }
+
+    public int getVisibleItemCount() {
+        return mVisibleItemCount;
     }
 
     public void setAdapter(ViewBunchAdapter adapter) {
@@ -203,10 +209,14 @@ public class ViewBunch extends ViewGroup {
             top += child.getMeasuredHeight();
         }
 
+        mVisibleItemCount = mItems.size();
+
         for (int i = itemCount; i < mItems.size(); i++) {
             View child = mItems.get(i).getView();
 
             child.setVisibility(INVISIBLE);
+
+            mVisibleItemCount--;
         }
     }
 

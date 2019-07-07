@@ -9,12 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
-import com.yashoid.talktome.R;
 
 public class PostDetailsFragment extends Fragment implements Post, Target {
 
@@ -48,14 +48,14 @@ public class PostDetailsFragment extends Fragment implements Post, Target {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_postdetails, container, false);
+        return new RecyclerView(inflater.getContext());
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mTextContent = view.findViewById(R.id.text_content);
+//        mTextContent = view.findViewById(R.id.text_content);
 
         updateView();
     }
@@ -79,8 +79,8 @@ public class PostDetailsFragment extends Fragment implements Post, Target {
     }
 
     private void updateView() {
-        mTextContent.setText((String) mPost.get(CONTENT));
-        mTextContent.setBackgroundColor((int) mPost.get(INDICATOR_COLOR));
+//        mTextContent.setText((String) mPost.get(CONTENT));
+//        mTextContent.setBackgroundColor((int) mPost.get(INDICATOR_COLOR));
     }
 
 }

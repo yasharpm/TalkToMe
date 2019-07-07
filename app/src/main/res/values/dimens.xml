@@ -14,6 +14,11 @@
     <dimen name="toolbar_elevation">4dp</dimen>
 
 
+    <!-- Loadable Content View -->
+    <dimen name="loadablecontent_loadareaheight">56dp</dimen>
+    <dimen name="loadablecontent_loadingsize">40dp</dimen>
+
+
     <!-- Post Item View -->
     <dimen name="postitem_textsize">16sp</dimen>
     <dimen name="postitem_lineheight">24sp</dimen>
@@ -27,8 +32,17 @@
     <dimen name="postitem_indicator_margin">8dp</dimen>
 
 
-    <!-- Loadable Content View -->
-    <dimen name="loadablecontent_loadareaheight">56dp</dimen>
-    <dimen name="loadablecontent_loadingsize">40dp</dimen>
+    <!-- Post List Pager Fragment -->
+    <dimen name="postlistpager_containercomment_elevation">8dp</dimen>
+    <dimen name="postlistpager_containercomment_height">56dp</dimen>
+    <dimen name="postlistpager_editcomment_textsize">14sp</dimen>
+    <dimen name="postlistpager_editcomment_lineheight">24sp</dimen>
+    <dimen name="postlistpager_postcomment_size">40dp</dimen>
+    <dimen name="postlistpager_postcomment_margin_horizontal">16dp</dimen>
+    <dimen name="postlistpager_postcomment_padding">8dp</dimen>
+    <dimen name="postlistpager_postcomment_cornerradius">4dp</dimen>
+
+
+    <!-- Post Details Fragment -->
 
 </resources>

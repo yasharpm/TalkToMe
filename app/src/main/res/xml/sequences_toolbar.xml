@@ -2,7 +2,7 @@
 <Sequences>
 
     <Horizontal>
-        <Span id="button_more" size="@dimen/toolbar_actionsize"/>
+        <Span id="button_action" size="@dimen/toolbar_actionsize"/>
         <Span size="1w"/>
         <Span id="image_appname" size="wrap"/>
         <Span size="@dimen/toolbar_logo_margin"/>
@@ -12,7 +12,7 @@
 
     <Vertical>
         <Span size="1w"/>
-        <Span id="button_more" size="@dimen/toolbar_actionsize"/>
+        <Span id="button_action" size="@dimen/toolbar_actionsize"/>
         <Span size="1w"/>
     </Vertical>
 

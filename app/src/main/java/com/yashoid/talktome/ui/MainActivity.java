@@ -1,6 +1,7 @@
 package com.yashoid.talktome.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
@@ -9,11 +10,10 @@ import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.post.PostList;
-import com.yashoid.talktome.post.PostListPagerAdapter;
+import com.yashoid.talktome.post.PostListPagerFragment;
 import com.yashoid.talktome.post.PostListViewBunchAdapter;
 import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.R;
-import com.yashoid.talktome.view.contentpager.ContentPager;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
 public class MainActivity extends AppCompatActivity implements Target, PostList, ViewBunch.OnItemClickListener {
@@ -85,12 +85,16 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
 
     @Override
     public void onItemClicked(ViewBunch parent, ViewBunch.ViewBunchItem item, int position) {
-        PostListViewBunchAdapter adapter = (PostListViewBunchAdapter) parent.getAdapter();
+        int count = parent.getVisibleItemCount();
+        int startPage = count - position - 1;
 
-        ContentPager contentPager = new ContentPager(this);
-        contentPager.setAdapter(new PostListPagerAdapter(getSupportFragmentManager(), mPostListFeatures));
-        contentPager.setStartPage(adapter.getCount() - position - 1);
-        contentPager.show(item.getView());
+        Fragment fragment = PostListPagerFragment.newInstance(mPostListFeatures, count, startPage);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.overlay, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
 }

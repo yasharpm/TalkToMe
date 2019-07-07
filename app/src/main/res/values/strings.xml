@@ -1,3 +1,10 @@
 <resources>
+
     <string name="app_name">Talk To Me</string>
+
+
+    <!-- Post Details Fragment -->
+    <string name="postdetails_editcomment_hint">نظر خود را اینجا بنویسید...</string>
+
+
 </resources>

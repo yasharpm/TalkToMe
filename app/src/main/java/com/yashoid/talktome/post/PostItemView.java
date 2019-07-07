@@ -13,12 +13,12 @@ import android.view.Gravity;
 
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.ViewCompat;
 
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
-import com.yashoid.talktome.view.Fonts;
 
 public class PostItemView extends AppCompatTextView implements Post, Target {
 
@@ -56,7 +56,7 @@ public class PostItemView extends AppCompatTextView implements Post, Target {
         setTextSize(TypedValue.COMPLEX_UNIT_PX, res.getDimension(R.dimen.postitem_textsize));
         setLineHeight(res.getDimensionPixelSize(R.dimen.postitem_lineheight));
         setTextColor(ContextCompat.getColor(context, R.color.postitem_textcolor));
-        setTypeface(Fonts.get(Fonts.DEFAULT_REGULAR, context));
+        setTypeface(ResourcesCompat.getFont(context, R.font.dana_regular));
 
         setEllipsize(TextUtils.TruncateAt.END);
 

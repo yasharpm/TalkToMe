@@ -15,15 +15,19 @@ public class PostListPagerAdapter extends FragmentPagerAdapter implements PostLi
 
     private List<ModelFeatures> mPosts;
 
-    public PostListPagerAdapter(FragmentManager fm, ModelFeatures postListModelFeatures) {
+    private int mCount;
+
+    public PostListPagerAdapter(FragmentManager fm, ModelFeatures postListModelFeatures, int count) {
         super(fm);
+
+        mCount = count;
 
         Managers.registerTarget(this, postListModelFeatures);
     }
 
     @Override
     public void setModel(Model model) {
-        mPosts = model.get(MODEL_LIST);
+        mPosts = ((List<ModelFeatures>) model.get(MODEL_LIST)).subList(0, mCount);
 
         Managers.unregisterTarget(this);
     }
@@ -33,9 +37,11 @@ public class PostListPagerAdapter extends FragmentPagerAdapter implements PostLi
 
     @Override
     public Fragment getItem(int position) {
-        ModelFeatures post = mPosts.get(mPosts.size() - position - 1);
+        return PostDetailsFragment.newInstance(getPostFeatures(position));
+    }
 
-        return PostDetailsFragment.newInstance(post);
+    public ModelFeatures getPostFeatures(int position) {
+        return mPosts.get(mPosts.size() - position - 1);
     }
 
     @Override

@@ -1,9 +1,13 @@
 package com.yashoid.talktome.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
@@ -16,6 +20,8 @@ import com.yashoid.talktome.R;
 import java.util.List;
 
 public class Toolbar extends SequenceLayout {
+
+    private ImageView mButtonAction;
 
     public Toolbar(Context context) {
         super(context);
@@ -48,6 +54,22 @@ public class Toolbar extends SequenceLayout {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        mButtonAction = findViewById(R.id.button_action);
+
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Toolbar, defStyleAttr, 0);
+
+        int actionIconResId = a.getResourceId(R.styleable.Toolbar_actionIcon, 0);
+
+        a.recycle();
+
+        if (actionIconResId != 0) {
+            mButtonAction.setImageDrawable(ContextCompat.getDrawable(context, actionIconResId));
+        }
+    }
+
+    public void setActionButtonClickListener(OnClickListener onClickListener) {
+        mButtonAction.setOnClickListener(onClickListener);
     }
 
     @Override

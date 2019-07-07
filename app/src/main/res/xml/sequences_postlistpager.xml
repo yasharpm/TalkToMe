@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Vertical>
+        <Span id="toolbar" size="wrap"/>
+        <Span id="content" size="1w"/>
+        <Span id="container_comment" size="@dimen/postlistpager_containercomment_height"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span id="toolbar" size="100%"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span id="content" size="100%"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span id="container_comment" size="100%"/>
+    </Horizontal>
+
+</Sequences>

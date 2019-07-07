@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.yashoid.sequencelayout.SequenceLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity"
-    android:background="#f5f8f8"
-    android:orientation="vertical">
+    app:sequences="@xml/sequences_main"
+    tools:context=".ui.MainActivity">
 
     <com.yashoid.talktome.view.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+
+        app:actionIcon="@drawable/ic_more"/>
 
     <com.yashoid.talktome.view.LoadableContentView
         android:id="@+id/loadableContent"
@@ -24,4 +27,10 @@
 
     </com.yashoid.talktome.view.LoadableContentView>
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="12dp"/>
+
+</com.yashoid.sequencelayout.SequenceLayout>
