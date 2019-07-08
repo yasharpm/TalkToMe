@@ -13,5 +13,16 @@
     <style name="AppTheme" parent="AppBaseTheme">
 
     </style>
+    
+    <style name="PostStatusTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/contentColor</item>
+        <item name="android:fontFamily">@font/dana_regular</item>
+        <item name="android:gravity">center_vertical|right</item>
+    </style>
+
+    <style name="PostStatusImageStyle">
+        <item name="android:padding">@dimen/detailedpostcontent_statusimage_padding</item>
+    </style>
 
 </resources>

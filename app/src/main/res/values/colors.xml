@@ -9,6 +9,8 @@
     <color name="contentBackground">#FFFFFF</color>
     <color name="actionColor">@color/themeColor</color>
 
+    <color name="itemBackground">@color/contentBackground</color>
+
     <color name="ic_launcher_background">@color/themeColor</color>
 
     <color name="colorPrimary">@color/contentBackground</color>
@@ -41,9 +43,12 @@
     <color name="loadablecontent_loadingcolor">#B5E8EE</color>
 
 
+    <!-- Post Content View -->
+    <color name="postcontent_textcolor">@color/contentColor</color>
+
+
     <!-- Post Item View -->
-    <color name="postitem_textcolor">@color/contentColor</color>
-    <color name="postitem_background">@color/contentBackground</color>
+    <color name="postitem_background">@color/itemBackground</color>
 
 
     <!-- Post List Pager Fragment -->
@@ -54,7 +59,9 @@
     <color name="postlistpager_postcomment_background">@color/actionColor</color>
 
 
-    <!-- Post Details Fragment -->
+    <!-- Detailed Post Content View -->
+    <color name="detailedpostcontent_more">@color/contentColor</color>
+    <color name="detailedpostcontent_background">@color/itemBackground</color>
 
     
 </resources>

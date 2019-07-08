@@ -109,6 +109,10 @@ public class PostListPagerFragment extends Fragment implements DismissableConten
         mContentPager = null;
         mEditComment = null;
         mButtonPostComment = null;
+
+        Managers.unregisterTarget(this);
+
+        mModel = null;
     }
 
     @Override

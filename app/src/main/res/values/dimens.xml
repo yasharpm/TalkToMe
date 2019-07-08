@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="item_cornerradius">8dp</dimen>
+    <dimen name="item_elevation">1dp</dimen>
 
     <!-- Toolbar -->
     <dimen name="toolbar_actionsize">36dp</dimen>
@@ -19,17 +21,21 @@
     <dimen name="loadablecontent_loadingsize">40dp</dimen>
 
 
+    <!-- Post Content View -->
+    <dimen name="postcontent_textsize">16sp</dimen>
+    <dimen name="postcontent_lineheight">24sp</dimen>
+    <dimen name="postcontent_indicator_size">8dp</dimen>
+    <dimen name="postcontent_indicator_margin">8dp</dimen>
+
+
+
     <!-- Post Item View -->
-    <dimen name="postitem_textsize">16sp</dimen>
-    <dimen name="postitem_lineheight">24sp</dimen>
     <dimen name="postitem_padding_left">24dp</dimen>
     <dimen name="postitem_padding_right">8dp</dimen>
     <dimen name="postitem_padding_vertical">16dp</dimen>
     <dimen name="postitem_margin_vertical">4dp</dimen>
-    <dimen name="postitem_background_radius">8dp</dimen>
-    <dimen name="postitem_elevation">1dp</dimen>
-    <dimen name="postitem_indicator_size">8dp</dimen>
-    <dimen name="postitem_indicator_margin">8dp</dimen>
+    <dimen name="postitem_background_radius">@dimen/item_cornerradius</dimen>
+    <dimen name="postitem_elevation">@dimen/item_elevation</dimen>
 
 
     <!-- Post List Pager Fragment -->
@@ -43,6 +49,22 @@
     <dimen name="postlistpager_postcomment_cornerradius">4dp</dimen>
 
 
-    <!-- Post Details Fragment -->
+    <!-- Detailed Post Content View -->
+    <dimen name="detailedpostcontent_elevation">@dimen/item_elevation</dimen>
+    <dimen name="detailedpostcontent_background_radius">@dimen/item_cornerradius</dimen>
+    <dimen name="detailedpostcontent_padding_top">8dp</dimen>
+    <dimen name="detailedpostcontent_content_margin_left">@dimen/postitem_padding_left</dimen>
+    <dimen name="detailedpostcontent_content_margin_right">@dimen/postitem_padding_right</dimen>
+    <dimen name="detailedpostcontent_content_margin_bottom">12dp</dimen>
+    <dimen name="detailedpostcontent_status_height">36dp</dimen>
+    <dimen name="detailedpostcontent_padding_bottom">4dp</dimen>
+    <dimen name="detailedpostcontent_status_margin_left">8dp</dimen>
+    <dimen name="detailedpostcontent_more_size">@dimen/detailedpostcontent_status_height</dimen>
+    <dimen name="detailedpostcontent_time_margin_left">0dp</dimen>
+    <dimen name="detailedpostcontent_time_margin_right">4dp</dimen>
+    <dimen name="detailedpostcontent_statustext_width">40dp</dimen>
+    <dimen name="detailedpostcontent_statusimage_width">@dimen/detailedpostcontent_status_height</dimen>
+    <dimen name="detailedpostcontent_status_margin_right">12dp</dimen>
+    <dimen name="detailedpostcontent_statusimage_padding">12dp</dimen>
 
 </resources>

@@ -8,6 +8,7 @@ import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
+import com.yashoid.talktome.post.postdetails.PostDetailsFragment;
 
 import java.util.List;
 

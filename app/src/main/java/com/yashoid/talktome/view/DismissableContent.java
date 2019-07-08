@@ -82,6 +82,7 @@ public class DismissableContent extends ViewGroup implements NestedScrollingPare
         mRealScroll = (int) (Math.signum(mRawScroll) * Math.abs(Math.pow(Math.abs(mRawScroll), SCROLL_REDUCTION_RATE)));
 
         if (mContent != null) {
+            mContent.measure(MeasureSpec.makeMeasureSpec(getWidth(), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(getHeight(), MeasureSpec.EXACTLY));
             mContent.layout(0, mRealScroll, mContent.getMeasuredWidth(), mRealScroll + mContent.getMeasuredHeight());
         }
     }
@@ -120,7 +121,7 @@ public class DismissableContent extends ViewGroup implements NestedScrollingPare
             mRawScroll = 0;
             mRealScroll = 0;
 
-            layoutContent();
+            requestLayout();
         }
     }
 
@@ -132,7 +133,7 @@ public class DismissableContent extends ViewGroup implements NestedScrollingPare
 
         mRawScroll += -dyUnconsumed;
 
-        layoutContent();
+        requestLayout();
     }
 
     @Override

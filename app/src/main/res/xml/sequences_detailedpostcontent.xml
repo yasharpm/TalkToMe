@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Vertical>
+        <Span size="@dimen/detailedpostcontent_padding_top"/>
+        <Span id="content" size="wrap"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="@dimen/detailedpostcontent_content_margin_left"/>
+        <Span id="content" size="1w"/>
+        <Span size="@dimen/detailedpostcontent_content_margin_right"/>
+    </Horizontal>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/detailedpostcontent_content_margin_bottom"/>
+        <Span id="image_likes" size="@dimen/detailedpostcontent_status_height"/>
+        <Span size="@dimen/detailedpostcontent_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/detailedpostcontent_content_margin_bottom"/>
+        <Span id="text_likes" size="@dimen/detailedpostcontent_status_height"/>
+        <Span size="@dimen/detailedpostcontent_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/detailedpostcontent_content_margin_bottom"/>
+        <Span id="image_views" size="@dimen/detailedpostcontent_status_height"/>
+        <Span size="@dimen/detailedpostcontent_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/detailedpostcontent_content_margin_bottom"/>
+        <Span id="text_views" size="@dimen/detailedpostcontent_status_height"/>
+        <Span size="@dimen/detailedpostcontent_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/detailedpostcontent_content_margin_bottom"/>
+        <Span id="image_comments" size="@dimen/detailedpostcontent_status_height"/>
+        <Span size="@dimen/detailedpostcontent_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/detailedpostcontent_content_margin_bottom"/>
+        <Span id="text_comments" size="@dimen/detailedpostcontent_status_height"/>
+        <Span size="@dimen/detailedpostcontent_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/detailedpostcontent_content_margin_bottom"/>
+        <Span id="text_time" size="@dimen/detailedpostcontent_status_height"/>
+        <Span size="@dimen/detailedpostcontent_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/detailedpostcontent_content_margin_bottom"/>
+        <Span id="button_more" size="@dimen/detailedpostcontent_status_height"/>
+        <Span size="@dimen/detailedpostcontent_padding_bottom"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="@dimen/detailedpostcontent_status_margin_left"/>
+        <Span id="button_more" size="@dimen/detailedpostcontent_more_size"/>
+        <Span size="@dimen/detailedpostcontent_time_margin_left"/>
+        <Span id="text_time" size="1w"/>
+        <Span size="@dimen/detailedpostcontent_time_margin_right"/>
+        <Span id="text_comments" size="@dimen/detailedpostcontent_statustext_width"/>
+        <Span id="image_comments" size="@dimen/detailedpostcontent_statusimage_width"/>
+        <Span id="text_views" size="@dimen/detailedpostcontent_statustext_width"/>
+        <Span id="image_views" size="@dimen/detailedpostcontent_statusimage_width"/>
+        <Span id="text_likes" size="@dimen/detailedpostcontent_statustext_width"/>
+        <Span id="image_likes" size="@dimen/detailedpostcontent_statusimage_width"/>
+        <Span size="@dimen/detailedpostcontent_status_margin_right"/>
+    </Horizontal>
+
+</Sequences>
