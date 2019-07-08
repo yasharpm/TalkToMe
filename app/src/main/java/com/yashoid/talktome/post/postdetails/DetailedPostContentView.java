@@ -72,7 +72,7 @@ public class DetailedPostContentView extends SequenceLayout implements Target, P
         mTextViews = findViewById(R.id.text_views);
         mTextTime = findViewById(R.id.text_time);
 
-        mContent.setTextIsSelectable(true);
+//        mContent.setTextIsSelectable(true); // TODO
     }
 
     public void setPost(ModelFeatures postFeatures) {

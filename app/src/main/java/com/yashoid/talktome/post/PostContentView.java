@@ -86,6 +86,8 @@ public class PostContentView extends AppCompatTextView implements Post, Target {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         measureMaxLines();
+
+        setMeasuredDimension(widthSize, getMeasuredHeight());
     }
 
     @Override

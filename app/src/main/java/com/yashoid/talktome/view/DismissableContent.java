@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.core.view.NestedScrollingParent2;
 import androidx.core.view.ViewCompat;
 
+import com.yashoid.talktome.R;
+
 public class DismissableContent extends ViewGroup implements NestedScrollingParent2 {
 
     private static final double SCROLL_REDUCTION_RATE = 0.9d;
@@ -23,8 +25,12 @@ public class DismissableContent extends ViewGroup implements NestedScrollingPare
 
     private View mContent = null;
 
+    private int mScrollToDismiss;
+
     private float mRawScroll = 0;
     private int mRealScroll = 0;
+
+    private boolean mInScroll = false;
 
     public DismissableContent(Context context) {
         super(context);
@@ -42,7 +48,7 @@ public class DismissableContent extends ViewGroup implements NestedScrollingPare
     }
 
     private void initialize(Context context, AttributeSet attrs, int defStyleAttr) {
-
+        mScrollToDismiss = getResources().getDimensionPixelSize(R.dimen.dismissablecontent_scrolltodismiss);
     }
 
     @Override
@@ -97,17 +103,19 @@ public class DismissableContent extends ViewGroup implements NestedScrollingPare
             return false;
         }
 
-        return false;//TODO
+        return true;//TODO
     }
 
     @Override
     public void onNestedScrollAccepted(@NonNull View child, @NonNull View target, int axes, int type) {
-
+        mInScroll = true;
     }
 
     @Override
     public void onStopNestedScroll(@NonNull View target, int type) {
-        if (Math.abs(mRealScroll) > getHeight() / 5) {
+        mInScroll = false;
+
+        if (Math.abs(mRealScroll) > mScrollToDismiss) {
             if (mOnDismissListener != null) {
                 mOnDismissListener.onDismissed(this);
             }
@@ -125,12 +133,8 @@ public class DismissableContent extends ViewGroup implements NestedScrollingPare
         }
     }
 
-    private int mConsumedY = 0;
-
     @Override
     public void onNestedScroll(@NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
-        mConsumedY = dyUnconsumed;
-
         mRawScroll += -dyUnconsumed;
 
         requestLayout();
@@ -138,7 +142,13 @@ public class DismissableContent extends ViewGroup implements NestedScrollingPare
 
     @Override
     public void onNestedPreScroll(@NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
-        consumed[1] = mConsumedY;
+        if (mInScroll && mRawScroll * dy > 0) {
+            consumed[1] = dy;
+
+            mRawScroll += -dy;
+
+            requestLayout();
+        }
     }
 
 }

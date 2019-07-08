@@ -21,6 +21,10 @@
     <dimen name="loadablecontent_loadingsize">40dp</dimen>
 
 
+    <!-- Dismissable Content -->
+    <dimen name="dismissablecontent_scrolltodismiss">120dp</dimen>
+
+
     <!-- Post Content View -->
     <dimen name="postcontent_textsize">16sp</dimen>
     <dimen name="postcontent_lineheight">24sp</dimen>
