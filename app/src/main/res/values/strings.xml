@@ -7,4 +7,27 @@
     <string name="postdetails_editcomment_hint">نظر خود را اینجا بنویسید...</string>
 
 
+    <!-- Time Util -->
+    <string name="timeutil_momentsago">همین الآن</string>
+    <string name="timeutil_secondsago">%d ثانیه قبل</string>
+    <string name="timeutil_minutesago">%d دقیقه قبل</string>
+    <string name="timeutil_hoursago">%d ساعت قبل</string>
+    <string name="timeutil_daysago">%d روز قبل</string>
+
+
+    <array name="month_names">
+        <item>فروردین</item>
+        <item>اردیبهشت</item>
+        <item>خرداد</item>
+        <item>تیر</item>
+        <item>مرداد</item>
+        <item>شهریور</item>
+        <item>مهر</item>
+        <item>آبان</item>
+        <item>آذر</item>
+        <item>دی</item>
+        <item>بهمن</item>
+        <item>اسفند</item>
+    </array>
+
 </resources>

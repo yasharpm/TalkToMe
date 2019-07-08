@@ -97,7 +97,7 @@ public class DismissableContent extends ViewGroup implements NestedScrollingPare
             return false;
         }
 
-        return true;
+        return false;//TODO
     }
 
     @Override

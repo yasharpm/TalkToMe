@@ -61,8 +61,8 @@
     <dimen name="detailedpostcontent_status_margin_left">8dp</dimen>
     <dimen name="detailedpostcontent_more_size">@dimen/detailedpostcontent_status_height</dimen>
     <dimen name="detailedpostcontent_time_margin_left">0dp</dimen>
-    <dimen name="detailedpostcontent_time_margin_right">4dp</dimen>
-    <dimen name="detailedpostcontent_statustext_width">40dp</dimen>
+    <dimen name="detailedpostcontent_time_margin_right">0dp</dimen>
+    <dimen name="detailedpostcontent_statustext_width">48dp</dimen>
     <dimen name="detailedpostcontent_statusimage_width">@dimen/detailedpostcontent_status_height</dimen>
     <dimen name="detailedpostcontent_status_margin_right">12dp</dimen>
     <dimen name="detailedpostcontent_statusimage_padding">12dp</dimen>

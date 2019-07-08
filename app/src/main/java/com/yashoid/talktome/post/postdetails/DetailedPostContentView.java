@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
@@ -11,17 +12,24 @@ import androidx.core.view.ViewCompat;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
+import com.yashoid.mmv.Target;
 import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
 import com.yashoid.sequencelayout.SequenceReader;
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.post.Post;
 import com.yashoid.talktome.post.PostContentView;
+import com.yashoid.talktome.util.TimeUtil;
 
 import java.util.List;
 
-public class DetailedPostContentView extends SequenceLayout {
+public class DetailedPostContentView extends SequenceLayout implements Target, Post {
 
     private PostContentView mContent;
+    private TextView mTextLikes;
+    private TextView mTextComments;
+    private TextView mTextViews;
+    private TextView mTextTime;
 
     private Model mModel;
 
@@ -59,26 +67,43 @@ public class DetailedPostContentView extends SequenceLayout {
         }
 
         mContent = findViewById(R.id.content);
+        mTextComments = findViewById(R.id.text_comments);
+        mTextLikes = findViewById(R.id.text_likes);
+        mTextViews = findViewById(R.id.text_views);
+        mTextTime = findViewById(R.id.text_time);
+
+        mContent.setTextIsSelectable(true);
     }
 
     public void setPost(ModelFeatures postFeatures) {
+        if (mModel != null) {
+            Managers.unregisterTarget(mContent);
+            Managers.unregisterTarget(this);
+
+            mModel = null;
+        }
+
         Managers.registerTarget(mContent, postFeatures);
+        Managers.registerTarget(this, postFeatures);
     }
 
-//    @Override
-//    public void setModel(Model model) {
-//        mModel = model;
-//
-//        onModelChanged();
-//    }
-//
-//    @Override
-//    public void onFeaturesChanged(String... featureNames) {
-//        onModelChanged();
-//    }
-//
-//    private void onModelChanged() {
-//        mContent.setModel(mModel);
-//    }
+    @Override
+    public void setModel(Model model) {
+        mModel = model;
+
+        onModelChanged();
+    }
+
+    @Override
+    public void onFeaturesChanged(String... featureNames) {
+        onModelChanged();
+    }
+
+    private void onModelChanged() {
+        mTextViews.setText(String.valueOf((int) mModel.get(VIEWS)));
+        mTextLikes.setText("0");
+        mTextComments.setText("?"); // TODO
+        mTextTime.setText(TimeUtil.getRelativeTime((long) mModel.get(CREATED_TIME), getContext()));
+    }
 
 }

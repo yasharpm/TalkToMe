@@ -21,6 +21,8 @@ public interface Post extends Basics, Stateful {
 
     String ID = "id";
     String CONTENT = "content";
+    String CREATED_TIME = "createdTime";
+    String VIEWS = "views";
 
     String INDICATOR_COLOR = "indicatorColor";
     String PENDING_COMMENT = "pendingComment";

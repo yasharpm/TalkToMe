@@ -10,6 +10,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,10 @@ public class GetNotesOperation extends NetworkOperation implements ApiConstants,
 
     private static final String NOTE_ID = "note_id";
     private static final String NOTE_NOTE = "note_note";
+    private static final String NOTE_TIME = "note_time";
+    private static final String NOTE_DISPLAYS = "note_displays";
+
+    private static String NOTE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     public interface GetNotesCallback {
 
@@ -112,7 +118,17 @@ public class GetNotesOperation extends NetworkOperation implements ApiConstants,
         try {
             builder.add(Post.ID, json.getString(NOTE_ID));
             builder.add(Post.CONTENT, json.getString(NOTE_NOTE));
-        } catch (JSONException e) { }
+
+            String timeString = json.getString(NOTE_TIME);
+            SimpleDateFormat dateFormat = new SimpleDateFormat(NOTE_TIME_FORMAT);
+            builder.add(Post.CREATED_TIME, dateFormat.parse(timeString).getTime());
+
+            builder.add(Post.VIEWS, json.getInt(NOTE_DISPLAYS));
+        } catch (JSONException e) {
+
+        } catch (ParseException e) {
+
+        }
 
         return builder.build();
     }
