@@ -15,7 +15,7 @@
     </style>
     
     <style name="PostStatusTextStyle">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item> <!-- dp is actually set on purpose. -->
         <item name="android:textColor">@color/contentColor</item>
         <item name="android:fontFamily">@font/dana_regular_digits</item>
         <item name="android:gravity">center_vertical|right</item>

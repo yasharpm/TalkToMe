@@ -29,6 +29,8 @@ public class PostContentView extends AppCompatTextView implements Post, Target {
     private int mIndicatorSize;
     private int mIndicatorMargin;
 
+    private boolean mPaddingAdjusted = false;
+
     public PostContentView(Context context) {
         super(context);
         initialize(context, null, 0);
@@ -79,15 +81,15 @@ public class PostContentView extends AppCompatTextView implements Post, Target {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        if (!mPaddingAdjusted) {
+            setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight() + mIndicatorSize + mIndicatorMargin, getPaddingBottom());
 
-        widthMeasureSpec = MeasureSpec.makeMeasureSpec(widthSize - mIndicatorSize - mIndicatorMargin, MeasureSpec.EXACTLY);
+            mPaddingAdjusted = true;
+        }
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         measureMaxLines();
-
-        setMeasuredDimension(widthSize, getMeasuredHeight());
     }
 
     @Override
@@ -99,7 +101,7 @@ public class PostContentView extends AppCompatTextView implements Post, Target {
         int baseline = (layout.getLineTop(0) + layout.getLineBottom(0)) / 2;
         int cy = baseline + getPaddingTop();
 
-        int left = getWidth() - getPaddingRight() - mIndicatorSize;
+        int left = getWidth() - getPaddingRight() + mIndicatorMargin;
 
         mIndicator.setBounds(left, cy - mIndicatorSize / 2, left + mIndicatorSize, cy + mIndicatorSize / 2);
     }

@@ -2,6 +2,7 @@ package com.yashoid.talktome.post.postdetails;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.TextView;
@@ -72,7 +73,12 @@ public class DetailedPostContentView extends SequenceLayout implements Target, P
         mTextViews = findViewById(R.id.text_views);
         mTextTime = findViewById(R.id.text_time);
 
-//        mContent.setTextIsSelectable(true); // TODO
+        mContent.setTextIsSelectable(true); // TODO
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
     }
 
     public void setPost(ModelFeatures postFeatures) {
