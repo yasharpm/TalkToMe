@@ -1,4 +1,4 @@
-package com.yashoid.talktome.post.postdetails;
+package com.yashoid.talktome.model.post.postdetails;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
@@ -18,8 +18,8 @@ import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
 import com.yashoid.sequencelayout.SequenceReader;
 import com.yashoid.talktome.R;
-import com.yashoid.talktome.post.Post;
-import com.yashoid.talktome.post.PostContentView;
+import com.yashoid.talktome.model.post.Post;
+import com.yashoid.talktome.model.post.PostContentView;
 import com.yashoid.talktome.util.TimeUtil;
 
 import java.util.List;

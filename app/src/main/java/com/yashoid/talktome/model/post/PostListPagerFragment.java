@@ -1,4 +1,4 @@
-package com.yashoid.talktome.post;
+package com.yashoid.talktome.model.post;
 
 import android.os.Bundle;
 import android.text.Editable;

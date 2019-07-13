@@ -1,4 +1,4 @@
-package com.yashoid.talktome.list;
+package com.yashoid.talktome.model.list;
 
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;

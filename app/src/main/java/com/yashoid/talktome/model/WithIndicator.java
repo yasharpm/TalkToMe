@@ -1,41 +1,33 @@
-package com.yashoid.talktome.post;
+package com.yashoid.talktome.model;
 
 import android.content.Context;
-import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Log;
 
 import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.TypeProvider;
-import com.yashoid.talktome.Basics;
 import com.yashoid.talktome.R;
-import com.yashoid.talktome.Stateful;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public interface Post extends Basics, Stateful {
-
-    String TYPE_POST = "Post";
-
-    String ID = "id";
-    String CONTENT = "content";
-    String CREATED_TIME = "createdTime";
-    String VIEWS = "views";
+public interface WithIndicator extends Basics {
 
     String INDICATOR_COLOR = "indicatorColor";
-    String PENDING_COMMENT = "pendingComment";
-    String POST_COMMENT_STATE = "postCommentState";
 
-    String POST_COMMENT = "postComment";
+    abstract class WithIndicatorTypeProvider implements TypeProvider {
 
-    class PostTypeProvider implements TypeProvider {
+        private String mTypeName;
 
         private int[] mColors;
         private int mColorIndex = 0;
 
-        public PostTypeProvider(Context context) {
+        public WithIndicatorTypeProvider(Context context, String typeName) {
+            mTypeName = typeName;
+
             int[] colors = context.getResources().getIntArray(R.array.indicatorColors);
 
             List<Integer> tempColors = new ArrayList<>(colors.length);
@@ -57,15 +49,20 @@ public interface Post extends Basics, Stateful {
 
         @Override
         public Action getAction(ModelFeatures features, String actionName, Object... params) {
-            switch (actionName) {
-                case Action.ACTION_MODEL_CREATED:
-                    return mCreationAction;
-                case POST_COMMENT:
-                    return mPostCommentAction;
+            if (!TextUtils.equals((String) features.get(TYPE), mTypeName)) {
+                return null;
             }
 
-            return null;
+            if (Action.ACTION_MODEL_CREATED.equals(actionName)) {
+                return mCreationAction;
+            }
+
+            return getAction(features, actionName);
         }
+
+        abstract protected void onModelCreated(Model model);
+
+        abstract protected Action getAction(ModelFeatures features, String actionName);
 
         private Action mCreationAction = new Action() {
 
@@ -79,27 +76,7 @@ public interface Post extends Basics, Stateful {
 
                 model.set(INDICATOR_COLOR, color);
 
-                model.set(POST_COMMENT_STATE, STATE_IDLE);
-
-                return null;
-            }
-
-        };
-
-        private Action mPostCommentAction = new Action() {
-
-            @Override
-            public Object perform(final Model model, Object... params) {
-                // TODO
-                model.set(POST_COMMENT_STATE, STATE_LOADING);
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        model.set(POST_COMMENT_STATE, STATE_SUCCESS);
-                        model.set(PENDING_COMMENT, "");
-                    }
-                }, 1000);
+                onModelCreated(model);
 
                 return null;
             }

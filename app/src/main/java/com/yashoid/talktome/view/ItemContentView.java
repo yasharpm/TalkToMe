@@ -1,4 +1,4 @@
-package com.yashoid.talktome.post;
+package com.yashoid.talktome.view;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -8,40 +8,35 @@ import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
-import com.yashoid.mmv.Model;
-import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
 
-public class PostContentView extends AppCompatTextView implements Post, Target {
-
-    private Model mModel;
+public class ItemContentView extends AppCompatTextView {
 
     private int mMaxLines;
     private int mLines = -1;
 
     private Drawable mIndicator;
-    private int mIndicatorSize;
+    private int mIndicatorWidth;
     private int mIndicatorMargin;
 
     private boolean mPaddingAdjusted = false;
 
-    public PostContentView(Context context) {
+    public ItemContentView(Context context) {
         super(context);
         initialize(context, null, 0);
     }
 
-    public PostContentView(Context context, AttributeSet attrs) {
+    public ItemContentView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initialize(context, attrs, 0);
     }
 
-    public PostContentView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ItemContentView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initialize(context, attrs, defStyleAttr);
     }
@@ -49,40 +44,34 @@ public class PostContentView extends AppCompatTextView implements Post, Target {
     private void initialize(final Context context, AttributeSet attrs, int defStyleAttr) {
         Resources res = getResources();
 
-        setTextSize(TypedValue.COMPLEX_UNIT_PX, res.getDimension(R.dimen.postcontent_textsize));
-        setLineHeight(res.getDimensionPixelSize(R.dimen.postcontent_lineheight));
-        setTextColor(ContextCompat.getColor(context, R.color.postcontent_textcolor));
+        setLineHeight(res.getDimensionPixelSize(R.dimen.itemcontent_lineheight));
+        setTextColor(ContextCompat.getColor(context, R.color.itemcontent_textcolor));
         setTypeface(ResourcesCompat.getFont(context, R.font.dana_regular));
 
         setEllipsize(TextUtils.TruncateAt.END);
 
-        mIndicator = ContextCompat.getDrawable(context, R.drawable.ic_indicator_post).mutate();
-        mIndicatorSize = res.getDimensionPixelSize(R.dimen.postcontent_indicator_size);
-        mIndicatorMargin = res.getDimensionPixelSize(R.dimen.postcontent_indicator_margin);
+        mIndicatorWidth = res.getDimensionPixelSize(R.dimen.itemcontent_indicator_width);
+        mIndicatorMargin = res.getDimensionPixelSize(R.dimen.itemcontent_indicator_margin);
     }
 
-    @Override
-    public void setModel(Model model) {
-        mModel = model;
+    public void setIndicator(Drawable indicator) {
+        mIndicator = indicator;
 
-        onModelChanged();
+        measureIndicator();
+
+        invalidate();
     }
 
-    @Override
-    public void onFeaturesChanged(String... featureNames) {
-        onModelChanged();
-    }
+    public void setIndicatorColor(int color) {
+        mIndicator.setColorFilter(color, PorterDuff.Mode.SRC_IN);
 
-    private void onModelChanged() {
-        setText((String) mModel.get(CONTENT));
-
-        mIndicator.setColorFilter((int) mModel.get(INDICATOR_COLOR), PorterDuff.Mode.SRC_IN);
+        invalidate();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (!mPaddingAdjusted) {
-            setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight() + mIndicatorSize + mIndicatorMargin, getPaddingBottom());
+            setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight() + mIndicatorWidth + mIndicatorMargin, getPaddingBottom());
 
             mPaddingAdjusted = true;
         }
@@ -96,21 +85,41 @@ public class PostContentView extends AppCompatTextView implements Post, Target {
     public void layout(int l, int t, int r, int b) {
         super.layout(l, t, r, b);
 
+        measureIndicator();
+    }
+
+    private void measureIndicator() {
+        if (mIndicator == null) {
+            return;
+        }
+
         Layout layout = getLayout();
+
+        if (layout == null) {
+            return;
+        }
 
         int baseline = (layout.getLineTop(0) + layout.getLineBottom(0)) / 2;
         int cy = baseline + getPaddingTop();
 
         int left = getWidth() - getPaddingRight() + mIndicatorMargin;
 
-        mIndicator.setBounds(left, cy - mIndicatorSize / 2, left + mIndicatorSize, cy + mIndicatorSize / 2);
+        int indicatorHeight = mIndicatorWidth * mIndicator.getIntrinsicHeight() / mIndicator.getIntrinsicWidth();
+
+        mIndicator.setBounds(
+                left,
+                cy - indicatorHeight / 2,
+                left + mIndicatorWidth,
+                cy + indicatorHeight / 2);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        mIndicator.draw(canvas);
+        if (mIndicator != null) {
+            mIndicator.draw(canvas);
+        }
     }
 
     private void measureMaxLines() {

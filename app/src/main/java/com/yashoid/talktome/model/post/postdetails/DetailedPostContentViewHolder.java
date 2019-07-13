@@ -1,4 +1,4 @@
-package com.yashoid.talktome.post.postdetails;
+package com.yashoid.talktome.model.post.postdetails;
 
 import android.content.Context;
 import android.view.View;

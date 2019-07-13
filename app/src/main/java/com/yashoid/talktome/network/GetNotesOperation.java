@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.network.NetworkOperation;
-import com.yashoid.talktome.post.Post;
+import com.yashoid.talktome.model.post.Post;
 
 import org.json.JSONException;
 import org.json.JSONObject;

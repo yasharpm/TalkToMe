@@ -1,11 +1,11 @@
-package com.yashoid.talktome.list;
+package com.yashoid.talktome.model.list;
 
 import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.TypeProvider;
-import com.yashoid.talktome.Basics;
-import com.yashoid.talktome.Stateful;
+import com.yashoid.talktome.model.Basics;
+import com.yashoid.talktome.model.Stateful;
 
 public interface ModelList extends Basics, Stateful {
 

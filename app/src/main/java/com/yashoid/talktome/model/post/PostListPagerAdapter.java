@@ -1,4 +1,4 @@
-package com.yashoid.talktome.post;
+package com.yashoid.talktome.model.post;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,7 +8,7 @@ import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
-import com.yashoid.talktome.post.postdetails.PostDetailsFragment;
+import com.yashoid.talktome.model.post.postdetails.PostDetailsFragment;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.yashoid.talktome.post.postdetails;
+package com.yashoid.talktome.model.post.postdetails;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

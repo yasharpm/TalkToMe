@@ -1,4 +1,4 @@
-package com.yashoid.talktome;
+package com.yashoid.talktome.model;
 
 public interface Stateful {
 

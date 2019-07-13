@@ -1,11 +1,11 @@
-package com.yashoid.talktome.post;
+package com.yashoid.talktome.model.post;
 
 import android.content.Context;
 import android.view.View;
 
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.talktome.list.ModelListViewBunchAdapter;
+import com.yashoid.talktome.model.list.ModelListViewBunchAdapter;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
 public class PostListViewBunchAdapter extends ModelListViewBunchAdapter {

@@ -1,16 +1,14 @@
-package com.yashoid.talktome.post;
+package com.yashoid.talktome.model.post;
 
 import android.content.Context;
-import android.os.Handler;
 
 import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.network.NetworkOperator;
-import com.yashoid.talktome.list.ModelList;
+import com.yashoid.talktome.model.list.ModelList;
 import com.yashoid.talktome.network.GetNotesOperation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface PostList extends ModelList {

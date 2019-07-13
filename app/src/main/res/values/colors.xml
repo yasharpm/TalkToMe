@@ -43,8 +43,8 @@
     <color name="loadablecontent_loadingcolor">#B5E8EE</color>
 
 
-    <!-- Post Content View -->
-    <color name="postcontent_textcolor">@color/contentColor</color>
+    <!-- Item Content View -->
+    <color name="itemcontent_textcolor">@color/contentColor</color>
 
 
     <!-- Post Item View -->
@@ -62,6 +62,10 @@
     <!-- Detailed Post Content View -->
     <color name="detailedpostcontent_more">@color/contentColor</color>
     <color name="detailedpostcontent_background">@color/itemBackground</color>
+
+
+    <!-- Comments Title Item -->
+    <color name="commentstitle_textcolor">@color/contentColor</color>
 
     
 </resources>

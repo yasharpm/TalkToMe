@@ -1,4 +1,4 @@
-package com.yashoid.talktome.post;
+package com.yashoid.talktome.model.post;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -28,8 +28,8 @@ public class PostItemView extends PostContentView {
     private void initialize(final Context context, AttributeSet attrs, int defStyleAttr) {
         Resources res = getResources();
 
-        setBackgroundResource(R.drawable.postitem_background);
-        ViewCompat.setElevation(this, res.getDimension(R.dimen.postitem_elevation));
+        setBackgroundResource(R.drawable.item_background);
+        ViewCompat.setElevation(this, res.getDimension(R.dimen.item_elevation));
     }
 
 }

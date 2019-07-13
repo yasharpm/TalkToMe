@@ -22,15 +22,17 @@
 
 
     <!-- Dismissable Content -->
-    <dimen name="dismissablecontent_scrolltodismiss">120dp</dimen>
+    <dimen name="dismissablecontent_scrolltodismiss">96dp</dimen>
+
+
+    <!-- Item Content View -->
+    <dimen name="itemcontent_lineheight">24sp</dimen>
+    <dimen name="itemcontent_indicator_width">8dp</dimen>
+    <dimen name="itemcontent_indicator_margin">8dp</dimen>
 
 
     <!-- Post Content View -->
     <dimen name="postcontent_textsize">16sp</dimen>
-    <dimen name="postcontent_lineheight">24sp</dimen>
-    <dimen name="postcontent_indicator_size">8dp</dimen>
-    <dimen name="postcontent_indicator_margin">8dp</dimen>
-
 
 
     <!-- Post Item View -->
@@ -39,7 +41,6 @@
     <dimen name="postitem_padding_vertical">16dp</dimen>
     <dimen name="postitem_margin_vertical">4dp</dimen>
     <dimen name="postitem_background_radius">@dimen/item_cornerradius</dimen>
-    <dimen name="postitem_elevation">@dimen/item_elevation</dimen>
 
 
     <!-- Post List Pager Fragment -->
@@ -70,5 +71,16 @@
     <dimen name="detailedpostcontent_statusimage_width">@dimen/detailedpostcontent_status_height</dimen>
     <dimen name="detailedpostcontent_status_margin_right">12dp</dimen>
     <dimen name="detailedpostcontent_statusimage_padding">12dp</dimen>
+
+
+    <!-- Comments Title Item -->
+    <dimen name="commentstitle_height">48dp</dimen>
+    <dimen name="commentstitle_padding_right">24dp</dimen>
+    <dimen name="commentstitle_textsize">16sp</dimen>
+
+
+    <!-- Comment Item View -->
+    <dimen name="commentitem_textsize">14sp</dimen>
+
 
 </resources>

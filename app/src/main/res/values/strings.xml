@@ -15,6 +15,10 @@
     <string name="timeutil_daysago">%d روز قبل</string>
 
 
+    <!-- Comments Title Item -->
+    <string name="commentstitle">نظرات شما:</string>
+
+
     <array name="month_names">
         <item>فروردین</item>
         <item>اردیبهشت</item>
