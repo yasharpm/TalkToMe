@@ -104,12 +104,18 @@ public class GetNotesOperation extends NetworkOperation implements ApiConstants,
 
     @Override
     protected void onOperationFinished() {
-        ArrayList<ModelFeatures> posts = new ArrayList<>(mPosts.size());
+        if (mPosts != null) {
+            ArrayList<ModelFeatures> posts = new ArrayList<>(mPosts.size());
 
-        for (JSONObject postJson: mPosts) {
-            posts.add(postFeaturesFromJson(postJson));
+            for (JSONObject postJson: mPosts) {
+                posts.add(postFeaturesFromJson(postJson));
+            }
+
+            mCallback.onGetNotesResult(posts, mException);
         }
-        mCallback.onGetNotesResult(posts, mException);
+        else {
+            mCallback.onGetNotesResult(null, mException);
+        }
     }
 
     private ModelFeatures postFeaturesFromJson(JSONObject json) {
