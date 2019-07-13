@@ -39,8 +39,8 @@
     <color name="toolbar_background">@color/contentBackground</color>
 
 
-    <!-- Loadable Content View -->
-    <color name="loadablecontent_loadingcolor">#B5E8EE</color>
+    <!-- Loading Drawable -->
+    <color name="loadingdrawable_color">#B5E8EE</color>
 
 
     <!-- Item Content View -->

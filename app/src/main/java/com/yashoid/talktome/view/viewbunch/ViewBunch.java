@@ -227,7 +227,7 @@ public class ViewBunch extends ViewGroup {
         for (int i = 0; i < itemCount; i++) {
             ViewBunchItem item = mItems.get(i);
 
-            if (item.getLines() > maxLines) {
+            if (item.getLines() >= maxLines) {
                 maxLinesItem = item;
                 maxLines = item.getLines();
             }

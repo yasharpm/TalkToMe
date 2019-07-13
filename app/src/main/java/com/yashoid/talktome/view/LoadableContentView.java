@@ -5,7 +5,6 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 
 import com.yashoid.talktome.R;
 
@@ -74,7 +72,6 @@ public class LoadableContentView extends ViewGroup {
 
         mLoadingDrawable = new LoadingDrawable(context);
         mLoadingDrawable.setRotating(false);
-        mLoadingDrawable.setColorFilter(ContextCompat.getColor(context, R.color.loadablecontent_loadingcolor), PorterDuff.Mode.SRC_IN);
         mLoadingDrawable.setBounds(-mLoadingSize / 2, -mLoadingSize / 2, mLoadingSize / 2, mLoadingSize / 2);
         mLoadingDrawable.setCallback(this);
 

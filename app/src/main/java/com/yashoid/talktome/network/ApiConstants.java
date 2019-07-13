@@ -19,6 +19,7 @@ public interface ApiConstants {
     String REQUEST = "request";
     String REQUEST_LOGIN = "login";
     String REQUEST_GET_NOTE = "get_note";
+    String REQUEST_GET_COMMENTS = "get_comments";
 
     String RESULT = "result";
     String RESULT_OK = "ok";

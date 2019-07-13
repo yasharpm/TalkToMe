@@ -2,6 +2,7 @@ package com.yashoid.talktome.model.comment;
 
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +22,8 @@ public class CommentViewHolder extends RecyclerView.ViewHolder {
 
     public void setComment(ModelFeatures commentFeatures) {
         CommentItemView view = (CommentItemView) itemView;
+
+        view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         Managers.unregisterTarget(view);
         Managers.registerTarget(view, commentFeatures);

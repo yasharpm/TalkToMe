@@ -19,7 +19,7 @@ public class PostListPagerAdapter extends FragmentPagerAdapter implements PostLi
     private int mCount;
 
     public PostListPagerAdapter(FragmentManager fm, ModelFeatures postListModelFeatures, int count) {
-        super(fm);
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
         mCount = count;
 

@@ -4,11 +4,15 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+
+import com.yashoid.talktome.R;
 
 public class LoadingDrawable extends Drawable {
 
@@ -31,6 +35,14 @@ public class LoadingDrawable extends Drawable {
 
     public LoadingDrawable(Context context) {
         mLogoDrawable = new LogoDrawable(context);
+
+        setColorFilter(ContextCompat.getColor(context, R.color.loadingdrawable_color), PorterDuff.Mode.SRC_IN);
+    }
+
+    public LoadingDrawable(Context context, boolean rotating) {
+        this(context);
+
+        setRotating(rotating);
     }
 
     public void setAngle(float angle) {

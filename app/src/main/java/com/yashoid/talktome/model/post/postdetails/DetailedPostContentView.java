@@ -13,11 +13,14 @@ import androidx.core.view.ViewCompat;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
+import com.yashoid.mmv.PersistentTarget;
 import com.yashoid.mmv.Target;
 import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
 import com.yashoid.sequencelayout.SequenceReader;
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.model.comment.Comment;
+import com.yashoid.talktome.model.comment.CommentList;
 import com.yashoid.talktome.model.post.Post;
 import com.yashoid.talktome.model.post.PostContentView;
 import com.yashoid.talktome.util.TimeUtil;
@@ -73,7 +76,7 @@ public class DetailedPostContentView extends SequenceLayout implements Target, P
         mTextViews = findViewById(R.id.text_views);
         mTextTime = findViewById(R.id.text_time);
 
-        mContent.setTextIsSelectable(true); // TODO
+        mContent.setTextIsSelectable(true);
     }
 
     @Override
@@ -86,11 +89,19 @@ public class DetailedPostContentView extends SequenceLayout implements Target, P
             Managers.unregisterTarget(mContent);
             Managers.unregisterTarget(this);
 
+            Managers.unregisterTarget(mCommentCountTarget);
+
             mModel = null;
         }
 
         Managers.registerTarget(mContent, postFeatures);
         Managers.registerTarget(this, postFeatures);
+
+        ModelFeatures commentListFeatures = new ModelFeatures.Builder()
+                .add(TYPE, CommentList.TYPE_COMMENT_LIST)
+                .add(CommentList.POST_ID, postFeatures.get(ID))
+                .build();
+        Managers.registerTarget(mCommentCountTarget, commentListFeatures);
     }
 
     @Override
@@ -108,8 +119,38 @@ public class DetailedPostContentView extends SequenceLayout implements Target, P
     private void onModelChanged() {
         mTextViews.setText(String.valueOf((int) mModel.get(VIEWS)));
         mTextLikes.setText("0");
-        mTextComments.setText("?"); // TODO
         mTextTime.setText(TimeUtil.getRelativeTime((long) mModel.get(CREATED_TIME), getContext()));
     }
+
+    private Target mCommentCountTarget = new PersistentTarget() {
+
+        private Model mCommentList;
+
+        @Override
+        public void setModel(Model model) {
+            mCommentList = model;
+
+            onModelChanged();
+        }
+
+        @Override
+        public void onFeaturesChanged(String... featureNames) {
+            onModelChanged();
+        }
+
+        private void onModelChanged() {
+            int state = mCommentList.get(CommentList.STATE);
+
+            if (state != CommentList.STATE_SUCCESS) {
+                mTextComments.setText("");
+            }
+            else {
+                List<ModelFeatures> comments = mCommentList.get(CommentList.MODEL_LIST);
+
+                mTextComments.setText(String.valueOf(comments.size()));
+            }
+        }
+
+    };
 
 }

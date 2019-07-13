@@ -21,7 +21,8 @@ public class PostDetailsAdapter extends RecyclerView.Adapter implements CommentL
     private static final int VIEW_TYPE_COMMENTS_TITLE = 1;
     private static final int VIEW_TYPE_LOADING = 2;
     private static final int VIEW_TYPE_RETRY = 3;
-    private static final int VIEW_TYPE_COMMENT = 4;
+    private static final int VIEW_TYPE_NO_COMMENTS = 4;
+    private static final int VIEW_TYPE_COMMENT = 5;
 
     private ModelFeatures mPostFeatures;
 
@@ -59,6 +60,12 @@ public class PostDetailsAdapter extends RecyclerView.Adapter implements CommentL
             return VIEW_TYPE_RETRY;
         }
 
+        List<ModelFeatures> comments = mCommentListModel.get(MODEL_LIST);
+
+        if (comments.isEmpty()) {
+            return VIEW_TYPE_NO_COMMENTS;
+        }
+
         return VIEW_TYPE_COMMENT;
     }
 
@@ -74,6 +81,8 @@ public class PostDetailsAdapter extends RecyclerView.Adapter implements CommentL
                 return LoadingViewHolder.newInstance(parent.getContext());
             case VIEW_TYPE_RETRY:
                 return RetryViewHolder.newInstance(parent.getContext());
+            case VIEW_TYPE_NO_COMMENTS:
+                return NoCommentsViewHolder.newInstance(parent.getContext());
             case VIEW_TYPE_COMMENT:
                 return CommentViewHolder.newInstance(parent.getContext());
         }
@@ -106,7 +115,7 @@ public class PostDetailsAdapter extends RecyclerView.Adapter implements CommentL
         int state = mCommentListModel.get(STATE);
         List<ModelFeatures> comments = mCommentListModel.get(MODEL_LIST);
 
-        return 2 + (state == STATE_IDLE ? 0 : (state == STATE_SUCCESS ? comments.size() : 1));
+        return 2 + (state == STATE_IDLE ? 0 : ((state == STATE_SUCCESS && !comments.isEmpty()) ? comments.size() : 1));
     }
 
     @Override

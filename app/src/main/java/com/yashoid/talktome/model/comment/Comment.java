@@ -12,6 +12,7 @@ public interface Comment extends Basics, WithIndicator {
 
     String TYPE_COMMENT = "Comment";
 
+    String ID = "id";
     String CONTENT = "content";
 
     class CommentTypeProvider extends WithIndicator.WithIndicatorTypeProvider {

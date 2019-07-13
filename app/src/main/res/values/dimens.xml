@@ -79,6 +79,10 @@
     <dimen name="commentstitle_textsize">16sp</dimen>
 
 
+    <!-- Loading View Holder -->
+    <dimen name="loading_size">@dimen/loadablecontent_loadingsize</dimen>
+
+
     <!-- Comment Item View -->
     <dimen name="commentitem_textsize">14sp</dimen>
 
