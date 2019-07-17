@@ -3,6 +3,8 @@ package com.yashoid.talktome.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.yashoid.mmv.Managers;
@@ -17,6 +19,12 @@ import com.yashoid.talktome.R;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
 public class MainActivity extends AppCompatActivity implements Target, PostList, ViewBunch.OnItemClickListener {
+
+    public static Intent getIntent(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+
+        return intent;
+    }
 
     private LoadableContentView mLoadableContent;
     private ViewBunch mViewBunch;

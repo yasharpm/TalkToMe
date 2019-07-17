@@ -11,7 +11,12 @@
     </style>
 
     <style name="AppTheme" parent="AppBaseTheme">
+    </style>
 
+    <style name="StartUpTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/startup_background</item>
+        <item name="colorPrimaryDark">@color/startup_background</item>
+        <item name="colorAccent">@color/startup_background</item>
     </style>
     
     <style name="PostStatusTextStyle">

@@ -4,6 +4,11 @@
     <dimen name="item_cornerradius">8dp</dimen>
     <dimen name="item_elevation">1dp</dimen>
 
+
+    <!-- Start Up Activity -->
+    <dimen name="startup_background_cornerradius">8dp</dimen>
+
+
     <!-- Toolbar -->
     <dimen name="toolbar_actionsize">36dp</dimen>
     <dimen name="toolbar_appname_height">18dp</dimen>

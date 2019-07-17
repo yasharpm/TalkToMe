@@ -35,6 +35,12 @@
     </array>
 
 
+    <!-- Start Up Activity -->
+    <color name="startup_background">@color/themeColor</color>
+    <color name="startup_icon_background">@color/contentBackground</color>
+    <color name="startup_icon_tint">@color/startup_background</color>
+
+
     <!-- Toolbar -->
     <color name="toolbar_background">@color/contentBackground</color>
 
