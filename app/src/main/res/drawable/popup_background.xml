@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/popup_background"/>
+    <corners android:radius="@dimen/popup_background_cornerradius"/>
+
+    <padding
+        android:top="@dimen/popup_padding_vertical"
+        android:bottom="@dimen/popup_padding_vertical"/>
+
+</shape>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,10 +18,20 @@ import com.yashoid.talktome.model.post.PostListPagerFragment;
 import com.yashoid.talktome.model.post.PostListViewBunchAdapter;
 import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.view.Toolbar;
+import com.yashoid.talktome.view.popup.Popup;
+import com.yashoid.talktome.view.popup.PopupItem;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
 public class MainActivity extends AppCompatActivity implements Target, PostList,
         ViewBunch.OnItemClickListener, View.OnClickListener {
+
+    private static final PopupItem[] MORE_ITEMS = {
+            new PopupItem(R.string.main_more_myposts, R.drawable.ic_post),
+            new PopupItem(R.string.main_more_settings, R.drawable.ic_share),
+            new PopupItem(R.string.main_more_aboutus, R.drawable.ic_settings),
+            new PopupItem(R.string.main_more_guide, R.drawable.ic_guide),
+    };
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -39,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ((Toolbar) findViewById(R.id.toolbar)).setActionButtonClickListener(mOnMoreClickListener);
 
         mLoadableContent = findViewById(R.id.loadableContent);
         mLoadableContent.setOnStateChangedListener(new LoadableContentView.OnStateChangedListener() {
@@ -69,6 +82,29 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
 
         Managers.registerTarget(this, mPostListFeatures);
     }
+
+    private View.OnClickListener mOnMoreClickListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            Resources res = getResources();
+
+            int x = res.getDimensionPixelSize(R.dimen.main_morepopup_x);
+            int y = res.getDimensionPixelSize(R.dimen.main_morepopup_y);
+
+            new Popup(v, MORE_ITEMS, mOnMoreItemSelectedListener).showAtLocation(x, y);
+        }
+
+    };
+
+    private Popup.OnItemSelectedListener mOnMoreItemSelectedListener = new Popup.OnItemSelectedListener() {
+
+        @Override
+        public void onItemClicked(int position, PopupItem item) {
+            // TODO
+        }
+
+    };
 
     @Override
     public void onClick(View v) {

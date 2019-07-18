@@ -2,6 +2,13 @@
 
     <string name="app_name">Talk To Me</string>
 
+    
+    <!-- Main Activity -->
+    <string name="main_more_myposts">پست‌های من</string>
+    <string name="main_more_settings">تنظیمات</string>
+    <string name="main_more_aboutus">درباره ما</string>
+    <string name="main_more_guide">راهنما</string>
+    
 
     <!-- Post Details Fragment -->
     <string name="postdetails_editcomment_hint">نظر خود را اینجا بنویسید...</string>

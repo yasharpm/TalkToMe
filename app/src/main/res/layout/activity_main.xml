@@ -32,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        app:srcCompat="@drawable/ic_newpost"
+        app:srcCompat="@drawable/ic_post"
+        app:tint="@color/main_newpost_tint"
         android:background="@drawable/main_newpost_background"
         android:padding="@dimen/main_newpost_padding"
         android:elevation="@dimen/main_newpost_elevation"/>

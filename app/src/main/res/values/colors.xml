@@ -45,6 +45,10 @@
     <color name="toolbar_background">@color/contentBackground</color>
 
 
+    <!-- Main Activity -->
+    <color name="main_newpost_tint">@color/contentBackground</color>
+
+
     <!-- Loading Drawable -->
     <color name="loadingdrawable_color">#B5E8EE</color>
 
@@ -87,6 +91,14 @@
     <color name="newpost_words_textcolor">@color/newpost_wordcount_textcolor</color>
     <color name="newpost_button_textcolor">@color/contentBackground</color>
     <color name="newpost_button_background">@color/themeColor</color>
+
+
+    <!-- Popup -->
+    <color name="popup_background">@color/contentBackground</color>
+
+
+    <!-- Popup Item -->
+    <color name="popupitem_textcolor">@color/contentColor</color>
 
     
 </resources>

@@ -37,6 +37,8 @@
     <dimen name="main_newpost_elevation">8dp</dimen>
     <dimen name="main_newpost_margin">16dp</dimen>
     <dimen name="main_newpost_size">56dp</dimen>
+    <dimen name="main_morepopup_x">16dp</dimen>
+    <dimen name="main_morepopup_y">8dp</dimen>
 
 
     <!-- Item Content View -->
@@ -125,6 +127,22 @@
     <dimen name="newpost_post_margin_bottom">16dp</dimen>
     <dimen name="newpost_button_height">40dp</dimen>
     <dimen name="newpost_padding_bottom">16dp</dimen>
+
+
+    <!-- Popup -->
+    <dimen name="popup_background_cornerradius">@dimen/default_cornerradius</dimen>
+    <dimen name="popup_padding_vertical">4dp</dimen>
+    <dimen name="popup_elevation">8dp</dimen>
+
+
+    <!-- Popup Item -->
+    <dimen name="popupitem_width">136dp</dimen>
+    <dimen name="popupitem_height">44dp</dimen>
+    <dimen name="popupitem_textsize">14sp</dimen>
+    <dimen name="popupitem_iconsize">16dp</dimen>
+    <dimen name="popupitem_icon_margin_left">16dp</dimen>
+    <dimen name="popupitem_padding_right">16dp</dimen>
+
 
 
 </resources>
