@@ -5,6 +5,7 @@ import android.app.Application;
 import com.yashoid.mmv.Managers;
 import com.yashoid.talktome.model.comment.Comment;
 import com.yashoid.talktome.model.comment.CommentList;
+import com.yashoid.talktome.model.pendingpost.PendingPost;
 import com.yashoid.talktome.model.post.Post;
 import com.yashoid.talktome.model.post.PostList;
 
@@ -20,6 +21,7 @@ public class TalkToMeApplication extends Application {
         Managers.addTypeProvider(new Post.PostTypeProvider(this));
         Managers.addTypeProvider(new CommentList.CommentListTypeProvider(this));
         Managers.addTypeProvider(new Comment.CommentTypeProvider(this));
+        Managers.addTypeProvider(new PendingPost.PendingPostTypeProvider(this));
     }
 
 }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
@@ -18,7 +19,8 @@ import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
-public class MainActivity extends AppCompatActivity implements Target, PostList, ViewBunch.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements Target, PostList,
+        ViewBunch.OnItemClickListener, View.OnClickListener {
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
 
     private LoadableContentView mLoadableContent;
     private ViewBunch mViewBunch;
+    private View mButtonNewPost;
 
     private ModelFeatures mPostListFeatures;
     private Model mPostListModel;
@@ -61,7 +64,15 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         mViewBunch.setAdapter(new PostListViewBunchAdapter(mPostListFeatures));
         mViewBunch.setOnItemClickListener(this);
 
+        mButtonNewPost = findViewById(R.id.button_newpost);
+        mButtonNewPost.setOnClickListener(this);
+
         Managers.registerTarget(this, mPostListFeatures);
+    }
+
+    @Override
+    public void onClick(View v) {
+        startActivity(NewPostActivity.getIntent(this));
     }
 
     @Override

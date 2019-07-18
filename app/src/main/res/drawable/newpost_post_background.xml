@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/newpost_post_background"/>
+    <corners android:radius="@dimen/newpost_post_background_cornerradius"/>
+    <padding
+        android:left="@dimen/newpost_post_padding_horizontal"
+        android:right="@dimen/newpost_post_padding_horizontal"
+        android:top="@dimen/newpost_post_padding_vertival"
+        android:bottom="@dimen/newpost_post_padding_vertival"/>
+
+</shape>

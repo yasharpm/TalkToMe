@@ -49,6 +49,10 @@
     <color name="loadingdrawable_color">#B5E8EE</color>
 
 
+    <!-- Main Activity -->
+    <color name="main_newpost_background">@color/themeColor</color>
+
+
     <!-- Item Content View -->
     <color name="itemcontent_textcolor">@color/contentColor</color>
 
@@ -72,6 +76,17 @@
 
     <!-- Comments Title Item -->
     <color name="commentstitle_textcolor">@color/contentColor</color>
+
+
+    <!-- New Post Activity -->
+    <color name="newpost_background">@color/contentBackground</color>
+    <color name="newpost_title_textcolor">#002324</color>
+    <color name="newpost_post_textcolor">@color/contentColor</color>
+    <color name="newpost_post_background">@color/defaultBackground</color>
+    <color name="newpost_wordcount_textcolor">@color/newpost_title_textcolor</color>
+    <color name="newpost_words_textcolor">@color/newpost_wordcount_textcolor</color>
+    <color name="newpost_button_textcolor">@color/contentBackground</color>
+    <color name="newpost_button_background">@color/themeColor</color>
 
     
 </resources>

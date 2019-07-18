@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yashoid.sequencelayout.SequenceLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:sequences="@xml/sequences_newpost"
+    android:background="@color/newpost_background">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/button_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:srcCompat="@drawable/ic_close"
+        android:scaleType="centerInside"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:textSize="@dimen/newpost_title_textsize"
+        android:textColor="@color/newpost_title_textcolor"
+        app:fontFamily="@font/dana_regular"
+        android:text="@string/newpost_title"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:srcCompat="@drawable/toolbar_logo"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:inputType="textMultiLine"
+        android:textSize="@dimen/newpost_post_textsize"
+        android:textColor="@color/newpost_post_textcolor"
+        android:lineHeight="@dimen/newpost_post_lineheight"
+        android:gravity="top"
+        android:fontFamily="@font/dana_regular"
+        android:background="@drawable/newpost_post_background"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_wordcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="@dimen/newpost_wordcount_textsize"
+        android:textColor="@color/newpost_wordcount_textcolor"
+        app:fontFamily="@font/dana_regular"
+        android:text="@string/newpost_wordcount"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_words"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="@dimen/newpost_words_textsize"
+        android:textColor="@color/newpost_words_textcolor"
+        app:fontFamily="@font/dana_regular_digits"/>
+
+    <FrameLayout
+        android:id="@+id/button_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/newpost_button_background">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:textSize="@dimen/newpost_button_textsize"
+            android:textColor="@color/newpost_button_textcolor"
+            app:fontFamily="@font/dana_regular"
+            android:text="@string/newpost_button"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="@dimen/newpost_button_padding_left"
+
+            app:srcCompat="@drawable/ic_submit"/>
+
+    </FrameLayout>
+
+
+</com.yashoid.sequencelayout.SequenceLayout>

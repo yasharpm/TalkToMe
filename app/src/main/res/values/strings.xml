@@ -19,6 +19,19 @@
     <string name="commentstitle">نظرات شما:</string>
 
 
+    <!-- New Post Activity -->
+    <string name="newpost_title">افکارت را به قلم بیاور…</string>
+    <string name="newpost_wordcount">تعداد کلمات:</string>
+    <string name="newpost_button">ارسال</string>
+
+
+    <!-- Pending Post -->
+    <string name="pendingpost_no_content">متنی برای ارسال نوشته نشده است.</string>
+    <string name="pendingpost_short_content">متن وارد شده خیلی کوتاه است. (حداقل %d کاراکتر)</string>
+    <string name="pendingpost_error">ارسال پست ممکن نشد. خطای اتصال به سرور.</string>
+    <string name="pendingpost_success">ارسال موفق</string>
+
+
     <array name="month_names">
         <item>فروردین</item>
         <item>اردیبهشت</item>

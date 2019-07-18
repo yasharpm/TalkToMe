@@ -27,6 +27,16 @@
 
     </com.yashoid.talktome.view.LoadableContentView>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/button_newpost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:srcCompat="@drawable/ic_newpost"
+        android:background="@drawable/main_newpost_background"
+        android:padding="@dimen/main_newpost_padding"
+        android:elevation="@dimen/main_newpost_elevation"/>
+
     <FrameLayout
         android:id="@+id/overlay"
         android:layout_width="match_parent"

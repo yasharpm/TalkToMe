@@ -10,7 +10,7 @@ import com.yashoid.talktome.R;
 
 public class StartUpActivity extends AppCompatActivity {
 
-    private static final long START_DELAY = 2000;
+    private static final long START_DELAY = 1000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

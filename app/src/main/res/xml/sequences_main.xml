@@ -14,6 +14,17 @@
         <Span id="loadableContent" size="100%"/>
     </Horizontal>
 
+    <Horizontal>
+        <Span size="@dimen/main_newpost_margin"/>
+        <Span id="button_newpost" size="@dimen/main_newpost_size"/>
+    </Horizontal>
+
+    <Vertical>
+        <Span size="1w"/>
+        <Span id="button_newpost" size="@dimen/main_newpost_size"/>
+        <Span size="@dimen/main_newpost_margin"/>
+    </Vertical>
+
     <Vertical>
         <Span id="overlay" size="100%"/>
     </Vertical>
