@@ -19,7 +19,6 @@ import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
 import com.yashoid.sequencelayout.SequenceReader;
 import com.yashoid.talktome.R;
-import com.yashoid.talktome.model.comment.Comment;
 import com.yashoid.talktome.model.comment.CommentList;
 import com.yashoid.talktome.model.post.Post;
 import com.yashoid.talktome.model.post.PostContentView;
@@ -53,7 +52,7 @@ public class DetailedPostContentView extends SequenceLayout implements Target, P
     }
 
     private void initialize(Context context, AttributeSet attrs, int defStyleAttr) {
-        setBackground(ContextCompat.getDrawable(context, R.drawable.detailedpostcontent_background));
+        setBackground(ContextCompat.getDrawable(context, R.drawable.item_attachedtotop_background));
 
         ViewCompat.setElevation(this, getResources().getDimension(R.dimen.detailedpostcontent_elevation));
 

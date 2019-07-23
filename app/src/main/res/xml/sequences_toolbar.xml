@@ -28,4 +28,16 @@
         <Span size="1w"/>
     </Vertical>
 
+    <Horizontal>
+        <Span size="1w"/>
+        <Span id="text_title" size="wrap"/>
+        <Span size="1w"/>
+    </Horizontal>
+
+    <Vertical>
+        <Span size="1w"/>
+        <Span id="text_title" size="wrap"/>
+        <Span size="1w"/>
+    </Vertical>
+
 </Sequences>

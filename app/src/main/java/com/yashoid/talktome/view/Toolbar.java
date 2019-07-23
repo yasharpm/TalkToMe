@@ -3,11 +3,12 @@ package com.yashoid.talktome.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
@@ -21,6 +22,8 @@ import java.util.List;
 
 public class Toolbar extends SequenceLayout {
 
+    private TextView mTextTitle;
+    private View mImageAppName;
     private ImageView mButtonAction;
 
     public Toolbar(Context context) {
@@ -56,15 +59,33 @@ public class Toolbar extends SequenceLayout {
         }
 
         mButtonAction = findViewById(R.id.button_action);
+        mTextTitle = findViewById(R.id.text_title);
+        mImageAppName = findViewById(R.id.image_appname);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Toolbar, defStyleAttr, 0);
 
         int actionIconResId = a.getResourceId(R.styleable.Toolbar_actionIcon, 0);
+        String title = a.getString(R.styleable.Toolbar_title);
 
         a.recycle();
 
         if (actionIconResId != 0) {
             mButtonAction.setImageDrawable(ContextCompat.getDrawable(context, actionIconResId));
+        }
+
+        setTitle(title);
+    }
+
+    public void setTitle(CharSequence title) {
+        if (TextUtils.isEmpty(title)) {
+            mTextTitle.setVisibility(INVISIBLE);
+            mImageAppName.setVisibility(VISIBLE);
+        }
+        else {
+            mTextTitle.setVisibility(VISIBLE);
+            mImageAppName.setVisibility(INVISIBLE);
+
+            mTextTitle.setText(title);
         }
     }
 

@@ -43,6 +43,7 @@
 
     <!-- Toolbar -->
     <color name="toolbar_background">@color/contentBackground</color>
+    <color name="toolbar_title_textcolor">@color/themeColor</color>
 
 
     <!-- Main Activity -->
@@ -99,6 +100,16 @@
 
     <!-- Popup Item -->
     <color name="popupitem_textcolor">@color/contentColor</color>
+
+
+    <!-- About Us Activity -->
+    <color name="aboutus_indicatortint">@color/themeColor</color>
+    <color name="aboutus_about_textcolor">@color/contentColor</color>
+    
+    
+    <!-- Passive Logo -->
+    <color name="passivelogo_logo_background">#3326C6DA</color>
+    <color name="passivelogo_logo_logo">@color/defaultBackground</color>
 
     
 </resources>

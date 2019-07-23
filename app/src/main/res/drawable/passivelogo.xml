@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:width="@dimen/passivelogo_icon_size" android:height="@dimen/passivelogo_icon_size">
+        <shape
+            android:shape="rectangle">
+
+            <solid android:color="@color/passivelogo_logo_background"/>
+            <corners android:radius="@dimen/passivelogo_icon_cornerradius"/>
+
+        </shape>
+    </item>
+
+    <item android:drawable="@drawable/passivelogo_logo"
+        android:width="@dimen/passivelogo_icon_logosize"
+        android:height="@dimen/passivelogo_icon_logosize"
+        android:gravity="center"/>
+
+</layer-list>

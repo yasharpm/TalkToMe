@@ -12,6 +12,7 @@
 
 
     <!-- Toolbar -->
+    <dimen name="toolbar_title_textsize">18sp</dimen>
     <dimen name="toolbar_actionsize">36dp</dimen>
     <dimen name="toolbar_appname_height">18dp</dimen>
     <dimen name="toolbar_logo_size">24dp</dimen>
@@ -143,6 +144,23 @@
     <dimen name="popupitem_icon_margin_left">16dp</dimen>
     <dimen name="popupitem_padding_right">16dp</dimen>
 
+
+    <!-- About Us Activity -->
+    <dimen name="aboutus_about_padding_top">24dp</dimen>
+    <dimen name="aboutus_about_padding_right">8dp</dimen>
+    <dimen name="aboutus_about_padding_left">16dp</dimen>
+    <dimen name="aboutus_about_padding_bottom">12dp</dimen>
+    <dimen name="aboutus_about_textsize">16sp</dimen>
+    <dimen name="aboutus_about_lineheight">24sp</dimen>
+    <dimen name="aboutus_about_elevation">@dimen/item_elevation</dimen>
+
+
+    <!-- Passive Logo -->
+    <dimen name="passivelogo_icon_size">40dp</dimen>
+    <dimen name="passivelogo_icon_cornerradius">4dp</dimen>
+    <dimen name="passivelogo_icon_logosize">24dp</dimen>
+    <dimen name="passivelogo_name_width">144dp</dimen>
+    <dimen name="passivelogo_name_margin_top">8dp</dimen>
 
 
 </resources>

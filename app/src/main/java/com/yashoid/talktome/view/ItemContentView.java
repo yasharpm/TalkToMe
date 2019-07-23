@@ -2,6 +2,7 @@ package com.yashoid.talktome.view;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -52,6 +53,26 @@ public class ItemContentView extends AppCompatTextView {
 
         mIndicatorWidth = res.getDimensionPixelSize(R.dimen.itemcontent_indicator_width);
         mIndicatorMargin = res.getDimensionPixelSize(R.dimen.itemcontent_indicator_margin);
+
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemContentView, defStyleAttr, 0);
+
+        int indicatorResId = a.getResourceId(R.styleable.ItemContentView_indicator, 0);
+        int indicatorTint = a.getColor(R.styleable.ItemContentView_indicatorTint, 0);
+
+        a.recycle();
+
+        if (indicatorResId != 0) {
+            Drawable indicator = ResourcesCompat.getDrawable(res, indicatorResId, null);
+
+            if (indicator != null) {
+                if (indicatorTint != 0) {
+                    indicator = indicator.mutate();
+                    indicator.setColorFilter(indicatorTint, PorterDuff.Mode.SRC_IN);
+                }
+
+                setIndicator(indicator);
+            }
+        }
     }
 
     public void setIndicator(Drawable indicator) {

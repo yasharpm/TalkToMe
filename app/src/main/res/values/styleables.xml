@@ -3,6 +3,12 @@
     
     <declare-styleable name="Toolbar">
         <attr name="actionIcon" format="reference"/>
+        <attr name="title" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="ItemContentView">
+        <attr name="indicator" format="reference"/>
+        <attr name="indicatorTint" format="color"/>
     </declare-styleable>
     
 </resources>

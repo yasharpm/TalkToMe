@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
     private static final PopupItem[] MORE_ITEMS = {
             new PopupItem(R.string.main_more_myposts, R.drawable.ic_post),
             new PopupItem(R.string.main_more_settings, R.drawable.ic_settings),
-            new PopupItem(R.string.main_more_aboutus, R.drawable.ic_share),
+            new PopupItem(R.string.main_more_aboutus, R.drawable.ic_about),
             new PopupItem(R.string.main_more_guide, R.drawable.ic_guide),
     };
 
@@ -101,7 +101,11 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
 
         @Override
         public void onItemClicked(int position, PopupItem item) {
-            // TODO
+            switch (position) {
+                case 2:
+                    startActivity(AboutUsActivity.getIntent(MainActivity.this));
+                    return;
+            }
         }
 
     };

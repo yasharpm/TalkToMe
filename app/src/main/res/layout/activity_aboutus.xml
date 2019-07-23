@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yashoid.sequencelayout.SequenceLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:sequences="@xml/sequences_aboutus">
+
+    <com.yashoid.talktome.view.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:actionIcon="@drawable/ic_action_back"
+        app:title="@string/aboutus_title"/>
+
+    <com.yashoid.talktome.view.ItemContentView
+        android:id="@+id/text_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/item_attachedtotop_background"
+        app:indicator="@drawable/ic_indicator_post"
+        app:indicatorTint="@color/aboutus_indicatortint"
+        android:paddingTop="@dimen/aboutus_about_padding_top"
+        android:paddingLeft="@dimen/aboutus_about_padding_left"
+        android:paddingRight="@dimen/aboutus_about_padding_right"
+        android:paddingBottom="@dimen/aboutus_about_padding_bottom"
+        android:textSize="@dimen/aboutus_about_textsize"
+        android:lineHeight="@dimen/aboutus_about_lineheight"
+        android:textColor="@color/aboutus_about_textcolor"
+        app:fontFamily="@font/dana_regular"
+        android:elevation="@dimen/aboutus_about_elevation"/>
+
+    <include
+        android:id="@+id/passivelogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        layout="@layout/passivelogo"/>
+
+</com.yashoid.sequencelayout.SequenceLayout>
