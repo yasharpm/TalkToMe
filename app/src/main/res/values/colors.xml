@@ -100,6 +100,7 @@
 
     <!-- Popup Item -->
     <color name="popupitem_textcolor">@color/contentColor</color>
+    <color name="popupitem_background_selected">#DFF3F3</color>
 
 
     <!-- About Us Activity -->
