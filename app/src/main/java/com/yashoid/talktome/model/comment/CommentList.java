@@ -6,7 +6,7 @@ import android.util.Log;
 import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.network.NetworkOperator;
+import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.list.ModelList;
 import com.yashoid.talktome.network.GetCommentsOperation;
 
@@ -29,6 +29,12 @@ public interface CommentList extends ModelList {
         }
 
         @Override
+        public void getIdentifyingFeatures(ModelFeatures features, List<String> identifyingFeatures) {
+            super.getIdentifyingFeatures(features, identifyingFeatures);
+            identifyingFeatures.add(POST_ID);
+        }
+
+        @Override
         protected Action getAction(ModelFeatures features, String actionName) {
             return null;
         }
@@ -37,7 +43,7 @@ public interface CommentList extends ModelList {
         protected void getModels(final Model model, Object... params) {
             model.set(STATE, STATE_LOADING);
 
-            NetworkOperator.getInstance().post(new GetCommentsOperation(mContext, (String) model.get(POST_ID), new GetCommentsOperation.GetCommentsCallback() {
+            TTMOffice.network().post(new GetCommentsOperation(mContext, (String) model.get(POST_ID), new GetCommentsOperation.GetCommentsCallback() {
 
                 @Override
                 public void onGetCommentsResult(List<ModelFeatures> comments, Exception exception) {

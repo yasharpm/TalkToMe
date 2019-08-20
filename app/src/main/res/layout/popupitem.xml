@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:weightSum="1"
     android:paddingRight="@dimen/popupitem_padding_right"
-    android:background="@color/popupitem_background">
+    android:background="@drawable/popupitem_background">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_title"

@@ -5,7 +5,7 @@ import android.content.Context;
 import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.network.NetworkOperator;
+import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.list.ModelList;
 import com.yashoid.talktome.network.GetNotesOperation;
 
@@ -36,7 +36,7 @@ public interface PostList extends ModelList {
 
             final int count = (int) params[0];
 
-            NetworkOperator.getInstance().post(new GetNotesOperation(mContext, count, new GetNotesOperation.GetNotesCallback() {
+            TTMOffice.network().post(new GetNotesOperation(mContext, count, new GetNotesOperation.GetNotesCallback() {
 
                 @Override
                 public void onGetNotesResult(List<ModelFeatures> posts, Exception exception) {

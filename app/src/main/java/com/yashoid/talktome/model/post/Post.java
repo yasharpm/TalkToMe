@@ -8,12 +8,14 @@ import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
-import com.yashoid.network.NetworkOperator;
+import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.WithIndicator;
 import com.yashoid.talktome.model.Basics;
 import com.yashoid.talktome.model.Stateful;
 import com.yashoid.talktome.model.comment.CommentList;
 import com.yashoid.talktome.network.AddCommentOperation;
+
+import java.util.List;
 
 public interface Post extends Basics, WithIndicator, Stateful {
 
@@ -37,6 +39,12 @@ public interface Post extends Basics, WithIndicator, Stateful {
             super(context, TYPE_POST);
 
             mContext = context;
+        }
+
+        @Override
+        public void getIdentifyingFeatures(ModelFeatures features, List<String> identifyingFeatures) {
+            super.getIdentifyingFeatures(features, identifyingFeatures);
+            identifyingFeatures.add(ID);
         }
 
         @Override
@@ -68,7 +76,7 @@ public interface Post extends Basics, WithIndicator, Stateful {
 
                 final String postId = model.get(ID);
 
-                NetworkOperator.getInstance().post(new AddCommentOperation(mContext, postId, pendingComment, new AddCommentOperation.OnAddCommentResultCallback() {
+                TTMOffice.network().post(new AddCommentOperation(mContext, postId, pendingComment, new AddCommentOperation.OnAddCommentResultCallback() {
 
                     @Override
                     public void onCommentAdded() {

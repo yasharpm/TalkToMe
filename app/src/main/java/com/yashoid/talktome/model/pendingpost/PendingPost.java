@@ -6,14 +6,19 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.yashoid.mmv.Action;
+import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.mmv.TypeProvider;
-import com.yashoid.network.NetworkOperator;
+import com.yashoid.mmv.PersistentTarget;
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.Basics;
 import com.yashoid.talktome.model.Stateful;
+import com.yashoid.talktome.model.post.MyPostList;
+import com.yashoid.talktome.model.post.Post;
 import com.yashoid.talktome.network.AddPostOperation;
+
+import java.util.List;
 
 public interface PendingPost extends Basics, Stateful {
 
@@ -23,25 +28,27 @@ public interface PendingPost extends Basics, Stateful {
 
     String CONTENT = "content";
 
+    String ON_CONTENT_CHANGED = "onContentChanged";
     String SEND_POST = "sendPost";
 
-    class PendingPostTypeProvider implements TypeProvider {
+    class PendingPostTypeProvider extends BaseTypeProvider {
 
         private Context mContext;
 
         public PendingPostTypeProvider(Context context) {
+            super(TYPE_PENDING_POST);
+
             mContext = context;
         }
 
         @Override
         public Action getAction(ModelFeatures features, String actionName, Object... params) {
-            if (!TYPE_PENDING_POST.equals(features.get(TYPE))) {
-                return null;
-            }
-
             switch (actionName) {
-                case Action.ACTION_MODEL_CREATED:
+                case Action.ACTION_MODEL_NOT_EXISTED_IN_CACHE:
+                case Action.ACTION_MODEL_LOADED_FROM_CACHE:
                     return mInitializationAction;
+                case ON_CONTENT_CHANGED:
+                    return mOnContentChangedAction;
                 case SEND_POST:
                     return mSendPostAction;
             }
@@ -67,11 +74,11 @@ public interface PendingPost extends Basics, Stateful {
 
                 model.set(STATE, STATE_LOADING);
 
-                NetworkOperator.getInstance().post(new AddPostOperation(mContext, content, new AddPostOperation.OnAddPostResultCallback() {
+                TTMOffice.network().post(new AddPostOperation(mContext, content, new AddPostOperation.OnAddPostResultCallback() {
 
                     @Override
                     public void onPostAdded(String postId) {
-                        // TODO Add post to user posts
+                        addPostToMyPosts(postId, (String) model.get(CONTENT));
 
                         model.set(STATE, STATE_SUCCESS);
 
@@ -94,6 +101,22 @@ public interface PendingPost extends Basics, Stateful {
 
         };
 
+        private Action mOnContentChangedAction = new Action() {
+
+            @Override
+            public Object perform(Model model, Object... params) {
+                Integer state = model.get(STATE);
+
+                if (state != null) {
+                    model.set(CONTENT, params[0]);
+                    model.cache(true);
+                }
+
+                return null;
+            }
+
+        };
+
         private Action mInitializationAction = new Action() {
 
             @Override
@@ -103,6 +126,33 @@ public interface PendingPost extends Basics, Stateful {
             }
 
         };
+
+        private void addPostToMyPosts(final String postId, String content) {
+            final ModelFeatures newPostFeatures = new ModelFeatures.Builder()
+                    .add(TYPE, Post.TYPE_POST)
+                    .add(Post.ID, postId)
+                    .add(Post.CONTENT, content)
+                    .build();
+
+            Managers.registerTarget(new PersistentTarget() {
+
+                @Override
+                public void setModel(Model model) {
+                    Managers.unregisterTarget(this);
+
+                    List<ModelFeatures> postList = model.get(MyPostList.MODEL_LIST);
+
+                    postList.add(0, newPostFeatures);
+
+                    model.set(MyPostList.MODEL_LIST, postId);
+                    model.cache(true);
+                }
+
+                @Override
+                public void onFeaturesChanged(String... featureNames) { }
+
+            }, MyPostList.FEATURES);
+        }
 
     }
 

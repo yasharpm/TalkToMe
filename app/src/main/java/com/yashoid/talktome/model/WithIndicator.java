@@ -18,15 +18,13 @@ public interface WithIndicator extends Basics {
 
     String INDICATOR_COLOR = "indicatorColor";
 
-    abstract class WithIndicatorTypeProvider implements TypeProvider {
-
-        private String mTypeName;
+    abstract class WithIndicatorTypeProvider extends BaseTypeProvider {
 
         private int[] mColors;
         private int mColorIndex = 0;
 
         public WithIndicatorTypeProvider(Context context, String typeName) {
-            mTypeName = typeName;
+            super(typeName);
 
             int[] colors = context.getResources().getIntArray(R.array.indicatorColors);
 
@@ -49,10 +47,6 @@ public interface WithIndicator extends Basics {
 
         @Override
         public Action getAction(ModelFeatures features, String actionName, Object... params) {
-            if (!TextUtils.equals((String) features.get(TYPE), mTypeName)) {
-                return null;
-            }
-
             if (Action.ACTION_MODEL_CREATED.equals(actionName)) {
                 return mCreationAction;
             }

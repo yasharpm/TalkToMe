@@ -3,7 +3,6 @@ package com.yashoid.talktome.model.list;
 import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.mmv.TypeProvider;
 import com.yashoid.talktome.model.Basics;
 import com.yashoid.talktome.model.Stateful;
 
@@ -13,20 +12,14 @@ public interface ModelList extends Basics, Stateful {
 
     String GET_MODELS = "getModels";
 
-    abstract class ModelListTypeProvider implements TypeProvider {
-
-        private String mTypeName;
+    abstract class ModelListTypeProvider extends BaseTypeProvider {
 
         protected ModelListTypeProvider(String typeName) {
-            mTypeName = typeName;
+            super(typeName);
         }
 
         @Override
         public Action getAction(ModelFeatures features, String actionName, Object... params) {
-            if (!mTypeName.equals(features.get(TYPE))) {
-                return null;
-            }
-
             if (Action.ACTION_MODEL_CREATED.equals(actionName)) {
                 return mInitializationAction;
             }

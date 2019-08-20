@@ -57,7 +57,7 @@ public class NewPostActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void afterTextChanged(Editable s) {
-                mModel.set(CONTENT, s.toString());
+                mModel.perform(ON_CONTENT_CHANGED, s.toString());
             }
 
         });
@@ -96,7 +96,11 @@ public class NewPostActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void onModelChanged() {
-        int state = mModel.get(STATE);
+        Integer state = mModel.get(STATE);
+
+        if (state == null) {
+            return;
+        }
 
         switch (state) {
             case STATE_IDLE:
@@ -115,6 +119,8 @@ public class NewPostActivity extends AppCompatActivity implements View.OnClickLi
 
                 mModel.set(CONTENT, null);
                 mModel.set(STATE, STATE_IDLE);
+
+                mModel.cache(true);
 
                 finish();
 
