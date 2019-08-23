@@ -39,6 +39,10 @@
     <string name="pendingpost_success">ارسال موفق</string>
 
 
+    <!-- My Posts Activity -->
+    <string name="myposts_title">پست‌های من</string>
+
+
     <!-- About Us Activity -->
     <string name="aboutus_title">@string/main_more_aboutus</string>
     <string name="aboutus_about">اپلیکیشن «با من حرف بزن» فضایی است آزاد برای به اشتراک گذاری افکاری که در ذهن دارید و شاید جایی و یا کسی را برای شنیدنش پیدا نمی‌کنید.&lt;br/&gt;

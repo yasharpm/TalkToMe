@@ -3,14 +3,9 @@ package com.yashoid.talktome.model.post;
 import android.content.Context;
 
 import com.yashoid.mmv.Action;
-import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.list.ModelList;
-import com.yashoid.talktome.network.GetNotesOperation;
-
-import java.util.List;
 
 public interface MyPostList extends ModelList {
 
@@ -26,8 +21,6 @@ public interface MyPostList extends ModelList {
             super(TYPE_MY_POST_LIST);
 
             mContext = context;
-
-            Managers.registerModel(FEATURES);
         }
 
         @Override

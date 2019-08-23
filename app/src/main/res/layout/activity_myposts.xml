@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yashoid.sequencelayout.SequenceLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:sequences="@xml/sequences_myposts">
+
+    <com.yashoid.talktome.view.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:title="@string/myposts_title"
+        app:actionIcon="@drawable/ic_action_back"/>
+
+    <com.yashoid.talktome.view.LoadableContentView
+        android:id="@+id/holder_posts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_posts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.yashoid.talktome.view.LoadableContentView>
+
+</com.yashoid.sequencelayout.SequenceLayout>

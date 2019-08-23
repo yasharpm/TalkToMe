@@ -102,6 +102,9 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         @Override
         public void onItemClicked(int position, PopupItem item) {
             switch (position) {
+                case 0:
+                    startActivity(MyPostsActivity.getIntent(MainActivity.this));
+                    return;
                 case 2:
                     startActivity(AboutUsActivity.getIntent(MainActivity.this));
                     return;

@@ -7,13 +7,11 @@
     android:background="@color/startup_background">
     
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:layout_gravity="center"
 
         android:background="@drawable/startup_icon_background"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        app:tint="@color/startup_icon_tint"
-        android:tintMode="src_in"/>
+        app:srcCompat="@drawable/startup_icon"/>
 
 </FrameLayout>

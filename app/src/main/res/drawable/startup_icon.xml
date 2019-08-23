@@ -6,10 +6,7 @@
   <group android:translateX="85.333336"
       android:translateY="85.333336">
     <path
-        android:pathData="M-0.08,0.08h512v512h-512z"
-        android:fillColor="#39C2D6"/>
-    <path
         android:pathData="M331.82,129.63H256h-50.55h-75.82v50.55h75.82h25.27c-15.87,21.12 -25.27,47.37 -25.27,75.82v126.37H256V357.1V256c0,-41.88 33.95,-75.82 75.82,-75.82h50.55v-40v-10.55H331.82z"
-        android:fillColor="#FFFFFF"/>
+        android:fillColor="@color/startup_icon_tint"/>
   </group>
 </vector>

@@ -18,6 +18,7 @@ import com.yashoid.talktome.model.post.MyPostList;
 import com.yashoid.talktome.model.post.Post;
 import com.yashoid.talktome.network.AddPostOperation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface PendingPost extends Basics, Stateful {
@@ -142,9 +143,13 @@ public interface PendingPost extends Basics, Stateful {
 
                     List<ModelFeatures> postList = model.get(MyPostList.MODEL_LIST);
 
+                    if (postList == null) {
+                        postList = new ArrayList<>();
+                    }
+
                     postList.add(0, newPostFeatures);
 
-                    model.set(MyPostList.MODEL_LIST, postId);
+                    model.set(MyPostList.MODEL_LIST, postList);
                     model.cache(true);
                 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Vertical>
+        <Span id="toolbar" size="wrap"/>
+        <Span id="holder_posts" size="1w"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span id="toolbar" size="100%"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span id="holder_posts" size="100%"/>
+    </Horizontal>
+
+</Sequences>

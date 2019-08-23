@@ -25,6 +25,8 @@ public class TalkToMeApplication extends Application {
         Managers.addTypeProvider(new Comment.CommentTypeProvider(this));
         Managers.addTypeProvider(new PendingPost.PendingPostTypeProvider(this));
         Managers.addTypeProvider(new MyPostList.MyPostListTypeProvider(this));
+
+        Managers.registerModel(MyPostList.FEATURES);
     }
 
 }
