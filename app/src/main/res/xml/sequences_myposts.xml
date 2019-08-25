@@ -14,4 +14,12 @@
         <Span id="holder_posts" size="100%"/>
     </Horizontal>
 
+    <Horizontal>
+        <Span id="overlay" size="100%"/>
+    </Horizontal>
+
+    <Vertical>
+        <Span id="overlay" size="100%"/>
+    </Vertical>
+
 </Sequences>

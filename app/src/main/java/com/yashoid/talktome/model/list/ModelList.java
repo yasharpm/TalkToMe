@@ -49,6 +49,10 @@ public interface ModelList extends Basics, Stateful {
 
             @Override
             public Object perform(Model model, Object... params) {
+                if (Integer.valueOf(STATE_LOADING).equals(model.get(STATE))) {
+                    return null;
+                }
+
                 getModels(model, params);
 
                 return null;

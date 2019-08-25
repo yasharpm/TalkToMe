@@ -25,4 +25,10 @@
 
     </com.yashoid.talktome.view.LoadableContentView>
 
+    <FrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="12dp"/>
+
 </com.yashoid.sequencelayout.SequenceLayout>

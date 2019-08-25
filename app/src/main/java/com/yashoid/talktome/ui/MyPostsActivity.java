@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,12 +18,13 @@ import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.model.post.MyPostList;
 import com.yashoid.talktome.model.post.PostListAdapter;
+import com.yashoid.talktome.model.post.PostListPagerFragment;
 import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.view.Toolbar;
 
 import java.util.List;
 
-public class MyPostsActivity extends AppCompatActivity implements MyPostList, Target {
+public class MyPostsActivity extends AppCompatActivity implements MyPostList, Target, PostListAdapter.OnItemClickListener {
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, MyPostsActivity.class);
@@ -50,11 +52,23 @@ public class MyPostsActivity extends AppCompatActivity implements MyPostList, Ta
         });
 
         mHolderPosts = findViewById(R.id.holder_posts);
+        mHolderPosts.setOnStateChangedListener(new LoadableContentView.OnStateChangedListener() {
+
+            @Override
+            public void onStateChanged(int state) {
+                if (state == STATE_LOADING) {
+                    mMyPostsModel.perform(GET_MODELS);
+                }
+            }
+
+        });
 
         mListPosts = findViewById(R.id.list_posts);
         mListPosts.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
         mPostListAdapter = new PostListAdapter();
+        mPostListAdapter.setOnItemClickListener(this);
+
         mListPosts.setAdapter(mPostListAdapter);
 
         Managers.registerTarget(this, FEATURES);
@@ -63,6 +77,8 @@ public class MyPostsActivity extends AppCompatActivity implements MyPostList, Ta
     @Override
     public void setModel(Model model) {
         mMyPostsModel = model;
+
+        mMyPostsModel.perform(GET_MODELS);
 
         onModelChanged();
     }
@@ -73,15 +89,32 @@ public class MyPostsActivity extends AppCompatActivity implements MyPostList, Ta
     }
 
     private void onModelChanged() {
-        int state = mMyPostsModel.get(STATE);
+//        int state = mMyPostsModel.get(STATE);
+//
+//        if (state == STATE_LOADING) {
+//            return;
+//        }
 
-        if (state == STATE_IDLE) {
-            mMyPostsModel.perform(GET_MODELS);
-        }
+        mHolderPosts.stopLoading();
 
         List<ModelFeatures> posts = mMyPostsModel.get(MODEL_LIST);
 
         mPostListAdapter.setPosts(posts);
     }
 
+    @Override
+    public void onItemClicked(int position, ModelFeatures modelFeatures) {
+        List<ModelFeatures> posts = mMyPostsModel.get(MODEL_LIST);
+
+        int count = posts.size();
+        int startPage = count - position - 1;
+
+        Fragment fragment = PostListPagerFragment.newInstance(MyPostList.FEATURES, count, startPage);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.overlay, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
 }

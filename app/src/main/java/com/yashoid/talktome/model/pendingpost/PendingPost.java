@@ -133,6 +133,8 @@ public interface PendingPost extends Basics, Stateful {
                     .add(TYPE, Post.TYPE_POST)
                     .add(Post.ID, postId)
                     .add(Post.CONTENT, content)
+                    .add(Post.VIEWS, 0)
+                    .add(Post.CREATED_TIME, System.currentTimeMillis())
                     .build();
 
             Managers.registerTarget(new PersistentTarget() {

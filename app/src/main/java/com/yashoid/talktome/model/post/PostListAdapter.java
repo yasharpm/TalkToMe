@@ -1,5 +1,6 @@
 package com.yashoid.talktome.model.post;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,10 +14,22 @@ public class PostListAdapter extends RecyclerView.Adapter {
 
     private static final int POST_MAX_LINES = 4;
 
+    public interface OnItemClickListener {
+
+        void onItemClicked(int position, ModelFeatures modelFeatures);
+
+    }
+
     private List<ModelFeatures> mPosts = null;
+
+    private OnItemClickListener mOnItemClickListener = null;
 
     public PostListAdapter() {
 
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mOnItemClickListener = listener;
     }
 
     public void setPosts(List<ModelFeatures> posts) {
@@ -32,7 +45,18 @@ public class PostListAdapter extends RecyclerView.Adapter {
 
         view.setMaxLines(POST_MAX_LINES);
 
-        return new RecyclerView.ViewHolder(view) { };
+        final RecyclerView.ViewHolder viewHolder = new RecyclerView.ViewHolder(view) { };
+
+        view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                onItemClicked(viewHolder.getAdapterPosition());
+            }
+
+        });
+
+        return viewHolder;
     }
 
     @Override
@@ -47,6 +71,12 @@ public class PostListAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return mPosts == null ? 0 : mPosts.size();
+    }
+
+    private void onItemClicked(int position) {
+        if (mOnItemClickListener != null) {
+            mOnItemClickListener.onItemClicked(position, mPosts.get(position));
+        }
     }
 
 }
