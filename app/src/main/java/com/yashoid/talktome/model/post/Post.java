@@ -9,6 +9,8 @@ import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
 import com.yashoid.talktome.TTMOffice;
+import com.yashoid.talktome.evaluation.Eval;
+import com.yashoid.talktome.evaluation.Events;
 import com.yashoid.talktome.model.WithIndicator;
 import com.yashoid.talktome.model.Basics;
 import com.yashoid.talktome.model.Stateful;
@@ -80,6 +82,8 @@ public interface Post extends Basics, WithIndicator, Stateful {
 
                     @Override
                     public void onCommentAdded() {
+                        Eval.trackEvent(Events.EVENT_COMMENTED, postId);
+
                         model.set(POST_COMMENT_STATE, STATE_SUCCESS);
                         model.set(PENDING_COMMENT, "");
 

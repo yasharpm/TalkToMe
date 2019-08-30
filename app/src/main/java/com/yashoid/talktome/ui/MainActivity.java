@@ -14,6 +14,7 @@ import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.evaluation.Eval;
+import com.yashoid.talktome.evaluation.Events;
 import com.yashoid.talktome.evaluation.Screens;
 import com.yashoid.talktome.model.post.PostList;
 import com.yashoid.talktome.model.post.PostListPagerFragment;
@@ -26,7 +27,7 @@ import com.yashoid.talktome.view.popup.PopupItem;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
 public class MainActivity extends AppCompatActivity implements Target, PostList,
-        ViewBunch.OnItemClickListener, View.OnClickListener, Screens {
+        ViewBunch.OnItemClickListener, View.OnClickListener, Screens, Events {
 
     private static final PopupItem[] MORE_ITEMS = {
             new PopupItem(R.string.main_more_myposts, R.drawable.ic_post),
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
 
         ((Toolbar) findViewById(R.id.toolbar)).setActionButtonClickListener(mOnMoreClickListener);
 
+        Eval.trackEvent(EVENT_VISITED);
+
         mLoadableContent = findViewById(R.id.loadableContent);
         mLoadableContent.setOnStateChangedListener(new LoadableContentView.OnStateChangedListener() {
             @Override
@@ -65,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
                     if (modelState == STATE_LOADING) {
                         return;
                     }
+
+                    Eval.trackEvent(EVENT_REFRESHED_POSTS);
 
                     mPostListModel.perform(GET_MODELS, mViewBunch.getRequiredItemCount());
                 }

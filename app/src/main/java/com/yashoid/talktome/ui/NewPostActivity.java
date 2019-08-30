@@ -19,11 +19,12 @@ import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.evaluation.Eval;
+import com.yashoid.talktome.evaluation.Events;
 import com.yashoid.talktome.evaluation.Screens;
 import com.yashoid.talktome.model.pendingpost.PendingPost;
 
 public class NewPostActivity extends AppCompatActivity implements View.OnClickListener,
-        PendingPost, Target, Screens {
+        PendingPost, Target, Screens, Events {
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, NewPostActivity.class);
@@ -124,6 +125,8 @@ public class NewPostActivity extends AppCompatActivity implements View.OnClickLi
                 mButtonPost.setEnabled(false);
                 break;
             case STATE_SUCCESS:
+                Eval.trackEvent(EVENT_POSTED);
+
                 Managers.unregisterTarget(this);
 
                 mModel.set(CONTENT, null);
@@ -156,6 +159,17 @@ public class NewPostActivity extends AppCompatActivity implements View.OnClickLi
         else {
             mTextWords.setText("0");
         }
+    }
+
+    @Override
+    public void finish() {
+        String content = mModel.get(CONTENT);
+
+        if (content != null && content.trim().length() > 0) {
+            Eval.trackEvent(EVENT_DIDNT_POST);
+        }
+
+        super.finish();
     }
 
 }

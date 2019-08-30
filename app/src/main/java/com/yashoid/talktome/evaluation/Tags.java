@@ -22,12 +22,13 @@ public interface Tags {
 
     /* ********** Comments ********** */
     /* 09 */ String LAST_COMMENT_TIME = "last_comment_time";
-    /* 10 */ String SENT_COMMENTS = "sent_comments";
-    /* 11 */ String POSTS_THAT_COMMENTED = "posts_that_commented";
+    /* 10 */ String SENT_COMMENTS_LAST_SEVEN_DAYS = "sent_comments_last_seven_days";
+    /* 11 */ String SENT_COMMENT_LAST_MONTH = "sent_comments_last_month";
+    /* 12 */ String POSTS_THAT_COMMENTED = "posts_that_commented";
 
     /* ********** Shares ********** */
-    /* 12 */ String SHARED_OTHERS_POSTS = "shared_others_posts";
-    /* 13 */ String SHARED_SELF_POSTS = "shared_self_posts";
-    /* 14 */ String SHARED_POSTS = "shared_posts";
+    /* 13 */ String SHARED_OTHERS_POSTS_LAST_MONTH = "shared_others_posts_last_month";
+    /* 14 */ String SHARED_SELF_POSTS_LAST_MONTH = "shared_self_posts_last_month";
+    /* 15 */ String SHARED_POSTS_LAST_MONTH = "shared_posts_last_month";
 
 }

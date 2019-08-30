@@ -17,6 +17,7 @@ import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.evaluation.Eval;
+import com.yashoid.talktome.evaluation.Events;
 import com.yashoid.talktome.evaluation.Screens;
 import com.yashoid.talktome.model.post.MyPostList;
 import com.yashoid.talktome.model.post.PostListAdapter;
@@ -27,7 +28,7 @@ import com.yashoid.talktome.view.Toolbar;
 import java.util.List;
 
 public class MyPostsActivity extends AppCompatActivity implements MyPostList, Target,
-        PostListAdapter.OnItemClickListener, Screens {
+        PostListAdapter.OnItemClickListener, Screens, Events {
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, MyPostsActivity.class);
@@ -53,6 +54,8 @@ public class MyPostsActivity extends AppCompatActivity implements MyPostList, Ta
                 finish();
             }
         });
+
+        Eval.trackEvent(EVENT_VISITED_MY_POSTS);
 
         mHolderPosts = findViewById(R.id.holder_posts);
         mHolderPosts.setOnStateChangedListener(new LoadableContentView.OnStateChangedListener() {
