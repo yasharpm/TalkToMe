@@ -20,13 +20,15 @@ public class TTMOffice {
                     .build();
         }
 
+        if (mNetworkOperator == null) {
+            mNetworkOperator = new NetworkOperator(mTaskManager);
+        }
+
         return mTaskManager;
     }
 
     public static NetworkOperator network() {
-        if (mNetworkOperator == null) {
-            mNetworkOperator = new NetworkOperator(get());
-        }
+        get();
 
         return mNetworkOperator;
     }
