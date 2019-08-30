@@ -16,6 +16,8 @@ import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.evaluation.Eval;
+import com.yashoid.talktome.evaluation.Screens;
 import com.yashoid.talktome.model.post.MyPostList;
 import com.yashoid.talktome.model.post.PostListAdapter;
 import com.yashoid.talktome.model.post.PostListPagerFragment;
@@ -24,7 +26,8 @@ import com.yashoid.talktome.view.Toolbar;
 
 import java.util.List;
 
-public class MyPostsActivity extends AppCompatActivity implements MyPostList, Target, PostListAdapter.OnItemClickListener {
+public class MyPostsActivity extends AppCompatActivity implements MyPostList, Target,
+        PostListAdapter.OnItemClickListener, Screens {
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, MyPostsActivity.class);
@@ -75,6 +78,15 @@ public class MyPostsActivity extends AppCompatActivity implements MyPostList, Ta
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            Eval.setCurrentScreen(this, SCREEN_MY_POSTS);
+        }
+    }
+
+    @Override
     public void setModel(Model model) {
         mMyPostsModel = model;
 
@@ -116,5 +128,17 @@ public class MyPostsActivity extends AppCompatActivity implements MyPostList, Ta
                 .add(R.id.overlay, fragment)
                 .addToBackStack(null)
                 .commit();
+
+        Eval.setCurrentScreen(this, SCREEN_MY_POSTS_PAGER);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (!isFinishing() && getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            Eval.setCurrentScreen(this, SCREEN_MY_POSTS);
+        }
+    }
+
 }

@@ -13,6 +13,8 @@ import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
+import com.yashoid.talktome.evaluation.Eval;
+import com.yashoid.talktome.evaluation.Screens;
 import com.yashoid.talktome.model.post.PostList;
 import com.yashoid.talktome.model.post.PostListPagerFragment;
 import com.yashoid.talktome.model.post.PostListViewBunchAdapter;
@@ -24,7 +26,7 @@ import com.yashoid.talktome.view.popup.PopupItem;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
 public class MainActivity extends AppCompatActivity implements Target, PostList,
-        ViewBunch.OnItemClickListener, View.OnClickListener {
+        ViewBunch.OnItemClickListener, View.OnClickListener, Screens {
 
     private static final PopupItem[] MORE_ITEMS = {
             new PopupItem(R.string.main_more_myposts, R.drawable.ic_post),
@@ -81,6 +83,15 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         mButtonNewPost.setOnClickListener(this);
 
         Managers.registerTarget(this, mPostListFeatures);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            Eval.setCurrentScreen(this, SCREEN_POSTS);
+        }
     }
 
     private View.OnClickListener mOnMoreClickListener = new View.OnClickListener() {
@@ -157,6 +168,17 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
                 .add(R.id.overlay, fragment)
                 .addToBackStack(null)
                 .commit();
+
+        Eval.setCurrentScreen(this, SCREEN_POSTS_PAGER);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (!isFinishing() && getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            Eval.setCurrentScreen(this, SCREEN_POSTS);
+        }
     }
 
 }

@@ -7,8 +7,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.evaluation.Eval;
+import com.yashoid.talktome.evaluation.Screens;
 
-public class StartUpActivity extends AppCompatActivity {
+public class StartUpActivity extends AppCompatActivity implements Screens {
 
     private static final long START_DELAY = 1000;
 
@@ -21,6 +23,8 @@ public class StartUpActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        Eval.setCurrentScreen(this, SCREEN_STARTUP);
 
         new Handler().postDelayed(new Runnable() {
 

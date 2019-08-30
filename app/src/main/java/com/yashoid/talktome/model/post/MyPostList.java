@@ -7,6 +7,7 @@ import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
+import com.yashoid.talktome.TTMCompat;
 import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.list.ModelList;
 import com.yashoid.talktome.network.GetPostUpdatesOperation;
@@ -20,8 +21,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface MyPostList extends ModelList {
-
-    String TAG = "MyPostList";
 
     String TYPE_MY_POST_LIST = "MyPostList";
 
@@ -39,6 +38,10 @@ public interface MyPostList extends ModelList {
 
         @Override
         protected Action getAction(ModelFeatures features, String actionName) {
+            if (Action.ACTION_MODEL_NOT_EXISTED_IN_CACHE.equals(actionName)) {
+                return mFirstTimeAction;
+            }
+
             return null;
         }
 
@@ -73,6 +76,21 @@ public interface MyPostList extends ModelList {
 
             }));
         }
+
+        private Action mFirstTimeAction = new Action() {
+
+            @Override
+            public Object perform(Model model, Object... params) {
+                List<ModelFeatures> legacyPosts = TTMCompat.getLegacyNotes(mContext);
+
+                if (legacyPosts != null && !legacyPosts.isEmpty()) {
+                    model.set(MODEL_LIST, legacyPosts);
+                }
+
+                return null;
+            }
+
+        };
 
         private void applyPostUpdates(Model model, List<PostUpdate> updates) {
             for (PostUpdate update: updates) {

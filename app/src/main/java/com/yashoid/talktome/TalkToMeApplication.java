@@ -3,6 +3,7 @@ package com.yashoid.talktome;
 import android.app.Application;
 
 import com.yashoid.mmv.Managers;
+import com.yashoid.talktome.evaluation.Eval;
 import com.yashoid.talktome.model.comment.Comment;
 import com.yashoid.talktome.model.comment.CommentList;
 import com.yashoid.talktome.model.pendingpost.PendingPost;
@@ -27,6 +28,8 @@ public class TalkToMeApplication extends Application {
         Managers.addTypeProvider(new MyPostList.MyPostListTypeProvider(this));
 
         Managers.registerModel(MyPostList.FEATURES);
+
+        Eval.initialize(this);
     }
 
 }

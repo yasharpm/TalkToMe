@@ -18,10 +18,12 @@ import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.evaluation.Eval;
+import com.yashoid.talktome.evaluation.Screens;
 import com.yashoid.talktome.model.pendingpost.PendingPost;
 
 public class NewPostActivity extends AppCompatActivity implements View.OnClickListener,
-        PendingPost, Target {
+        PendingPost, Target, Screens {
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, NewPostActivity.class);
@@ -69,6 +71,13 @@ public class NewPostActivity extends AppCompatActivity implements View.OnClickLi
                 .build();
 
         Managers.registerTarget(this, pendingPostFeatures);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Eval.setCurrentScreen(this, SCREEN_NEW_POST);
     }
 
     @Override
