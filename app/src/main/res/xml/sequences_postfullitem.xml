@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Vertical>
+        <Span size="@dimen/postfullitem_padding_top"/>
+        <Span id="content" size="wrap"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="@dimen/postfullitem_content_margin_left"/>
+        <Span id="content" size="1w"/>
+        <Span size="@dimen/postfullitem_content_margin_right"/>
+    </Horizontal>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span id="image_likes" size="@dimen/postfullitem_status_height"/>
+        <Span size="@dimen/postfullitem_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span id="text_likes" size="@dimen/postfullitem_status_height"/>
+        <Span size="@dimen/postfullitem_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span id="image_views" size="@dimen/postfullitem_status_height"/>
+        <Span size="@dimen/postfullitem_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span id="text_views" size="@dimen/postfullitem_status_height"/>
+        <Span size="@dimen/postfullitem_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span id="image_comments" size="@dimen/postfullitem_status_height"/>
+        <Span size="@dimen/postfullitem_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span id="text_comments" size="@dimen/postfullitem_status_height"/>
+        <Span size="@dimen/postfullitem_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span id="text_time" size="@dimen/postfullitem_status_height"/>
+        <Span size="@dimen/postfullitem_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="end@content">
+        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span id="button_more" size="@dimen/postfullitem_status_height"/>
+        <Span size="@dimen/postfullitem_padding_bottom"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="@dimen/postfullitem_status_margin_left"/>
+        <Span id="button_more" size="@dimen/postfullitem_more_size"/>
+        <Span size="@dimen/postfullitem_time_margin_left"/>
+        <Span id="text_time" size="1w"/>
+        <Span size="@dimen/postfullitem_time_margin_right"/>
+        <Span id="text_comments" size="@dimen/postfullitem_statustext_width"/>
+        <Span id="image_comments" size="@dimen/postfullitem_statusimage_width"/>
+        <Span id="text_views" size="@dimen/postfullitem_statustext_width"/>
+        <Span id="image_views" size="@dimen/postfullitem_statusimage_width"/>
+        <Span id="text_likes" size="@dimen/postfullitem_statustext_width"/>
+        <Span id="image_likes" size="@dimen/postfullitem_statusimage_width"/>
+        <Span size="@dimen/postfullitem_status_margin_right"/>
+    </Horizontal>
+
+</Sequences>

@@ -29,7 +29,7 @@
     </style>
 
     <style name="PostStatusImageStyle">
-        <item name="android:padding">@dimen/detailedpostcontent_statusimage_padding</item>
+        <item name="android:padding">@dimen/postfullitem_statusimage_padding</item>
     </style>
 
 </resources>

@@ -6,7 +6,7 @@
 
     <corners android:topLeftRadius="0dp"
         android:topRightRadius="0dp"
-        android:bottomRightRadius="@dimen/detailedpostcontent_background_radius"
-        android:bottomLeftRadius="@dimen/detailedpostcontent_background_radius"/>
+        android:bottomRightRadius="@dimen/postfullitem_background_radius"
+        android:bottomLeftRadius="@dimen/postfullitem_background_radius"/>
 
 </shape>

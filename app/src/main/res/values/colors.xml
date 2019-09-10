@@ -75,7 +75,6 @@
 
 
     <!-- Detailed Post Content View -->
-    <color name="detailedpostcontent_more">@color/contentColor</color>
     <color name="detailedpostcontent_background">@color/itemBackground</color>
 
 

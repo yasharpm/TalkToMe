@@ -1,10 +1,13 @@
 package com.yashoid.talktome.model.post;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
@@ -18,18 +21,27 @@ import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
 import com.yashoid.sequencelayout.SequenceReader;
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.comment.CommentList;
+import com.yashoid.talktome.network.ReportOperation;
 import com.yashoid.talktome.util.TimeUtil;
+import com.yashoid.talktome.view.popup.Popup;
+import com.yashoid.talktome.view.popup.PopupItem;
 
 import java.util.List;
 
 public class PostFullItemView extends SequenceLayout implements Target, Post {
+
+    private static final PopupItem REPORT = new PopupItem(R.string.postfullitem_report, R.drawable.ic_report);
+
+    private static final PopupItem[] MORE_ITEMS = { REPORT };
 
     private PostContentView mContent;
     private TextView mTextLikes;
     private TextView mTextComments;
     private TextView mTextViews;
     private TextView mTextTime;
+    private View mButtonMore;
 
     private Model mModel;
 
@@ -51,12 +63,12 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
     private void initialize(Context context, AttributeSet attrs, int defStyleAttr) {
         setBackground(ContextCompat.getDrawable(context, R.drawable.item_background));
 
-        ViewCompat.setElevation(this, getResources().getDimension(R.dimen.detailedpostcontent_elevation));
+        ViewCompat.setElevation(this, getResources().getDimension(R.dimen.postfullitem_elevation));
 
-        LayoutInflater.from(context).inflate(R.layout.detailedpostcontent, this, true);
+        LayoutInflater.from(context).inflate(R.layout.postfullitem, this, true);
 
         try {
-            XmlResourceParser parser = getResources().getXml(R.xml.sequences_detailedpostcontent);
+            XmlResourceParser parser = getResources().getXml(R.xml.sequences_postfullitem);
             List<Sequence> sequences = new SequenceReader(context).readSequences(parser);
 
             for (Sequence sequence: sequences) {
@@ -71,7 +83,44 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
         mTextLikes = findViewById(R.id.text_likes);
         mTextViews = findViewById(R.id.text_views);
         mTextTime = findViewById(R.id.text_time);
+        mButtonMore = findViewById(R.id.button_more);
+
+        mButtonMore.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Resources res = getResources();
+
+                int x = res.getDimensionPixelSize(R.dimen.more_popup_x);
+                int y = res.getDimensionPixelSize(R.dimen.more_popup_y);
+
+                new Popup(v, MORE_ITEMS, mOnMoreItemSelectedListener).showAtLocation(x, y);
+            }
+
+        });
     }
+
+    private Popup.OnItemSelectedListener mOnMoreItemSelectedListener = new Popup.OnItemSelectedListener() {
+
+        @Override
+        public void onItemClicked(int position, PopupItem item) {
+            if (item == REPORT) {
+                Toast.makeText(getContext(), R.string.report_reporting, Toast.LENGTH_SHORT).show();
+
+                TTMOffice.network().post(new ReportOperation(getContext(), (String) mModel.get(ID), new ReportOperation.ReportCallback() {
+
+                    @Override
+                    public void onReportResult(boolean successful, Exception exception) {
+                        int message = successful ? R.string.report_reported : R.string.report_notreported;
+
+                        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+                    }
+
+                }));
+            }
+        }
+
+    };
 
     protected TextView getContent() {
         return mContent;

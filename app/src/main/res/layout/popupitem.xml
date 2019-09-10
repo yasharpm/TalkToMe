@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/popupitem_width"
+    android:layout_width="wrap_content"
     android:layout_height="@dimen/popupitem_height"
 
     android:orientation="horizontal"
     android:weightSum="1"
-    android:paddingRight="@dimen/popupitem_padding_right"
+    android:paddingRight="@dimen/popupitem_padding_horizontal"
+    android:paddingLeft="@dimen/popupitem_padding_horizontal"
     android:background="@drawable/popupitem_background">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -14,7 +15,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center_vertical|right"
 
         android:textSize="@dimen/popupitem_textsize"
         android:textColor="@color/popupitem_textcolor"

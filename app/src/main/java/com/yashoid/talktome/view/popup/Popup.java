@@ -10,11 +10,18 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.ViewCompat;
 
 import com.yashoid.talktome.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Popup {
+
+    private static final int WRAP_MEASURE_SPEC = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
 
     public interface OnItemSelectedListener {
 
@@ -58,11 +65,21 @@ public class Popup {
         content.setBackgroundResource(R.drawable.popup_background);
         ViewCompat.setElevation(content, content.getResources().getDimension(R.dimen.popup_elevation));
 
+        List<ViewGroup.LayoutParams> allParams = new ArrayList<>(items.length);
+        int maxWidth = 0;
+
         for (int i = 0; i < items.length; i++) {
             final int position = i;
             final PopupItem item = items[i];
 
             View itemView = item.createView(content);
+
+            ViewGroup.LayoutParams params = itemView.getLayoutParams();
+            allParams.add(params);
+
+            itemView.measure(WRAP_MEASURE_SPEC, View.MeasureSpec.makeMeasureSpec(params.height, View.MeasureSpec.EXACTLY));
+            params.width = itemView.getMeasuredWidth();
+            maxWidth = Math.max(maxWidth, params.width);
 
             content.addView(itemView);
 
@@ -78,14 +95,22 @@ public class Popup {
             });
         }
 
+        for (ViewGroup.LayoutParams params: allParams) {
+            params.width = maxWidth;
+        }
+
         view.addView(content, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
     public void showAtLocation(int x, int y) {
+        int[] location = new int[2];
+        mAnchor.getLocationInWindow(location);
+
         View content = ((ViewGroup) mWindow.getContentView()).getChildAt(0);
         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) content.getLayoutParams();
-        layoutParams.leftMargin = x;
-        layoutParams.topMargin = y;
+
+        layoutParams.leftMargin = location[0] + x;
+        layoutParams.topMargin = location[1] + y;
 
         mWindow.showAtLocation(mAnchor, Gravity.NO_GRAVITY, 0, 0);
     }

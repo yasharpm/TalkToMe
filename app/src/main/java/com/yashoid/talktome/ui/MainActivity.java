@@ -29,11 +29,16 @@ import com.yashoid.talktome.view.viewbunch.ViewBunch;
 public class MainActivity extends AppCompatActivity implements Target, PostList,
         ViewBunch.OnItemClickListener, View.OnClickListener, Screens, Events {
 
+    private static final PopupItem MY_POSTS = new PopupItem(R.string.main_more_myposts, R.drawable.ic_post);
+    private static final PopupItem SETTINGS = new PopupItem(R.string.main_more_settings, R.drawable.ic_settings);
+    private static final PopupItem ABOUT_US = new PopupItem(R.string.main_more_aboutus, R.drawable.ic_about);
+    private static final PopupItem GUIDE_ME = new PopupItem(R.string.main_more_guide, R.drawable.ic_guide);
+
     private static final PopupItem[] MORE_ITEMS = {
-            new PopupItem(R.string.main_more_myposts, R.drawable.ic_post),
-            new PopupItem(R.string.main_more_settings, R.drawable.ic_settings),
-            new PopupItem(R.string.main_more_aboutus, R.drawable.ic_about),
-            new PopupItem(R.string.main_more_guide, R.drawable.ic_guide),
+            MY_POSTS,
+//            SETTINGS,
+            ABOUT_US,
+//            GUIDE_ME,
     };
 
     public static Intent getIntent(Context context) {
@@ -105,8 +110,8 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         public void onClick(View v) {
             Resources res = getResources();
 
-            int x = res.getDimensionPixelSize(R.dimen.main_morepopup_x);
-            int y = res.getDimensionPixelSize(R.dimen.main_morepopup_y);
+            int x = res.getDimensionPixelSize(R.dimen.more_popup_x);
+            int y = res.getDimensionPixelSize(R.dimen.more_popup_y);
 
             new Popup(v, MORE_ITEMS, mOnMoreItemSelectedListener).showAtLocation(x, y);
         }
@@ -117,13 +122,11 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
 
         @Override
         public void onItemClicked(int position, PopupItem item) {
-            switch (position) {
-                case 0:
-                    startActivity(MyPostsActivity.getIntent(MainActivity.this));
-                    return;
-                case 2:
-                    startActivity(AboutUsActivity.getIntent(MainActivity.this));
-                    return;
+            if (item == MY_POSTS) {
+                startActivity(MyPostsActivity.getIntent(MainActivity.this));
+            }
+            else if (item == ABOUT_US) {
+                startActivity(AboutUsActivity.getIntent(MainActivity.this));
             }
         }
 

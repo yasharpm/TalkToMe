@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">Talk To Me</string>
+    <string name="default_notification_channel_id">General</string>
 
     
     <!-- Main Activity -->
@@ -8,10 +9,20 @@
     <string name="main_more_settings">تنظیمات</string>
     <string name="main_more_aboutus">درباره ما</string>
     <string name="main_more_guide">راهنما</string>
+
+
+    <!-- Post Full Item View -->
+    <string name="postfullitem_report">گزارش محتوای نامناسب</string>
+
+
+    <!-- Reporting... -->
+    <string name="report_reporting">در حال ارسال گزارش…</string>
+    <string name="report_reported">گزارش با موفقیت ثبت شد.</string>
+    <string name="report_notreported">خطا در ارسال گزارش. اینترنت وصل است؟</string>
     
 
     <!-- Post Details Fragment -->
-    <string name="postdetails_editcomment_hint">نظر خود را اینجا بنویسید...</string>
+    <string name="postdetails_editcomment_hint">نظر خود را اینجا بنویسید…</string>
 
 
     <!-- Time Util -->

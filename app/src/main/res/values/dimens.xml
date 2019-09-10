@@ -6,6 +6,9 @@
     <dimen name="item_cornerradius">@dimen/default_cornerradius</dimen>
     <dimen name="item_elevation">1dp</dimen>
 
+    <dimen name="more_popup_x">16dp</dimen>
+    <dimen name="more_popup_y">8dp</dimen>
+
 
     <!-- Start Up Activity -->
     <dimen name="startup_background_cornerradius">@dimen/default_cornerradius</dimen>
@@ -38,8 +41,6 @@
     <dimen name="main_newpost_elevation">8dp</dimen>
     <dimen name="main_newpost_margin">16dp</dimen>
     <dimen name="main_newpost_size">56dp</dimen>
-    <dimen name="main_morepopup_x">16dp</dimen>
-    <dimen name="main_morepopup_y">8dp</dimen>
 
 
     <!-- Item Content View -->
@@ -71,23 +72,23 @@
     <dimen name="postlistpager_postcomment_cornerradius">4dp</dimen>
 
 
-    <!-- Detailed Post Content View -->
-    <dimen name="detailedpostcontent_elevation">@dimen/item_elevation</dimen>
-    <dimen name="detailedpostcontent_background_radius">@dimen/item_cornerradius</dimen>
-    <dimen name="detailedpostcontent_padding_top">8dp</dimen>
-    <dimen name="detailedpostcontent_content_margin_left">@dimen/postitem_padding_left</dimen>
-    <dimen name="detailedpostcontent_content_margin_right">@dimen/postitem_padding_right</dimen>
-    <dimen name="detailedpostcontent_content_margin_bottom">12dp</dimen>
-    <dimen name="detailedpostcontent_status_height">36dp</dimen>
-    <dimen name="detailedpostcontent_padding_bottom">4dp</dimen>
-    <dimen name="detailedpostcontent_status_margin_left">8dp</dimen>
-    <dimen name="detailedpostcontent_more_size">@dimen/detailedpostcontent_status_height</dimen>
-    <dimen name="detailedpostcontent_time_margin_left">0dp</dimen>
-    <dimen name="detailedpostcontent_time_margin_right">0dp</dimen>
-    <dimen name="detailedpostcontent_statustext_width">40dp</dimen>
-    <dimen name="detailedpostcontent_statusimage_width">@dimen/detailedpostcontent_status_height</dimen>
-    <dimen name="detailedpostcontent_status_margin_right">12dp</dimen>
-    <dimen name="detailedpostcontent_statusimage_padding">12dp</dimen>
+    <!-- Post Full Item View -->
+    <dimen name="postfullitem_elevation">@dimen/item_elevation</dimen>
+    <dimen name="postfullitem_background_radius">@dimen/item_cornerradius</dimen>
+    <dimen name="postfullitem_padding_top">8dp</dimen>
+    <dimen name="postfullitem_content_margin_left">@dimen/postitem_padding_left</dimen>
+    <dimen name="postfullitem_content_margin_right">@dimen/postitem_padding_right</dimen>
+    <dimen name="postfullitem_content_margin_bottom">12dp</dimen>
+    <dimen name="postfullitem_status_height">36dp</dimen>
+    <dimen name="postfullitem_padding_bottom">4dp</dimen>
+    <dimen name="postfullitem_status_margin_left">8dp</dimen>
+    <dimen name="postfullitem_more_size">@dimen/postfullitem_status_height</dimen>
+    <dimen name="postfullitem_time_margin_left">0dp</dimen>
+    <dimen name="postfullitem_time_margin_right">0dp</dimen>
+    <dimen name="postfullitem_statustext_width">40dp</dimen>
+    <dimen name="postfullitem_statusimage_width">@dimen/postfullitem_status_height</dimen>
+    <dimen name="postfullitem_status_margin_right">12dp</dimen>
+    <dimen name="postfullitem_statusimage_padding">12dp</dimen>
 
 
     <!-- Comments Title Item -->
@@ -137,12 +138,11 @@
 
 
     <!-- Popup Item -->
-    <dimen name="popupitem_width">136dp</dimen>
     <dimen name="popupitem_height">44dp</dimen>
     <dimen name="popupitem_textsize">14sp</dimen>
     <dimen name="popupitem_iconsize">16dp</dimen>
     <dimen name="popupitem_icon_margin_left">16dp</dimen>
-    <dimen name="popupitem_padding_right">16dp</dimen>
+    <dimen name="popupitem_padding_horizontal">16dp</dimen>
 
 
     <!-- About Us Activity -->
