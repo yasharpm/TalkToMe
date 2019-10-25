@@ -7,14 +7,14 @@ import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
+import com.yashoid.network.RequestResponse;
+import com.yashoid.network.RequestResponseCallback;
 import com.yashoid.talktome.TTMCompat;
 import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.list.ModelList;
-import com.yashoid.talktome.network.GetPostUpdatesOperation;
-import com.yashoid.talktome.network.postupdate.ChangedPostUpdate;
-import com.yashoid.talktome.network.postupdate.NewPostUpdate;
-import com.yashoid.talktome.network.postupdate.PostUpdate;
-import com.yashoid.talktome.network.postupdate.RemovedPostUpdate;
+import com.yashoid.talktome.network.PostListResponse;
+import com.yashoid.talktome.network.PostResponse;
+import com.yashoid.talktome.network.Requests;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,12 +59,22 @@ public interface MyPostList extends ModelList {
                 }
             }
 
-            TTMOffice.network().post(new GetPostUpdatesOperation(mContext, postIds, new GetPostUpdatesOperation.GetPostUpdatesCallback() {
+            TTMOffice.runner(mContext).runForUI(Requests.myPosts(20, 0), new RequestResponseCallback<PostListResponse>() {
 
                 @Override
-                public void onPostUpdatedResult(List<PostUpdate> updates, Exception exception) {
-                    if (updates != null) {
-                        applyPostUpdates(model, updates);
+                public void onRequestResponse(RequestResponse<PostListResponse> response) {
+                    if (response.isSuccessful()) {
+//                        applyPostUpdates(model, updates);
+
+                        List<PostResponse> postsResponse = response.getContent().getPosts();
+
+                        List<ModelFeatures> posts = new ArrayList<>(postsResponse.size());
+
+                        for (PostResponse postResponse: postsResponse) {
+                            posts.add(postResponse.asModelFeatures());
+                        }
+
+                        model.set(MODEL_LIST, posts);
 
                         model.cache(true);
                         model.set(STATE, STATE_SUCCESS);
@@ -74,7 +84,7 @@ public interface MyPostList extends ModelList {
                     }
                 }
 
-            }));
+            });
         }
 
         private Action mFirstTimeAction = new Action() {
@@ -91,48 +101,6 @@ public interface MyPostList extends ModelList {
             }
 
         };
-
-        private void applyPostUpdates(Model model, List<PostUpdate> updates) {
-            for (PostUpdate update: updates) {
-                applyPostUpdate(model, update);
-            }
-        }
-
-        private void applyPostUpdate(Model model, PostUpdate update) {
-            List<ModelFeatures> postFeatures = model.get(MODEL_LIST);
-
-            if (postFeatures == null) {
-                postFeatures = new ArrayList<>();
-            }
-
-            if (update instanceof NewPostUpdate) {
-                postFeatures.add(0, ((NewPostUpdate) update).getPost());
-            }
-            else if (update instanceof ChangedPostUpdate) {
-                ModelFeatures postUpdates = ((ChangedPostUpdate) update).getChanges();
-
-                Managers.registerModel(postUpdates);
-
-                ModelFeatures post = findPost(postFeatures, (String) postUpdates.get(Post.ID));
-
-                if (post != null) {
-                    Map<String, Object> updateMap = postUpdates.getAll();
-
-                    for (Map.Entry<String, Object> updateEntry: updateMap.entrySet()) {
-                        post.set(updateEntry.getKey(), updateEntry.getValue());
-                    }
-                }
-            }
-            else if (update instanceof RemovedPostUpdate) {
-                ModelFeatures post = findPost(postFeatures, ((RemovedPostUpdate) update).getPostId());
-
-                if (post != null) {
-                    postFeatures.remove(post);
-                }
-            }
-
-            model.set(MODEL_LIST, postFeatures);
-        }
 
         private ModelFeatures findPost(List<ModelFeatures> list, String postId) {
             for (ModelFeatures post: list) {

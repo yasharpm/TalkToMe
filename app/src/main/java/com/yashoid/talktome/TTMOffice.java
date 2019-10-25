@@ -1,8 +1,11 @@
 package com.yashoid.talktome;
 
+import android.content.Context;
+
 import com.yashoid.network.NetworkOperator;
 import com.yashoid.office.task.TaskManager;
 import com.yashoid.office.task.TaskManagerBuilder;
+import com.yashoid.talktome.network.RequestRunner;
 
 public class TTMOffice {
 
@@ -21,7 +24,7 @@ public class TTMOffice {
         }
 
         if (mNetworkOperator == null) {
-            mNetworkOperator = new NetworkOperator(mTaskManager);
+            mNetworkOperator = new NetworkOperator.Builder().taskManager(mTaskManager).lowPriorityWorkerCount(2).build();
         }
 
         return mTaskManager;
@@ -31,6 +34,10 @@ public class TTMOffice {
         get();
 
         return mNetworkOperator;
+    }
+
+    public static RequestRunner runner(Context context) {
+        return RequestRunner.get(context);
     }
 
 }

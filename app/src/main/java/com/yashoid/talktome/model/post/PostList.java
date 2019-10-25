@@ -5,10 +5,15 @@ import android.content.Context;
 import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
+import com.yashoid.network.RequestResponse;
+import com.yashoid.network.RequestResponseCallback;
 import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.list.ModelList;
-import com.yashoid.talktome.network.GetNotesOperation;
+import com.yashoid.talktome.network.PostResponse;
+import com.yashoid.talktome.network.RandomPostsResponse;
+import com.yashoid.talktome.network.Requests;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface PostList extends ModelList {
@@ -36,14 +41,20 @@ public interface PostList extends ModelList {
 
             final int count = (int) params[0];
 
-            TTMOffice.network().post(new GetNotesOperation(mContext, count, new GetNotesOperation.GetNotesCallback() {
+            TTMOffice.runner(mContext).runForUI(Requests.randomPosts(count, "fa", "IR"), new RequestResponseCallback<RandomPostsResponse>() {
 
                 @Override
-                public void onGetNotesResult(List<ModelFeatures> posts, Exception exception) {
-                    if (exception == null) {
-                        for (int i = 0; i < posts.size(); i++) {
-                            posts.get(i).set(TYPE, Post.TYPE_POST);
+                public void onRequestResponse(RequestResponse<RandomPostsResponse> response) {
+                    if (response.isSuccessful()) {
+                        List<PostResponse> postsResponse = response.getContent().getPosts();
+
+                        List<ModelFeatures> posts = new ArrayList<>(postsResponse.size());
+
+                        for (PostResponse postResponse: postsResponse) {
+                            posts.add(postResponse.asModelFeatures());
                         }
+
+                        SeenPostsTracker.get(mContext).onSeenPosts(posts);
 
                         model.set(MODEL_LIST, posts);
                         model.set(STATE, STATE_SUCCESS);
@@ -53,7 +64,7 @@ public interface PostList extends ModelList {
                     }
                 }
 
-            }));
+            });
         }
 
     }

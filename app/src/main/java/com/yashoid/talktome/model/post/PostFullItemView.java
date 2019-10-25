@@ -17,13 +17,16 @@ import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
 import com.yashoid.mmv.Target;
+import com.yashoid.network.RequestResponse;
+import com.yashoid.network.RequestResponseCallback;
 import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
 import com.yashoid.sequencelayout.SequenceReader;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.model.comment.CommentList;
-import com.yashoid.talktome.network.ReportOperation;
+import com.yashoid.talktome.network.ReportResponse;
+import com.yashoid.talktome.network.Requests;
 import com.yashoid.talktome.util.TimeUtil;
 import com.yashoid.talktome.view.popup.Popup;
 import com.yashoid.talktome.view.popup.PopupItem;
@@ -107,16 +110,18 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
             if (item == REPORT) {
                 Toast.makeText(getContext(), R.string.report_reporting, Toast.LENGTH_SHORT).show();
 
-                TTMOffice.network().post(new ReportOperation(getContext(), (String) mModel.get(ID), new ReportOperation.ReportCallback() {
+                String postId = mModel.get(ID);
+
+                TTMOffice.runner(getContext()).runUserAction(Requests.report(postId, -1, null), new RequestResponseCallback<ReportResponse>() {
 
                     @Override
-                    public void onReportResult(boolean successful, Exception exception) {
-                        int message = successful ? R.string.report_reported : R.string.report_notreported;
+                    public void onRequestResponse(RequestResponse<ReportResponse> response) {
+                        int message = response.isSuccessful() ? R.string.report_reported : R.string.report_notreported;
 
                         Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
                     }
 
-                }));
+                });
             }
         }
 

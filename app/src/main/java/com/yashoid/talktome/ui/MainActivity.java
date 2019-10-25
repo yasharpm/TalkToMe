@@ -19,6 +19,7 @@ import com.yashoid.talktome.evaluation.Screens;
 import com.yashoid.talktome.model.post.PostList;
 import com.yashoid.talktome.model.post.PostListPagerFragment;
 import com.yashoid.talktome.model.post.PostListViewBunchAdapter;
+import com.yashoid.talktome.model.post.SeenPostsTracker;
 import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.view.Toolbar;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SeenPostsTracker.get(this).checkToSend();
 
         ((Toolbar) findViewById(R.id.toolbar)).setActionButtonClickListener(mOnMoreClickListener);
 

@@ -23,13 +23,13 @@ public class Eval {
 
     public static void initialize(Application application) {
         mAnalytics = FirebaseAnalytics.getInstance(application);
-        mAnalytics.setAnalyticsCollectionEnabled(true); // TODO !DEBUG
+        mAnalytics.setAnalyticsCollectionEnabled(!DEBUG);
 
         ABResources.setConfiguration(
                 new ABConfig.Builder()
                         .setDebug(DEBUG)
                         .setTaskManager(TTMOffice.get())
-                        .setBackgroundOfficeSection(NetworkOperator.SECTION_BACKGROUND)
+                        .setBackgroundOfficeSection(NetworkOperator.LOW)
                         .build()
                 );
 

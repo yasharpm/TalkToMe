@@ -8,6 +8,8 @@ import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
+import com.yashoid.network.RequestResponse;
+import com.yashoid.network.RequestResponseCallback;
 import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.evaluation.Eval;
 import com.yashoid.talktome.evaluation.Events;
@@ -15,8 +17,10 @@ import com.yashoid.talktome.model.WithIndicator;
 import com.yashoid.talktome.model.Basics;
 import com.yashoid.talktome.model.Stateful;
 import com.yashoid.talktome.model.comment.CommentList;
-import com.yashoid.talktome.network.AddCommentOperation;
+import com.yashoid.talktome.network.CommentResponse;
+import com.yashoid.talktome.network.Requests;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface Post extends Basics, WithIndicator, Stateful {
@@ -27,6 +31,8 @@ public interface Post extends Basics, WithIndicator, Stateful {
     String CONTENT = "content";
     String CREATED_TIME = "createdTime";
     String VIEWS = "views";
+    String LIKES = "likes";
+    String COMMENTS = "comments";
 
     String PENDING_COMMENT = "pendingComment";
     String POST_COMMENT_STATE = "postCommentState";
@@ -78,41 +84,51 @@ public interface Post extends Basics, WithIndicator, Stateful {
 
                 final String postId = model.get(ID);
 
-                TTMOffice.network().post(new AddCommentOperation(mContext, postId, pendingComment, new AddCommentOperation.OnAddCommentResultCallback() {
+                TTMOffice.runner(mContext).runUserAction(Requests.newComment(postId, pendingComment), new RequestResponseCallback<CommentResponse>() {
 
                     @Override
-                    public void onCommentAdded() {
-                        Eval.trackEvent(Events.EVENT_COMMENTED, postId);
+                    public void onRequestResponse(RequestResponse<CommentResponse> response) {
+                        if (response.isSuccessful()) {
+                            Eval.trackEvent(Events.EVENT_COMMENTED, postId);
 
-                        model.set(POST_COMMENT_STATE, STATE_SUCCESS);
-                        model.set(PENDING_COMMENT, "");
+                            model.set(POST_COMMENT_STATE, STATE_SUCCESS);
+                            model.set(PENDING_COMMENT, "");
 
-                        ModelFeatures commentListFeatures = new ModelFeatures.Builder()
-                                .add(TYPE, CommentList.TYPE_COMMENT_LIST)
-                                .add(CommentList.POST_ID, postId)
-                                .build();
+                            List<ModelFeatures> comments = model.get(COMMENTS);
 
-                        Managers.registerTarget(new PersistentTarget() {
-
-                            @Override
-                            public void setModel(Model model) {
-                                Managers.unregisterTarget(this);
-
-                                model.perform(CommentList.GET_MODELS);
+                            if (comments == null) {
+                                comments = new ArrayList<>();
                             }
 
-                            @Override
-                            public void onFeaturesChanged(String... featureNames) { }
+                            comments.add(response.getContent().asModelFeatures());
 
-                        }, commentListFeatures);
+                            model.set(COMMENTS, comments);
+
+                            ModelFeatures commentListFeatues = new ModelFeatures.Builder()
+                                    .add(TYPE, CommentList.TYPE_COMMENT_LIST)
+                                    .add(CommentList.POST_ID, postId)
+                                    .build();
+
+                            Managers.registerTarget(new PersistentTarget() {
+
+                                @Override
+                                public void setModel(Model model) {
+                                    Managers.unregisterTarget(this);
+
+                                    model.perform(CommentList.GET_MODELS);
+                                }
+
+                                @Override
+                                public void onFeaturesChanged(String... featureNames) { }
+
+                            }, commentListFeatues);
+                        }
+                        else {
+                            model.set(POST_COMMENT_STATE, STATE_FAILURE);
+                        }
                     }
 
-                    @Override
-                    public void onFailedToAddComment(Exception exception) {
-                        model.set(POST_COMMENT_STATE, STATE_FAILURE);
-                    }
-
-                }));
+                });
 
                 return null;
             }

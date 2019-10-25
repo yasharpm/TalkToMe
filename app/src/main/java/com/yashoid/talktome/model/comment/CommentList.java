@@ -1,14 +1,14 @@
 package com.yashoid.talktome.model.comment;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.yashoid.mmv.Action;
+import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.talktome.TTMOffice;
+import com.yashoid.mmv.PersistentTarget;
 import com.yashoid.talktome.model.list.ModelList;
-import com.yashoid.talktome.network.GetCommentsOperation;
+import com.yashoid.talktome.model.post.Post;
 
 import java.util.List;
 
@@ -43,26 +43,29 @@ public interface CommentList extends ModelList {
         protected void getModels(final Model model, Object... params) {
             model.set(STATE, STATE_LOADING);
 
-            TTMOffice.network().post(new GetCommentsOperation(mContext, (String) model.get(POST_ID), new GetCommentsOperation.GetCommentsCallback() {
+            String postId = model.get(POST_ID);
+
+            ModelFeatures postFeatures = new ModelFeatures.Builder()
+                    .add(TYPE, Post.TYPE_POST)
+                    .add(Post.ID, postId)
+                    .build();
+
+            Managers.registerTarget(new PersistentTarget() {
 
                 @Override
-                public void onGetCommentsResult(List<ModelFeatures> comments, Exception exception) {
-                    if (exception == null) {
-                        for (ModelFeatures comment: comments) {
-                            comment.set(Comment.TYPE, Comment.TYPE_COMMENT);
-                        }
+                public void setModel(Model post) {
+                    Managers.unregisterTarget(this);
 
-                        model.set(MODEL_LIST, comments);
-                        model.set(STATE, STATE_SUCCESS);
-                    }
-                    else {
-                        Log.e(TYPE_COMMENT_LIST, "Failed to get comment list.", exception);
+                    List<ModelFeatures> comments = post.get(Post.COMMENTS);
 
-                        model.set(STATE, STATE_FAILURE);
-                    }
+                    model.set(MODEL_LIST, comments);
+                    model.set(STATE, STATE_SUCCESS);
                 }
 
-            }));
+                @Override
+                public void onFeaturesChanged(String... featureNames) { }
+
+            }, postFeatures);
         }
 
     }
