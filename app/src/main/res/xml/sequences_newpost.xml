@@ -17,7 +17,7 @@
 
     <Horizontal>
         <Span size="@dimen/newpost_padding_horizontal"/>
-        <Span id="button_post" size="@dimen/newpost_button_width"/>
+        <Span id="button_post" size="wrap"/>
         <Span size="1w"/>
         <Span id="text_words" size="wrap"/>
         <Span size="@dimen/newpost_words_margin_left"/>
@@ -31,7 +31,7 @@
         <Span size="@dimen/newpost_post_margin_top"/>
         <Span id="edit_post" size="1w"/>
         <Span size="@dimen/newpost_post_margin_bottom"/>
-        <Span id="button_post" size="@dimen/newpost_button_height"/>
+        <Span id="button_post" size="wrap"/>
         <Span size="@dimen/newpost_padding_bottom"/>
     </Vertical>
 

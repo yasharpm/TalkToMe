@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
+import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.evaluation.Eval;
 import com.yashoid.talktome.evaluation.Events;
 import com.yashoid.talktome.evaluation.Screens;
@@ -23,12 +25,15 @@ import com.yashoid.talktome.model.post.SeenPostsTracker;
 import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.view.Toolbar;
+import com.yashoid.talktome.view.item.InfoItemView;
 import com.yashoid.talktome.view.popup.Popup;
 import com.yashoid.talktome.view.popup.PopupItem;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
 public class MainActivity extends AppCompatActivity implements Target, PostList,
         ViewBunch.OnItemClickListener, View.OnClickListener, Screens, Events {
+
+    private static final String PREF_FIRST_RUN = "first_run";
 
     private static final PopupItem MY_POSTS = new PopupItem(R.string.main_more_myposts, R.drawable.ic_post);
     private static final PopupItem SETTINGS = new PopupItem(R.string.main_more_settings, R.drawable.ic_settings);
@@ -99,6 +104,19 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         mTextNewPost.setOnClickListener(this);
 
         Managers.registerTarget(this, mPostListFeatures);
+
+        if (isFirstRun()) {
+            mLoadableContent.removeView(mViewBunch);
+            mLoadableContent.addView(InfoItemView.infoView(this, R.string.main_firsttimeinfo));
+        }
+    }
+
+    private boolean isFirstRun() {
+        return TTMOffice.preferences(this).readBoolean(PREF_FIRST_RUN, true);
+    }
+
+    private void setFirstRun(boolean firstRun) {
+        TTMOffice.preferences(this).write(PREF_FIRST_RUN, firstRun);
     }
 
     @Override
@@ -159,16 +177,51 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         int state = mPostListModel.get(STATE);
 
         switch (state) {
-            case STATE_LOADING:
             case STATE_IDLE:
+                if (!isFirstRun()) {
+                    mLoadableContent.startLoading();
+                }
+                break;
+            case STATE_LOADING:
                 mLoadableContent.startLoading();
                 break;
             case STATE_SUCCESS:
+                mLoadableContent.stopLoading();
+
+                if (isFirstRun()) {
+                    mLoadableContent.removeAllViews();
+                    mLoadableContent.addView(mViewBunch);
+
+                    setFirstRun(false);
+                }
+
+                if (mViewBunch.getParent() == null) {
+                    mLoadableContent.removeAllViews();
+                    mLoadableContent.addView(mViewBunch);
+                }
+
+                break;
             case STATE_FAILURE:
                 mLoadableContent.stopLoading();
+
+                if (isFirstRun()) {
+                    setFirstRun(false);
+                }
+
+                mLoadableContent.removeAllViews();
+                mLoadableContent.addView(InfoItemView.errorView(this, R.string.main_loaderror, mOnRetryClickListener));
                 break;
         }
     }
+
+    private View.OnClickListener mOnRetryClickListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            mLoadableContent.startLoading();
+        }
+
+    };
 
     @Override
     public void onItemClicked(ViewBunch parent, ViewBunch.ViewBunchItem item, int position) {

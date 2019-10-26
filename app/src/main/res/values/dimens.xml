@@ -67,6 +67,11 @@
     <dimen name="postitem_background_radius">@dimen/item_cornerradius</dimen>
 
 
+    <!-- Info Item View -->
+    <dimen name="infoitem_textsize">16sp</dimen>
+    <dimen name="infoitem_button_margin">16dp</dimen>
+
+
     <!-- Post List Pager Fragment -->
     <dimen name="postlistpager_containercomment_elevation">8dp</dimen>
     <dimen name="postlistpager_containercomment_height">56dp</dimen>
@@ -120,21 +125,25 @@
     <dimen name="newpost_post_padding_vertival">16dp</dimen>
     <dimen name="newpost_wordcount_textsize">12sp</dimen>
     <dimen name="newpost_words_textsize">14sp</dimen>
-    <dimen name="newpost_button_textsize">16dp</dimen>
-    <dimen name="newpost_button_padding_left">16dp</dimen>
-    <dimen name="newpost_button_background_cornerradius">@dimen/default_cornerradius</dimen>
     <dimen name="newpost_close_margin_left">6dp</dimen>
     <dimen name="newpost_close_size">36dp</dimen>
     <dimen name="newpost_logo_size">@dimen/toolbar_logo_size</dimen>
     <dimen name="newpost_padding_horizontal">16dp</dimen>
-    <dimen name="newpost_button_width">160dp</dimen>
     <dimen name="newpost_words_margin_left">4dp</dimen>
     <dimen name="newpost_padding_top">8dp</dimen>
     <dimen name="newpost_title_height">24dp</dimen>
     <dimen name="newpost_post_margin_top">24dp</dimen>
     <dimen name="newpost_post_margin_bottom">16dp</dimen>
-    <dimen name="newpost_button_height">40dp</dimen>
     <dimen name="newpost_padding_bottom">16dp</dimen>
+
+
+    <!-- Simple Button -->
+    <dimen name="simplebutton_textsize">16dp</dimen>
+    <dimen name="simplebutton_padding_left">16dp</dimen>
+    <dimen name="simplebutton_background_cornerradius">@dimen/default_cornerradius</dimen>
+    <dimen name="simplebutton_width">160dp</dimen>
+    <dimen name="simplebutton_height">40dp</dimen>
+    <dimen name="simplebutton_icon_size">24dp</dimen>
 
 
     <!-- Popup -->

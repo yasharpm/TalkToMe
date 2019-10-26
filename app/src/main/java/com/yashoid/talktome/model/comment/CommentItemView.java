@@ -11,7 +11,7 @@ import androidx.core.view.ViewCompat;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
-import com.yashoid.talktome.view.ItemContentView;
+import com.yashoid.talktome.view.item.ItemContentView;
 
 public class CommentItemView extends ItemContentView implements Comment, Target {
 

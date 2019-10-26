@@ -62,10 +62,12 @@
 
     <!-- Item Content View -->
     <color name="itemcontent_textcolor">@color/contentColor</color>
+    <color name="itemcontent_background">@color/itemBackground</color>
 
 
-    <!-- Post Item View -->
-    <color name="postitem_background">@color/itemBackground</color>
+    <!-- Info Item View -->
+    <color name="infoitem_infoindicatorcolor">@color/themeColor</color>
+    <color name="infoitem_errorindicatorcolor">#FF4A4A</color>
 
 
     <!-- Post List Pager Fragment -->
@@ -91,8 +93,11 @@
     <color name="newpost_post_background">@color/defaultBackground</color>
     <color name="newpost_wordcount_textcolor">@color/newpost_title_textcolor</color>
     <color name="newpost_words_textcolor">@color/newpost_wordcount_textcolor</color>
-    <color name="newpost_button_textcolor">@color/contentBackground</color>
-    <color name="newpost_button_background">@color/themeColor</color>
+
+
+    <!-- Simple Button -->
+    <color name="simplebutton_textcolor">@color/contentBackground</color>
+    <color name="simplebutton_background">@color/themeColor</color>
 
 
     <!-- Popup -->

@@ -1,4 +1,4 @@
-package com.yashoid.talktome.view;
+package com.yashoid.talktome.view.item;
 
 import android.content.Context;
 import android.content.res.Resources;

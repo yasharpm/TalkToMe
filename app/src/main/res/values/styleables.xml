@@ -10,5 +10,10 @@
         <attr name="indicator" format="reference"/>
         <attr name="indicatorTint" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="SimpleButton">
+        <attr name="text" format="string"/>
+        <attr name="icon" format="reference"/>
+    </declare-styleable>
     
 </resources>

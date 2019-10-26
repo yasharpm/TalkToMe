@@ -10,6 +10,12 @@
     <string name="main_more_aboutus">درباره ما</string>
     <string name="main_more_guide">راهنما</string>
     <string name="main_newpost">حرف بزن</string>
+    <string name="main_firsttimeinfo">برای دیدن پست‌های جدید، این پست را به سمت پایین بکشید…</string>
+    <string name="main_loaderror">متاسفانه مشکلی در ارتباط با سرور پیش آمده است. لطفا مجدد تلاش نمایید…</string>
+
+
+    <!-- Info Item View -->
+    <string name="infoitem_retry">تلاش مجدد</string>
 
 
     <!-- Post Full Item View -->

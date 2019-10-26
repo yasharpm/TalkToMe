@@ -14,7 +14,7 @@
         app:actionIcon="@drawable/ic_action_back"
         app:title="@string/aboutus_title"/>
 
-    <com.yashoid.talktome.view.ItemContentView
+    <com.yashoid.talktome.view.item.ItemContentView
         android:id="@+id/text_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -7,7 +7,7 @@
         <shape
             android:shape="rectangle">
 
-            <solid android:color="@color/postitem_background"/>
+            <solid android:color="@color/itemcontent_background"/>
             <corners android:radius="@dimen/postitem_background_radius"/>
             <padding android:left="@dimen/postitem_padding_left"
                 android:right="@dimen/postitem_padding_right"

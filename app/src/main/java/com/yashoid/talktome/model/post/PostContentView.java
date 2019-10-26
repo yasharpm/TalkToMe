@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.R;
-import com.yashoid.talktome.view.ItemContentView;
+import com.yashoid.talktome.view.item.ItemContentView;
 
 public class PostContentView extends ItemContentView implements Post, Target {
 

@@ -40,4 +40,8 @@ public class TTMOffice {
         return RequestRunner.get(context);
     }
 
+    public static Preferences preferences(Context context) {
+        return Preferences.get(context);
+    }
+
 }

@@ -64,32 +64,13 @@
         android:textColor="@color/newpost_words_textcolor"
         app:fontFamily="@font/dana_regular_digits"/>
 
-    <FrameLayout
+    <com.yashoid.talktome.view.SimpleButton
         android:id="@+id/button_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:background="@drawable/newpost_button_background">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:textSize="@dimen/newpost_button_textsize"
-            android:textColor="@color/newpost_button_textcolor"
-            app:fontFamily="@font/dana_regular"
-            android:text="@string/newpost_button"/>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:layout_marginLeft="@dimen/newpost_button_padding_left"
-
-            app:srcCompat="@drawable/ic_submit"/>
-
-    </FrameLayout>
+        app:text="@string/newpost_button"
+        app:icon="@drawable/ic_submit"/>
 
 
 </com.yashoid.sequencelayout.SequenceLayout>
