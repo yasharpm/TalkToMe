@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
     private LoadableContentView mLoadableContent;
     private ViewBunch mViewBunch;
     private View mButtonNewPost;
+    private View mTextNewPost;
 
     private ModelFeatures mPostListFeatures;
     private Model mPostListModel;
@@ -93,7 +94,9 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         mViewBunch.setOnItemClickListener(this);
 
         mButtonNewPost = findViewById(R.id.button_newpost);
+        mTextNewPost = findViewById(R.id.text_newpost);
         mButtonNewPost.setOnClickListener(this);
+        mTextNewPost.setOnClickListener(this);
 
         Managers.registerTarget(this, mPostListFeatures);
     }

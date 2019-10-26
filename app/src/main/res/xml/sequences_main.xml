@@ -25,6 +25,16 @@
         <Span size="@dimen/main_newpost_margin"/>
     </Vertical>
 
+    <Horizontal start="50@button_newpost">
+        <Span id="text_newpost" size="wrap"/>
+    </Horizontal>
+
+    <Vertical start="start@button_newpost" end="end@button_newpost">
+        <Span size="1w"/>
+        <Span id="text_newpost" size="@dimen/main_newpost_text_height"/>
+        <Span size="1w"/>
+    </Vertical>
+
     <Vertical>
         <Span id="overlay" size="100%"/>
     </Vertical>

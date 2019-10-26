@@ -27,6 +27,19 @@
 
     </com.yashoid.talktome.view.LoadableContentView>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_newpost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/main_newpost"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/main_newpost_textsize"
+        android:textColor="@color/main_newpost_textcolor"
+        app:fontFamily="@font/dana_regular"
+        android:text="@string/main_newpost"
+        android:elevation="@dimen/main_newpost_text_elevation"/>
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/button_newpost"
         android:layout_width="wrap_content"

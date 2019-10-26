@@ -48,6 +48,8 @@
 
     <!-- Main Activity -->
     <color name="main_newpost_tint">@color/contentBackground</color>
+    <color name="main_newpost_color">@color/themeColor</color>
+    <color name="main_newpost_textcolor">@color/contentBackground</color>
 
 
     <!-- Loading Drawable -->

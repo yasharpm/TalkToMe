@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="@color/main_newpost_color"/>
+
+    <corners
+        android:bottomLeftRadius="0dp"
+        android:topLeftRadius="0dp"
+        android:topRightRadius="@dimen/main_newpost_cornerradius"
+        android:bottomRightRadius="@dimen/main_newpost_cornerradius"/>
+
+    <padding
+        android:left="@dimen/main_newpost_text_padding_left"
+        android:right="@dimen/main_newpost_text_padding_right"
+        />
+
+</shape>

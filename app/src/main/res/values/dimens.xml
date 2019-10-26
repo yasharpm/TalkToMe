@@ -23,7 +23,7 @@
     <dimen name="toolbar_padding_horizontal">16dp</dimen>
     <dimen name="toolbar_height">48dp</dimen>
     <dimen name="toolbar_logo_cornerradius">2dp</dimen>
-    <dimen name="toolbar_logo_logosize">12dp</dimen>
+    <dimen name="toolbar_logo_padding">6dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
 
 
@@ -41,6 +41,12 @@
     <dimen name="main_newpost_elevation">8dp</dimen>
     <dimen name="main_newpost_margin">16dp</dimen>
     <dimen name="main_newpost_size">56dp</dimen>
+    <dimen name="main_newpost_cornerradius">20dp</dimen>
+    <dimen name="main_newpost_text_padding_left">32dp</dimen>
+    <dimen name="main_newpost_text_padding_right">12dp</dimen>
+    <dimen name="main_newpost_text_height">40dp</dimen>
+    <dimen name="main_newpost_textsize">16sp</dimen>
+    <dimen name="main_newpost_text_elevation">2dp</dimen>
 
 
     <!-- Item Content View -->

@@ -47,16 +47,7 @@ public class Toolbar extends SequenceLayout {
 
         LayoutInflater.from(context).inflate(R.layout.toolbar, this, true);
 
-        try {
-            XmlResourceParser parser = getResources().getXml(R.xml.sequences_toolbar);
-            List<Sequence> sequences = new SequenceReader(context).readSequences(parser);
-
-            for (Sequence sequence: sequences) {
-                addSequence(sequence);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        addSequences(R.xml.sequences_toolbar);
 
         mButtonAction = findViewById(R.id.button_action);
         mTextTitle = findViewById(R.id.text_title);

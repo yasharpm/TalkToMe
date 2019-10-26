@@ -11,6 +11,10 @@
         </shape>
     </item>
 
-    <item android:drawable="@drawable/logo" android:width="@dimen/toolbar_logo_logosize" android:height="@dimen/toolbar_logo_logosize" android:gravity="center"/>
+    <item android:drawable="@drawable/logo"
+        android:left="@dimen/toolbar_logo_padding"
+        android:top="@dimen/toolbar_logo_padding"
+        android:right="@dimen/toolbar_logo_padding"
+        android:bottom="@dimen/toolbar_logo_padding" android:gravity="center"/>
 
 </layer-list>
