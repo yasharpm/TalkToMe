@@ -134,7 +134,7 @@ public class Requests {
                     BASE_URL + "post/seen"
             );
 
-            sRequests.put(MY_POSTS, request);
+            sRequests.put(SEEN_POSTS, request);
         }
 
         JSONObject body = new JSONObject();
