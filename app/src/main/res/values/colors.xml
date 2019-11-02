@@ -70,6 +70,10 @@
     <color name="infoitem_errorindicatorcolor">#FF4A4A</color>
 
 
+    <!-- Pointed Info View -->
+    <color name="pointedinfoview_background">@color/itemBackground</color>
+
+
     <!-- Post List Pager Fragment -->
     <color name="postlistpager_background">@color/defaultBackground</color>
     <color name="postlistpager_containercomment_background">@color/contentBackground</color>
@@ -84,6 +88,10 @@
 
     <!-- Comments Title Item -->
     <color name="commentstitle_textcolor">@color/contentColor</color>
+
+
+    <!-- No Comments -->
+    <color name="nocomments_indicator">@color/infoitem_infoindicatorcolor</color>
 
 
     <!-- New Post Activity -->

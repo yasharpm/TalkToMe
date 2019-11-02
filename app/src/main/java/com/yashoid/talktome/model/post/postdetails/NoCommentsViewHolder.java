@@ -8,12 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.yashoid.talktome.R;
+import com.yashoid.talktome.view.item.PointedInfoView;
+
 public class NoCommentsViewHolder extends RecyclerView.ViewHolder {
 
     public static NoCommentsViewHolder newInstance(Context context) {
-        TextView view = new TextView(context);
+        PointedInfoView view = new PointedInfoView(context);
 
-        view.setText("No Comments");
+        view.setContentView(R.layout.view_nocomments);
+
+        TextView textInfo = view.findViewById(R.id.text_info);
+
+        textInfo.setText("هنوز نظری نوشته نشده است. اولین نظر را بنویس!");
 
         view.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,

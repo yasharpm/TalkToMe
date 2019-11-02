@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <com.yashoid.talktome.view.item.ItemContentView
+        android:id="@+id/text_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:indicator="@drawable/ic_indicator_comment"
+        app:indicatorTint="@color/nocomments_indicator"
+        android:textSize="@dimen/nocomments_textsize"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/nocomments_image_size"
+        android:layout_height="@dimen/nocomments_image_size"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/nocomments_image_margin"
+
+        app:srcCompat="@drawable/img_behindlaptop"/>
+
+</LinearLayout>

@@ -72,6 +72,13 @@
     <dimen name="infoitem_button_margin">16dp</dimen>
 
 
+    <!-- Pointed Info View -->
+    <dimen name="pointedinfoview_pointbase">32dp</dimen>
+    <dimen name="pointedinfoview_pointheight">48dp</dimen>
+    <dimen name="pointedinfoview_pointoffset">60dp</dimen>
+    <dimen name="pointedinfoview_elevation">@dimen/item_elevation</dimen>
+
+
     <!-- Post List Pager Fragment -->
     <dimen name="postlistpager_containercomment_elevation">8dp</dimen>
     <dimen name="postlistpager_containercomment_height">56dp</dimen>
@@ -106,6 +113,12 @@
     <dimen name="commentstitle_height">48dp</dimen>
     <dimen name="commentstitle_padding_right">24dp</dimen>
     <dimen name="commentstitle_textsize">16sp</dimen>
+
+
+    <!-- No Comments -->
+    <dimen name="nocomments_textsize">14sp</dimen>
+    <dimen name="nocomments_image_size">48dp</dimen>
+    <dimen name="nocomments_image_margin">8dp</dimen>
 
 
     <!-- Loading View Holder -->
