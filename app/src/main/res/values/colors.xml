@@ -106,6 +106,7 @@
     <color name="newpost_background">@color/contentBackground</color>
     <color name="newpost_title_textcolor">#002324</color>
     <color name="newpost_post_textcolor">@color/contentColor</color>
+    <color name="newpost_post_highlightcolor">@color/itemcontent_highlightcolor</color>
     <color name="newpost_post_background">@color/defaultBackground</color>
     <color name="newpost_wordcount_textcolor">@color/newpost_title_textcolor</color>
     <color name="newpost_words_textcolor">@color/newpost_wordcount_textcolor</color>

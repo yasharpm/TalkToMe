@@ -40,10 +40,13 @@
         android:inputType="textMultiLine"
         android:textSize="@dimen/newpost_post_textsize"
         android:textColor="@color/newpost_post_textcolor"
+        android:textColorHighlight="@color/newpost_post_highlightcolor"
         android:lineHeight="@dimen/newpost_post_lineheight"
         android:gravity="top"
         android:fontFamily="@font/dana_regular"
-        android:background="@drawable/newpost_post_background"/>
+        android:layoutDirection="rtl"
+        android:textDirection="firstStrong"
+        android:background="@drawable/newpost_post_background" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_wordcount"
