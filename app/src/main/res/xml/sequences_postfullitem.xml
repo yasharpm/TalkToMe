@@ -4,6 +4,8 @@
     <Vertical>
         <Span size="@dimen/postfullitem_padding_top"/>
         <Span id="content" size="wrap"/>
+        <Span size="@dimen/postfullitem_divider_margin_vertical"/>
+        <Span id="divider" size="@dimen/postfullitem_divider_height"/>
     </Vertical>
 
     <Horizontal>
@@ -12,50 +14,56 @@
         <Span size="@dimen/postfullitem_content_margin_right"/>
     </Horizontal>
 
-    <Vertical start="end@content">
-        <Span size="@dimen/postfullitem_content_margin_bottom"/>
-        <Span id="image_likes" size="@dimen/postfullitem_status_height"/>
-        <Span size="@dimen/postfullitem_padding_bottom"/>
-    </Vertical>
+    <Horizontal>
+        <Span size="@dimen/postfullitem_divider_margin_horizontal"/>
+        <Span id="divider" size="1w"/>
+        <Span size="@dimen/postfullitem_divider_margin_horizontal"/>
+    </Horizontal>
+
+    <!--<Vertical start="end@content">-->
+        <!--<Span size="@dimen/postfullitem_content_margin_bottom"/>-->
+        <!--<Span id="image_likes" size="@dimen/postfullitem_status_height"/>-->
+        <!--<Span size="@dimen/postfullitem_padding_bottom"/>-->
+    <!--</Vertical>-->
+
+    <!--<Vertical start="end@content">-->
+        <!--<Span size="@dimen/postfullitem_content_margin_bottom"/>-->
+        <!--<Span id="text_likes" size="@dimen/postfullitem_status_height"/>-->
+        <!--<Span size="@dimen/postfullitem_padding_bottom"/>-->
+    <!--</Vertical>-->
 
     <Vertical start="end@content">
-        <Span size="@dimen/postfullitem_content_margin_bottom"/>
-        <Span id="text_likes" size="@dimen/postfullitem_status_height"/>
-        <Span size="@dimen/postfullitem_padding_bottom"/>
-    </Vertical>
-
-    <Vertical start="end@content">
-        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span size="@dimen/postfullitem_divider_margin_vertical"/>
         <Span id="image_views" size="@dimen/postfullitem_status_height"/>
         <Span size="@dimen/postfullitem_padding_bottom"/>
     </Vertical>
 
     <Vertical start="end@content">
-        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span size="@dimen/postfullitem_divider_margin_vertical"/>
         <Span id="text_views" size="@dimen/postfullitem_status_height"/>
         <Span size="@dimen/postfullitem_padding_bottom"/>
     </Vertical>
 
     <Vertical start="end@content">
-        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span size="@dimen/postfullitem_divider_margin_vertical"/>
         <Span id="image_comments" size="@dimen/postfullitem_status_height"/>
         <Span size="@dimen/postfullitem_padding_bottom"/>
     </Vertical>
 
     <Vertical start="end@content">
-        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span size="@dimen/postfullitem_divider_margin_vertical"/>
         <Span id="text_comments" size="@dimen/postfullitem_status_height"/>
         <Span size="@dimen/postfullitem_padding_bottom"/>
     </Vertical>
 
     <Vertical start="end@content">
-        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span size="@dimen/postfullitem_divider_margin_vertical"/>
         <Span id="text_time" size="@dimen/postfullitem_status_height"/>
         <Span size="@dimen/postfullitem_padding_bottom"/>
     </Vertical>
 
     <Vertical start="end@content">
-        <Span size="@dimen/postfullitem_content_margin_bottom"/>
+        <Span size="@dimen/postfullitem_divider_margin_vertical"/>
         <Span id="button_more" size="@dimen/postfullitem_status_height"/>
         <Span size="@dimen/postfullitem_padding_bottom"/>
     </Vertical>
@@ -70,8 +78,8 @@
         <Span id="image_comments" size="@dimen/postfullitem_statusimage_width"/>
         <Span id="text_views" size="@dimen/postfullitem_statustext_width"/>
         <Span id="image_views" size="@dimen/postfullitem_statusimage_width"/>
-        <Span id="text_likes" size="@dimen/postfullitem_statustext_width"/>
-        <Span id="image_likes" size="@dimen/postfullitem_statusimage_width"/>
+        <!--<Span id="text_likes" size="@dimen/postfullitem_statustext_width"/>-->
+        <!--<Span id="image_likes" size="@dimen/postfullitem_statusimage_width"/>-->
         <Span size="@dimen/postfullitem_status_margin_right"/>
     </Horizontal>
 

@@ -93,10 +93,12 @@
     <!-- Post Full Item View -->
     <dimen name="postfullitem_elevation">@dimen/item_elevation</dimen>
     <dimen name="postfullitem_background_radius">@dimen/item_cornerradius</dimen>
-    <dimen name="postfullitem_padding_top">8dp</dimen>
+    <dimen name="postfullitem_padding_top">16dp</dimen>
     <dimen name="postfullitem_content_margin_left">@dimen/postitem_padding_left</dimen>
     <dimen name="postfullitem_content_margin_right">@dimen/postitem_padding_right</dimen>
-    <dimen name="postfullitem_content_margin_bottom">12dp</dimen>
+    <dimen name="postfullitem_divider_margin_horizontal">@dimen/postfullitem_content_margin_left</dimen>
+    <dimen name="postfullitem_divider_margin_vertical">12dp</dimen>
+    <dimen name="postfullitem_divider_height">1dp</dimen>
     <dimen name="postfullitem_status_height">36dp</dimen>
     <dimen name="postfullitem_padding_bottom">4dp</dimen>
     <dimen name="postfullitem_status_margin_left">8dp</dimen>

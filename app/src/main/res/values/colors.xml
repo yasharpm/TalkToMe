@@ -2,6 +2,7 @@
 <resources>
 
     <color name="themeColor">#26C6DA</color>
+    <color name="themeColorLight">#DFF3F3</color>
 
     <color name="defaultBackground">#F5F8F8</color>
     <color name="contentColor">#00131D</color>
@@ -15,7 +16,7 @@
 
     <color name="colorPrimary">@color/contentBackground</color>
     <color name="colorPrimaryDark">@color/contentBackground</color>
-    <color name="colorAccent">@color/contentColor</color>
+    <color name="colorAccent">@color/themeColor</color>
 
     <!-- Indicator Colors -->
     <array name="indicatorColors">
@@ -62,6 +63,7 @@
 
     <!-- Item Content View -->
     <color name="itemcontent_textcolor">@color/contentColor</color>
+    <color name="itemcontent_highlightcolor">@color/themeColorLight</color>
     <color name="itemcontent_background">@color/itemBackground</color>
 
 
@@ -82,6 +84,11 @@
     <color name="postlistpager_postcomment_background">@color/actionColor</color>
 
 
+    <!-- Post Full Item View -->
+    <color name="postfullitem_statusimage_tint">@color/contentColor</color>
+    <color name="postfullitem_divider">@color/themeColorLight</color>
+
+
     <!-- Detailed Post Content View -->
     <color name="detailedpostcontent_background">@color/itemBackground</color>
 
@@ -92,6 +99,7 @@
 
     <!-- No Comments -->
     <color name="nocomments_indicator">@color/infoitem_infoindicatorcolor</color>
+    <color name="nocomments_smiley">@color/nocomments_indicator</color>
 
 
     <!-- New Post Activity -->
@@ -114,7 +122,7 @@
 
     <!-- Popup Item -->
     <color name="popupitem_textcolor">@color/contentColor</color>
-    <color name="popupitem_background_selected">#DFF3F3</color>
+    <color name="popupitem_background_selected">@color/themeColorLight</color>
 
 
     <!-- About Us Activity -->

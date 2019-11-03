@@ -30,6 +30,7 @@
 
     <style name="PostStatusImageStyle">
         <item name="android:padding">@dimen/postfullitem_statusimage_padding</item>
+        <item name="tint">@color/postfullitem_statusimage_tint</item>
     </style>
 
 </resources>

@@ -44,6 +44,11 @@
     <string name="commentstitle">نظرات شما:</string>
 
 
+    <!-- No Comments -->
+    <string name="nocomments">هنوز نظری نوشته نشده است. اولین نظر را بنویس!</string>
+    <string name="nocomments_smiley">:-)</string>
+
+
     <!-- New Post Activity -->
     <string name="newpost_title">افکارت را به قلم بیاور…</string>
     <string name="newpost_wordcount">تعداد کلمات:</string>

@@ -48,6 +48,7 @@ public class ItemContentView extends AppCompatTextView {
         setLineHeight(res.getDimensionPixelSize(R.dimen.itemcontent_lineheight));
         setTextColor(ContextCompat.getColor(context, R.color.itemcontent_textcolor));
         setTypeface(ResourcesCompat.getFont(context, R.font.dana_regular));
+        setHighlightColor(ContextCompat.getColor(context, R.color.itemcontent_highlightcolor));
 
         setEllipsize(TextUtils.TruncateAt.END);
 
