@@ -133,9 +133,12 @@
 
 
     <!-- About Us Activity -->
-    <color name="aboutus_indicatortint">@color/themeColor</color>
+    <color name="aboutus_quote_textcolor">@color/contentColor</color>
+    <color name="aboutus_indicatortint">@color/infoitem_infoindicatorcolor</color>
     <color name="aboutus_about_textcolor">@color/contentColor</color>
-    
+    <color name="aboutus_warning_attention_textcolor">@color/aboutus_indicatortint</color>
+    <color name="aboutus_warning_textcolor">@color/contentColor</color>
+
     
     <!-- Passive Logo -->
     <color name="passivelogo_logo_background">#3326C6DA</color>

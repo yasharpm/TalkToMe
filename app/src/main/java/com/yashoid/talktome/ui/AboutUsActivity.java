@@ -3,12 +3,17 @@ package com.yashoid.talktome.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.style.MetricAffectingSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.evaluation.Eval;
@@ -30,7 +35,26 @@ public class AboutUsActivity extends AppCompatActivity implements View.OnClickLi
 
         ((Toolbar) findViewById(R.id.toolbar)).setActionButtonClickListener(this);
 
-        ((TextView) findViewById(R.id.text_about)).setText(Html.fromHtml(getString(R.string.aboutus_about)));
+        String warningAttention = getString(R.string.aboutus_warning_attention);
+        String warning = getString(R.string.aboutus_warning);
+
+        final int attentionTextColor = ContextCompat.getColor(this, R.color.aboutus_warning_attention_textcolor);
+
+        SpannableStringBuilder ssb = new SpannableStringBuilder(warningAttention + " " + warning);
+
+        ssb.setSpan(new MetricAffectingSpan() {
+
+            @Override
+            public void updateMeasureState(@NonNull TextPaint textPaint) { }
+
+            @Override
+            public void updateDrawState(TextPaint tp) {
+                tp.setColor(attentionTextColor);
+            }
+
+        }, 0, warningAttention.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        ((TextView) findViewById(R.id.text_warning)).setText(ssb);
     }
 
     @Override

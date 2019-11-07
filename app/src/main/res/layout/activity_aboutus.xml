@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.yashoid.sequencelayout.SequenceLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    app:sequences="@xml/sequences_aboutus">
+    android:orientation="vertical">
 
     <com.yashoid.talktome.view.Toolbar
         android:id="@+id/toolbar"
@@ -14,29 +14,157 @@
         app:actionIcon="@drawable/ic_action_back"
         app:title="@string/aboutus_title"/>
 
-    <com.yashoid.talktome.view.item.ItemContentView
-        android:id="@+id/text_about"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
 
-        android:background="@drawable/item_attachedtotop_background"
-        app:indicator="@drawable/ic_indicator_post"
-        app:indicatorTint="@color/aboutus_indicatortint"
-        android:paddingTop="@dimen/aboutus_about_padding_top"
-        android:paddingLeft="@dimen/aboutus_about_padding_left"
-        android:paddingRight="@dimen/aboutus_about_padding_right"
-        android:paddingBottom="@dimen/aboutus_about_padding_bottom"
-        android:textSize="@dimen/aboutus_about_textsize"
-        android:lineHeight="@dimen/aboutus_about_lineheight"
-        android:textColor="@color/aboutus_about_textcolor"
-        app:fontFamily="@font/dana_regular"
-        android:elevation="@dimen/aboutus_about_elevation"/>
+        android:scrollbars="none">
 
-    <include
-        android:id="@+id/passivelogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <com.yashoid.sequencelayout.SequenceLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-        layout="@layout/passivelogo"/>
+            app:sequences="@xml/sequences_aboutus">
 
-</com.yashoid.sequencelayout.SequenceLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:srcCompat="@drawable/toolbar_logo"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_appname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:srcCompat="@drawable/appname_farsi"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_quote1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:srcCompat="@drawable/ic_quote"
+                android:scaleType="fitCenter"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_quote1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textSize="@dimen/aboutus_quote_textsize"
+                android:textColor="@color/aboutus_quote_textcolor"
+                app:fontFamily="@font/dana_regular"
+                android:text="@string/aboutus_quote1"/>
+
+            <com.yashoid.talktome.view.item.ItemContentView
+                android:id="@+id/text_about1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/item_background"
+                app:indicator="@drawable/ic_indicator_post"
+                app:indicatorTint="@color/aboutus_indicatortint"
+                android:paddingTop="@dimen/aboutus_about_padding_top"
+                android:paddingLeft="@dimen/aboutus_about_padding_left"
+                android:paddingRight="@dimen/aboutus_about_padding_right"
+                android:paddingBottom="@dimen/aboutus_about_padding_bottom"
+                android:textSize="@dimen/aboutus_about_textsize"
+                android:lineHeight="@dimen/aboutus_about_lineheight"
+                android:textColor="@color/aboutus_about_textcolor"
+                app:fontFamily="@font/dana_regular"
+                android:elevation="@dimen/aboutus_about_elevation"
+                android:text="@string/aboutus_about1"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_quote2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:srcCompat="@drawable/ic_quote"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_quote2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textSize="@dimen/aboutus_quote_textsize"
+                android:textColor="@color/aboutus_quote_textcolor"
+                app:fontFamily="@font/dana_regular"
+                android:text="@string/aboutus_quote2"/>
+
+            <com.yashoid.talktome.view.item.ItemContentView
+                android:id="@+id/text_about2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/item_background"
+                app:indicator="@drawable/ic_indicator_post"
+                app:indicatorTint="@color/aboutus_indicatortint"
+                android:paddingTop="@dimen/aboutus_about_padding_top"
+                android:paddingLeft="@dimen/aboutus_about_padding_left"
+                android:paddingRight="@dimen/aboutus_about_padding_right"
+                android:paddingBottom="@dimen/aboutus_about_padding_bottom"
+                android:textSize="@dimen/aboutus_about_textsize"
+                android:lineHeight="@dimen/aboutus_about_lineheight"
+                android:textColor="@color/aboutus_about_textcolor"
+                app:fontFamily="@font/dana_regular"
+                android:elevation="@dimen/aboutus_about_elevation"
+                android:text="@string/aboutus_about2"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_quote3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:srcCompat="@drawable/ic_quote"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_quote3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textSize="@dimen/aboutus_quote_textsize"
+                android:textColor="@color/aboutus_quote_textcolor"
+                app:fontFamily="@font/dana_regular"
+                android:text="@string/aboutus_quote3"/>
+
+            <com.yashoid.talktome.view.item.ItemContentView
+                android:id="@+id/text_about3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/item_background"
+                app:indicator="@drawable/ic_indicator_post"
+                app:indicatorTint="@color/aboutus_indicatortint"
+                android:paddingTop="@dimen/aboutus_about_padding_top"
+                android:paddingLeft="@dimen/aboutus_about_padding_left"
+                android:paddingRight="@dimen/aboutus_about_padding_right"
+                android:paddingBottom="@dimen/aboutus_about_padding_bottom"
+                android:textSize="@dimen/aboutus_about_textsize"
+                android:lineHeight="@dimen/aboutus_about_lineheight"
+                android:textColor="@color/aboutus_about_textcolor"
+                app:fontFamily="@font/dana_regular"
+                android:elevation="@dimen/aboutus_about_elevation"
+                android:text="@string/aboutus_about3"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_warning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textSize="@dimen/aboutus_warning_textsize"
+                android:textColor="@color/aboutus_warning_textcolor"
+                android:lineHeight="@dimen/aboutus_warning_lineheight"
+                app:fontFamily="@font/dana_regular"/>
+
+        </com.yashoid.sequencelayout.SequenceLayout>
+
+    </ScrollView>
+
+</LinearLayout>

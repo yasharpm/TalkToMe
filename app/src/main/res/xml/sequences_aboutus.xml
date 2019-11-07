@@ -2,25 +2,97 @@
 <Sequences>
 
     <Vertical>
-        <Span id="toolbar" size="wrap"/>
-        <Span id="text_about" size="wrap"/>
+        <Span size="@dimen/aboutus_padding_top"/>
+        <Span id="image_logo" size="@dimen/aboutus_logo_size"/>
+        <Span size="@dimen/aboutus_quote1_margin_top"/>
+        <Span id="image_quote1" size="@dimen/aboutus_quote_size"/>
+        <Span size="@dimen/aboutus_quote_margin_bottom"/>
+        <Span id="text_quote1" size="wrap"/>
+        <Span size="@dimen/aboutus_about_margin_top"/>
+        <Span id="text_about1" size="wrap"/>
+        <Span size="@dimen/aboutus_quote_margin_top"/>
+        <Span id="image_quote2" size="@dimen/aboutus_quote_size"/>
+        <Span size="@dimen/aboutus_quote_margin_bottom"/>
+        <Span id="text_quote2" size="wrap"/>
+        <Span size="@dimen/aboutus_about_margin_top"/>
+        <Span id="text_about2" size="wrap"/>
+        <Span size="@dimen/aboutus_quote_margin_top"/>
+        <Span id="image_quote3" size="@dimen/aboutus_quote_size"/>
+        <Span size="@dimen/aboutus_quote_margin_bottom"/>
+        <Span id="text_quote3" size="wrap"/>
+        <Span size="@dimen/aboutus_about_margin_top"/>
+        <Span id="text_about3" size="wrap"/>
+        <Span size="@dimen/aboutus_warning_margin_top"/>
+        <Span id="text_warning" size="wrap"/>
+        <Span size="@dimen/aboutus_warning_margin_bottom"/>
+    </Vertical>
+
+    <Vertical start="start@image_logo" end="end@image_logo">
         <Span size="1w"/>
-        <Span id="passivelogo" size="wrap"/>
+        <Span id="image_appname" size="@dimen/aboutus_appname_height"/>
         <Span size="1w"/>
     </Vertical>
 
     <Horizontal>
-        <Span id="toolbar" size="100%"/>
-    </Horizontal>
-
-    <Horizontal>
-        <Span id="text_about" size="100%"/>
+        <Span size="1w"/>
+        <Span id="image_appname" size="wrap"/>
+        <Span size="@dimen/aboutus_appname_margin"/>
+        <Span id="image_logo" size="@dimen/aboutus_logo_size"/>
+        <Span size="1w"/>
     </Horizontal>
 
     <Horizontal>
         <Span size="1w"/>
-        <Span id="passivelogo" size="wrap"/>
+        <Span id="image_quote1" size="@dimen/aboutus_quote_size"/>
+        <Span size="@dimen/aboutus_padding_right"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="@dimen/aboutus_padding_left"/>
+        <Span id="text_quote1" size="1w"/>
+        <Span size="@dimen/aboutus_padding_right"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span id="text_about1" size="100%"/>
+    </Horizontal>
+
+    <Horizontal>
         <Span size="1w"/>
+        <Span id="image_quote2" size="@dimen/aboutus_quote_size"/>
+        <Span size="@dimen/aboutus_padding_right"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="@dimen/aboutus_padding_left"/>
+        <Span id="text_quote2" size="1w"/>
+        <Span size="@dimen/aboutus_padding_right"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span id="text_about2" size="100%"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="1w"/>
+        <Span id="image_quote3" size="@dimen/aboutus_quote_size"/>
+        <Span size="@dimen/aboutus_padding_right"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="@dimen/aboutus_padding_left"/>
+        <Span id="text_quote3" size="1w"/>
+        <Span size="@dimen/aboutus_padding_right"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span id="text_about3" size="100%"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="@dimen/aboutus_padding_left"/>
+        <Span id="text_warning" size="1w"/>
+        <Span size="@dimen/aboutus_padding_right"/>
     </Horizontal>
 
 </Sequences>
