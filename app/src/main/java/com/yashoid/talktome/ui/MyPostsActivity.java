@@ -136,6 +136,12 @@ public class MyPostsActivity extends AppCompatActivity implements MyPostList, Ta
     }
 
     @Override
+    public void onNewPostClicked() {
+        startActivity(NewPostActivity.getIntent(this));
+        finish();
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
 

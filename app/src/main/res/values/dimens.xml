@@ -173,6 +173,22 @@
     <dimen name="popupitem_iconsize">16dp</dimen>
     <dimen name="popupitem_icon_margin_left">16dp</dimen>
     <dimen name="popupitem_padding_horizontal">16dp</dimen>
+    
+    
+    <!-- My Posts Empty View Holder -->
+    <dimen name="mypostsempty_info_textsize">16sp</dimen>
+    <dimen name="mypostsempty_newpost_textsize">16sp</dimen>
+    <dimen name="mypostsempty_newpost_elevation">@dimen/main_newpost_elevation</dimen>
+    <dimen name="mypostsempty_padding_top">8dp</dimen>
+    <dimen name="mypostsempty_postbox_margin_top">32dp</dimen>
+    <dimen name="mypostsempty_postbox_margin_bottom">24dp</dimen>
+    <dimen name="mypostsempty_newpost_height">40dp</dimen>
+    <dimen name="mypostsempty_padding_bottom">24dp</dimen>
+    <dimen name="mypostsempty_info_margin_horizontal">8dp</dimen>
+    <dimen name="mypostsempty_newpost_margin_horizontal">24dp</dimen>
+    <dimen name="mypostsempty_post_margin_vertical">8dp</dimen>
+    <dimen name="mypostsempty_post_margin_right">24dp</dimen>
+    <dimen name="mypostsempty_elevation">@dimen/item_elevation</dimen>
 
 
     <!-- About Us Activity -->

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yashoid.sequencelayout.SequenceLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    app:sequences="@xml/sequences_mypostsempty"
+    android:background="@drawable/item_attachedtotop_background"
+    android:elevation="@dimen/mypostsempty_elevation"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <com.yashoid.talktome.view.item.ItemContentView
+        android:id="@+id/text_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="right"
+        android:textSize="@dimen/mypostsempty_info_textsize"
+        android:textColor="@color/mypostsitem_info_textcolor"
+        app:fontFamily="@font/dana_regular"
+        app:indicator="@drawable/ic_indicator_post"
+        app:indicatorTint="@color/mypostsitem_info_indicator"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_postbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:srcCompat="@drawable/img_postbox"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/button_newpost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:textSize="@dimen/mypostsempty_newpost_textsize"
+        android:textColor="@color/mypostsempty_newpost_textcolor"
+        app:fontFamily="@font/dana_regular"
+        android:text="@string/mypostsempty_newpost"
+        android:background="@drawable/mypostsempty_newpost_background"
+        android:elevation="@dimen/mypostsempty_newpost_elevation"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:srcCompat="@drawable/ic_post"
+        app:tint="@color/mypostsempty_post_tint"
+        app:tintMode="src_in"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:elevation="@dimen/mypostsempty_newpost_elevation"/>
+
+</com.yashoid.sequencelayout.SequenceLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Vertical>
+        <Span size="@dimen/mypostsempty_padding_top"/>
+        <Span id="text_info" size="wrap"/>
+        <Span size="@dimen/mypostsempty_postbox_margin_top"/>
+        <Span id="image_postbox" size="wrap"/>
+        <Span size="@dimen/mypostsempty_postbox_margin_bottom"/>
+        <Span id="button_newpost" size="@dimen/mypostsempty_newpost_height"/>
+        <Span size="@dimen/mypostsempty_padding_bottom"/>
+    </Vertical>
+
+    <Vertical start="start@button_newpost" end="end@button_newpost">
+        <Span size="@dimen/mypostsempty_post_margin_vertical"/>
+        <Span id="image_post" size="1w"/>
+        <Span size="@dimen/mypostsempty_post_margin_vertical"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="@dimen/mypostsempty_info_margin_horizontal"/>
+        <Span id="text_info" size="1w"/>
+        <Span size="@dimen/mypostsempty_info_margin_horizontal"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="1w"/>
+        <Span id="image_postbox" size="wrap"/>
+        <Span size="1w"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="@dimen/mypostsempty_newpost_margin_horizontal"/>
+        <Span id="button_newpost" size="1w"/>
+        <Span size="@dimen/mypostsempty_newpost_margin_horizontal"/>
+    </Horizontal>
+
+    <Horizontal end="end@button_newpost">
+        <Span size="1w"/>
+        <Span id="image_post" size="wrap"/>
+        <Span size="@dimen/mypostsempty_post_margin_right"/>
+    </Horizontal>
+
+</Sequences>

@@ -49,16 +49,13 @@
 
     <!-- Main Activity -->
     <color name="main_newpost_tint">@color/contentBackground</color>
-    <color name="main_newpost_color">@color/themeColor</color>
+    <color name="main_newpost_color">@color/actionColor</color>
     <color name="main_newpost_textcolor">@color/contentBackground</color>
+    <color name="main_newpost_background">@color/actionColor</color>
 
 
     <!-- Loading Drawable -->
     <color name="loadingdrawable_color">#B5E8EE</color>
-
-
-    <!-- Main Activity -->
-    <color name="main_newpost_background">@color/themeColor</color>
 
 
     <!-- Item Content View -->
@@ -124,6 +121,15 @@
     <!-- Popup Item -->
     <color name="popupitem_textcolor">@color/contentColor</color>
     <color name="popupitem_background_selected">@color/themeColorLight</color>
+
+
+    <!-- My Posts Empty View Holder -->
+    <color name="mypostsitem_info_textcolor">@color/contentColor</color>
+    <color name="mypostsitem_info_indicator">@color/infoitem_infoindicatorcolor</color>
+    <color name="mypostsitem_info_suffix_textcolor">@color/mypostsitem_info_indicator</color>
+    <color name="mypostsempty_newpost_textcolor">@color/contentBackground</color>
+    <color name="mypostsempty_newpost_background">@color/actionColor</color>
+    <color name="mypostsempty_post_tint">@color/mypostsempty_newpost_textcolor</color>
 
 
     <!-- About Us Activity -->

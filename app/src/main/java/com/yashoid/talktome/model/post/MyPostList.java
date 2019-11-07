@@ -4,7 +4,6 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.yashoid.mmv.Action;
-import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.network.RequestResponse;
@@ -18,7 +17,6 @@ import com.yashoid.talktome.network.Requests;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public interface MyPostList extends ModelList {
 
@@ -38,8 +36,11 @@ public interface MyPostList extends ModelList {
 
         @Override
         protected Action getAction(ModelFeatures features, String actionName) {
-            if (Action.ACTION_MODEL_NOT_EXISTED_IN_CACHE.equals(actionName)) {
-                return mFirstTimeAction;
+            switch (actionName) {
+                case Action.ACTION_MODEL_NOT_EXISTED_IN_CACHE:
+                    return mFirstTimeAction;
+                case Action.ACTION_MODEL_LOADED_FROM_CACHE:
+                    return mResetAction;
             }
 
             return null;
@@ -97,6 +98,16 @@ public interface MyPostList extends ModelList {
                     model.set(MODEL_LIST, legacyPosts);
                 }
 
+                return null;
+            }
+
+        };
+
+        private Action mResetAction = new Action() {
+
+            @Override
+            public Object perform(Model model, Object... params) {
+                model.set(STATE, STATE_IDLE);
                 return null;
             }
 

@@ -66,6 +66,12 @@
     <string name="myposts_title">پست‌های من</string>
 
 
+    <!-- My Posts Empty View Holder -->
+    <string name="mypostsempty_info">هنوز پستی ننوشتی. اولین پستت را بنویس!</string>
+    <string name="mypostsempty_info_suffix">(-:</string>
+    <string name="mypostsempty_newpost">افکارت را به قلم بیاور</string>
+
+
     <!-- About Us Activity -->
     <string name="aboutus_title">@string/main_more_aboutus</string>
     <string name="aboutus_about">اپلیکیشن «با من حرف بزن» فضایی است آزاد برای به اشتراک گذاری افکاری که در ذهن دارید و شاید جایی و یا کسی را برای شنیدنش پیدا نمی‌کنید.&lt;br/&gt;

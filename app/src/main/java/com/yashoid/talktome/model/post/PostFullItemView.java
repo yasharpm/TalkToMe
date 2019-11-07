@@ -15,7 +15,6 @@ import androidx.core.view.ViewCompat;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.mmv.PersistentTarget;
 import com.yashoid.mmv.Target;
 import com.yashoid.network.RequestResponse;
 import com.yashoid.network.RequestResponseCallback;
@@ -24,7 +23,6 @@ import com.yashoid.sequencelayout.SequenceLayout;
 import com.yashoid.sequencelayout.SequenceReader;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.TTMOffice;
-import com.yashoid.talktome.model.comment.CommentList;
 import com.yashoid.talktome.network.ReportResponse;
 import com.yashoid.talktome.network.Requests;
 import com.yashoid.talktome.util.TimeUtil;
@@ -140,19 +138,11 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
             Managers.unregisterTarget(mContent);
             Managers.unregisterTarget(this);
 
-            Managers.unregisterTarget(mCommentCountTarget);
-
             mModel = null;
         }
 
         Managers.registerTarget(mContent, postFeatures);
         Managers.registerTarget(this, postFeatures);
-
-        ModelFeatures commentListFeatures = new ModelFeatures.Builder()
-                .add(TYPE, CommentList.TYPE_COMMENT_LIST)
-                .add(CommentList.POST_ID, postFeatures.get(ID))
-                .build();
-        Managers.registerTarget(mCommentCountTarget, commentListFeatures);
     }
 
     @Override
@@ -175,37 +165,10 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
 
         Long createdTime = mModel.get(CREATED_TIME);
         mTextTime.setText(createdTime == null ? "" : TimeUtil.getRelativeTime((long) mModel.get(CREATED_TIME), getContext()));
+
+        List<ModelFeatures> comments = mModel.get(COMMENTS);
+
+        mTextComments.setText(String.valueOf((comments == null || comments.isEmpty()) ? 0 : comments.size()));
     }
-
-    private Target mCommentCountTarget = new PersistentTarget() {
-
-        private Model mCommentList;
-
-        @Override
-        public void setModel(Model model) {
-            mCommentList = model;
-
-            onModelChanged();
-        }
-
-        @Override
-        public void onFeaturesChanged(String... featureNames) {
-            onModelChanged();
-        }
-
-        private void onModelChanged() {
-            int state = mCommentList.get(CommentList.STATE);
-
-            if (state != CommentList.STATE_SUCCESS) {
-                mTextComments.setText("");
-            }
-            else {
-                List<ModelFeatures> comments = mCommentList.get(CommentList.MODEL_LIST);
-
-                mTextComments.setText(String.valueOf(comments.size()));
-            }
-        }
-
-    };
 
 }
