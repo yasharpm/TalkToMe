@@ -100,7 +100,7 @@ public interface Post extends Basics, WithIndicator, Stateful {
                                 comments = new ArrayList<>();
                             }
 
-                            comments.add(response.getContent().asModelFeatures());
+                            comments.add(0, response.getContent().asModelFeatures());
 
                             model.set(COMMENTS, comments);
 

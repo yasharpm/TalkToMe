@@ -21,7 +21,8 @@
 
         <activity android:name=".ui.StartUpActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/StartUpTheme">
+            android:theme="@style/StartUpTheme"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +32,8 @@
 
         <activity android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize"
+            android:launchMode="singleInstance"/>
 
         <activity android:name=".ui.NewPostActivity"
             android:screenOrientation="portrait"
@@ -44,7 +46,7 @@
             android:screenOrientation="portrait"/>
 
         <service
-            android:name=".PushService"
+            android:name=".notification.PushService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

@@ -3,6 +3,8 @@
     <string name="app_name">Talk To Me</string>
     <string name="default_notification_channel_id">General</string>
 
+    <string name="notification_newcomment_title">یک نظر جدید داری:</string>
+
     
     <!-- Main Activity -->
     <string name="main_more_myposts">پست‌های من</string>

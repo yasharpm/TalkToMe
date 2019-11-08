@@ -1,5 +1,7 @@
 package com.yashoid.talktome.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -13,6 +15,12 @@ import com.yashoid.talktome.evaluation.Screens;
 public class StartUpActivity extends AppCompatActivity implements Screens {
 
     private static final long START_DELAY = 1000;
+
+    public static Intent newIntent(Context context) {
+        Intent intent = new Intent(context, StartUpActivity.class);
+
+        return intent;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

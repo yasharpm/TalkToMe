@@ -9,17 +9,47 @@ public class SyncResponse {
     private boolean mSyncCompleted;
     private List<Change> mChanges;
 
-    private static class Change {
+    public static class Change {
 
-        private static final String EVENT_NEW_POST = "new_post";
-        private static final String EVENT_NEW_VIEWS = "new_views";
-        private static final String EVENT_NEW_COMMENT = "new_comment";
-        private static final String EVENT_NEW_LIKE = "new_like";
-        private static final String EVENT_REMOVED_LIKE = "removed_like";
+        public static final String EVENT_NEW_POST = "new_post";
+        public static final String EVENT_NEW_VIEWS = "new_views";
+        public static final String EVENT_NEW_COMMENT = "new_comment";
+        public static final String EVENT_NEW_LIKE = "new_like";
+        public static final String EVENT_REMOVED_LIKE = "removed_like";
 
         private String mEventType;
         private long mCreatedTime;
-        private Map<String, Object> mContent;
+        private CombinedObject mContent;
+
+        public String getEventType() {
+            return mEventType;
+        }
+
+        public CombinedObject getContent() {
+            return mContent;
+        }
+
+    }
+
+    public static class CombinedObject {
+
+        String id;
+        long createdTime;
+        long updatedTime;
+
+        String userId;
+        public String content;
+        String language;
+        String country;
+        int commentCount;
+        int likeCount;
+        int viewCount;
+        int reportCount;
+        List<CommentResponse> comments;
+        List<LikeResponse> likes;
+
+        String postId;
+        int views;
 
     }
 

@@ -27,6 +27,7 @@ public class Requests {
     private static final int LIKE_OR_DISLIKE = 7;
     private static final int REPORT = 8;
     private static final int SYNC = 9;
+    private static final int UPDATE_FCM_TOKEN = 10;
 
     private static SparseArray<NetworkRequest> sRequests = new SparseArray<>();
 
@@ -235,6 +236,28 @@ public class Requests {
             sRequests.put(SYNC, request);
         }
         return (PreparedRequest<SyncResponse>) request.prepare("updateToken", updateToken);
+    }
+
+    public static PreparedRequest<BaseResponse> updateFCMToken(String token) {
+        NetworkRequest request = sRequests.get(UPDATE_FCM_TOKEN);
+
+        if (request == null) {
+            request = TTMOffice.network().getRequest(
+                    BaseResponse.class,
+                    "POST",
+                    BASE_URL + "user/updateFCMToken"
+            );
+
+            sRequests.put(UPDATE_FCM_TOKEN, request);
+        }
+
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("token", token);
+        } catch (JSONException e) { }
+
+        return (PreparedRequest<BaseResponse>) request.prepare(body);
     }
 
 

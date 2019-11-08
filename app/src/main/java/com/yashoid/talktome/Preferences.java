@@ -27,6 +27,10 @@ public class Preferences {
         mPreferences.edit().putString(key, value == null ? null : value.toString()).apply();
     }
 
+    public String readString(String key) {
+        return mPreferences.getString(key, null);
+    }
+
     public boolean readBoolean(String key, boolean defaultValue) {
         return Boolean.valueOf(mPreferences.getString(key, Boolean.valueOf(defaultValue).toString()));
     }

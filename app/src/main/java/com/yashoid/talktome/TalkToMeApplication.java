@@ -11,8 +11,12 @@ import com.yashoid.talktome.model.pendingpost.PendingPost;
 import com.yashoid.talktome.model.post.MyPostList;
 import com.yashoid.talktome.model.post.Post;
 import com.yashoid.talktome.model.post.PostList;
+import com.yashoid.talktome.notification.Notifier;
+import com.yashoid.talktome.notification.PushUtils;
 
 public class TalkToMeApplication extends Application implements Events {
+
+    private static final String TAG = "TalkToMeApplication";
 
     @Override
     public void onCreate() {
@@ -33,6 +37,10 @@ public class TalkToMeApplication extends Application implements Events {
         Eval.initialize(this);
 
         setupUncaughtExceptionTracker();
+
+        PushUtils.verifyFCMToken(this);
+
+        Notifier.init(this);
     }
 
     private void setupUncaughtExceptionTracker() {
