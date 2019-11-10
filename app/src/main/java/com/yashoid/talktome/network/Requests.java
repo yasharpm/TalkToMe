@@ -4,6 +4,7 @@ import android.util.SparseArray;
 
 import com.yashoid.network.NetworkRequest;
 import com.yashoid.network.PreparedRequest;
+import com.yashoid.network.RequestResponse;
 import com.yashoid.talktome.TTMOffice;
 
 import org.json.JSONArray;
@@ -200,6 +201,10 @@ public class Requests {
     }
 
     public static PreparedRequest<ReportResponse> report(String postId, int reason, String description) {
+        return report(postId, null, reason, description);
+    }
+
+    public static PreparedRequest<ReportResponse> report(String postId, String commentId, int reason, String description) {
         NetworkRequest request = sRequests.get(REPORT);
 
         if (request == null) {
@@ -216,6 +221,7 @@ public class Requests {
 
         try {
             body.put("postId", postId);
+            body.put("commentId", commentId);
             body.put("reason", reason);
             body.put("description", description);
         } catch (JSONException e) { }

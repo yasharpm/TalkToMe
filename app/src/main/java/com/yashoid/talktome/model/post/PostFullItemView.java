@@ -25,6 +25,7 @@ import com.yashoid.talktome.R;
 import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.network.ReportResponse;
 import com.yashoid.talktome.network.Requests;
+import com.yashoid.talktome.util.ReportAComment;
 import com.yashoid.talktome.util.TimeUtil;
 import com.yashoid.talktome.view.popup.Popup;
 import com.yashoid.talktome.view.popup.PopupItem;
@@ -34,8 +35,9 @@ import java.util.List;
 public class PostFullItemView extends SequenceLayout implements Target, Post {
 
     private static final PopupItem REPORT = new PopupItem(R.string.postfullitem_report, R.drawable.ic_report);
+    private static final PopupItem REPORT_A_COMMENT = new PopupItem(R.string.postfullitem_reportacomment, R.drawable.ic_report);
 
-    private static final PopupItem[] MORE_ITEMS = { REPORT };
+    private static final PopupItem[] MORE_ITEMS = { REPORT, REPORT_A_COMMENT };
 
     private PostContentView mContent;
     private TextView mTextLikes;
@@ -120,6 +122,9 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
                     }
 
                 });
+            }
+            else if (item == REPORT_A_COMMENT) {
+                ReportAComment.reportAComment(getContext(), mModel);
             }
         }
 

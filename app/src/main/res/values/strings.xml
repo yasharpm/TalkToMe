@@ -22,6 +22,7 @@
 
     <!-- Post Full Item View -->
     <string name="postfullitem_report">گزارش محتوای نامناسب</string>
+    <string name="postfullitem_reportacomment">گزارش نظرات</string>
 
 
     <!-- Reporting... -->
