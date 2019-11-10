@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
@@ -22,6 +21,7 @@ import com.yashoid.talktome.model.post.PostList;
 import com.yashoid.talktome.model.post.PostListPagerFragment;
 import com.yashoid.talktome.model.post.PostListViewBunchAdapter;
 import com.yashoid.talktome.model.post.SeenPostsTracker;
+import com.yashoid.talktome.notification.ChangeTracker;
 import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.view.Toolbar;
@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         return intent;
     }
 
+    private Toolbar mToolbar;
+
     private LoadableContentView mLoadableContent;
     private ViewBunch mViewBunch;
     private View mButtonNewPost;
@@ -68,7 +70,8 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
 
         SeenPostsTracker.get(this).checkToSend();
 
-        ((Toolbar) findViewById(R.id.toolbar)).setActionButtonClickListener(mOnMoreClickListener);
+        mToolbar = findViewById(R.id.toolbar);
+        mToolbar.setActionButtonClickListener(mOnMoreClickListener);
 
         Eval.trackEvent(EVENT_VISITED);
 
@@ -109,6 +112,19 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
             mLoadableContent.removeView(mViewBunch);
             mLoadableContent.addView(InfoItemView.infoView(this, R.string.main_firsttimeinfo));
         }
+
+        ChangeTracker.ChangeCountObserver changeCountObserver = new ChangeTracker.ChangeCountObserver() {
+
+            @Override
+            public void onChangeCountUpdated(int changeCount) {
+                mToolbar.setNotifierCount(changeCount);
+            }
+
+        };
+
+        mToolbar.setTag(changeCountObserver);
+
+        ChangeTracker.get(this).registerChangeCountObserver(changeCountObserver);
     }
 
     private boolean isFirstRun() {
@@ -126,6 +142,8 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
             Eval.setCurrentScreen(this, SCREEN_POSTS);
         }
+
+        ChangeTracker.get(this).refresh();
     }
 
     private View.OnClickListener mOnMoreClickListener = new View.OnClickListener() {

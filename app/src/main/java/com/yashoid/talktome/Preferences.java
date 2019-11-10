@@ -31,6 +31,10 @@ public class Preferences {
         return mPreferences.getString(key, null);
     }
 
+    public int readInt(String key, int defaultValue) {
+        return Integer.valueOf(mPreferences.getString(key, String.valueOf(defaultValue)));
+    }
+
     public boolean readBoolean(String key, boolean defaultValue) {
         return Boolean.valueOf(mPreferences.getString(key, Boolean.valueOf(defaultValue).toString()));
     }

@@ -44,6 +44,7 @@
 
     <!-- Toolbar -->
     <color name="toolbar_background">@color/contentBackground</color>
+    <color name="toolbar_notifier_textcolor">@color/toolbar_background</color>
     <color name="toolbar_title_textcolor">@color/themeColor</color>
 
 

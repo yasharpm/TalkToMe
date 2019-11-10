@@ -2,7 +2,6 @@ package com.yashoid.talktome.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.content.res.XmlResourceParser;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,16 +12,14 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 
-import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
-import com.yashoid.sequencelayout.SequenceReader;
 import com.yashoid.talktome.R;
-
-import java.util.List;
 
 public class Toolbar extends SequenceLayout {
 
     private TextView mTextTitle;
+    private View mImageNotifier;
+    private TextView mTextNotifier;
     private View mImageAppName;
     private ImageView mButtonAction;
 
@@ -50,6 +47,8 @@ public class Toolbar extends SequenceLayout {
         addSequences(R.xml.sequences_toolbar);
 
         mButtonAction = findViewById(R.id.button_action);
+        mImageNotifier = findViewById(R.id.image_notifier);
+        mTextNotifier = findViewById(R.id.text_notifier);
         mTextTitle = findViewById(R.id.text_title);
         mImageAppName = findViewById(R.id.image_appname);
 
@@ -65,6 +64,20 @@ public class Toolbar extends SequenceLayout {
         }
 
         setTitle(title);
+        setNotifierCount(0);
+    }
+
+    public void setNotifierCount(int count) {
+        if (count <= 0) {
+            mImageNotifier.setVisibility(INVISIBLE);
+            mTextNotifier.setVisibility(INVISIBLE);
+            return;
+        }
+
+        mImageNotifier.setVisibility(VISIBLE);
+        mTextNotifier.setVisibility(VISIBLE);
+
+        mTextNotifier.setText("+" + count);
     }
 
     public void setTitle(CharSequence title) {

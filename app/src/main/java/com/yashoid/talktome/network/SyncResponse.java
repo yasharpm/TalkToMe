@@ -9,6 +9,18 @@ public class SyncResponse {
     private boolean mSyncCompleted;
     private List<Change> mChanges;
 
+    public String getUpdateToken() {
+        return mUpdateToken;
+    }
+
+    public boolean isSyncCompleted() {
+        return mSyncCompleted;
+    }
+
+    public List<Change> getChanges() {
+        return mChanges;
+    }
+
     public static class Change {
 
         public static final String EVENT_NEW_POST = "new_post";

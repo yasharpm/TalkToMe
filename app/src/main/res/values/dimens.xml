@@ -17,6 +17,8 @@
     <!-- Toolbar -->
     <dimen name="toolbar_title_textsize">18sp</dimen>
     <dimen name="toolbar_actionsize">36dp</dimen>
+    <dimen name="toolbar_notifier_margin">-12dp</dimen>
+    <dimen name="toolbar_notifier_textsize">12sp</dimen>
     <dimen name="toolbar_appname_height">18dp</dimen>
     <dimen name="toolbar_logo_size">24dp</dimen>
     <dimen name="toolbar_logo_margin">8dp</dimen>

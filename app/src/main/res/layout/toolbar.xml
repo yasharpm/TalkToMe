@@ -23,6 +23,24 @@
 
         android:scaleType="centerInside"/>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_notifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:srcCompat="@drawable/ic_notifier_updates"
+        android:scaleType="fitCenter"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_notifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:textSize="@dimen/toolbar_notifier_textsize"
+        android:textColor="@color/toolbar_notifier_textcolor"
+        app:fontFamily="@font/dana_regular_digits"/>
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"

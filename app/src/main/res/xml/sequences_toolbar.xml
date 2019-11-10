@@ -3,6 +3,8 @@
 
     <Horizontal>
         <Span id="button_action" size="@dimen/toolbar_actionsize"/>
+        <Span size="@dimen/toolbar_notifier_margin"/>
+        <Span id="image_notifier" size="wrap"/>
         <Span size="1w"/>
         <Span id="image_appname" size="wrap"/>
         <Span size="@dimen/toolbar_logo_margin"/>
@@ -14,6 +16,20 @@
         <Span size="1w"/>
         <Span id="button_action" size="@dimen/toolbar_actionsize"/>
         <Span size="1w"/>
+    </Vertical>
+
+    <Vertical>
+        <Span size="1w"/>
+        <Span id="image_notifier" size="wrap"/>
+        <Span size="1w"/>
+    </Vertical>
+
+    <Horizontal start="start@image_notifier" end="end@image_notifier">
+        <Span id="text_notifier" size="100%"/>
+    </Horizontal>
+
+    <Vertical start="start@image_notifier" end="end@image_notifier">
+        <Span id="text_notifier" size="100%"/>
     </Vertical>
 
     <Vertical>

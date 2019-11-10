@@ -22,6 +22,7 @@ import com.yashoid.talktome.evaluation.Screens;
 import com.yashoid.talktome.model.post.MyPostList;
 import com.yashoid.talktome.model.post.PostListAdapter;
 import com.yashoid.talktome.model.post.PostListPagerFragment;
+import com.yashoid.talktome.notification.ChangeTracker;
 import com.yashoid.talktome.view.LoadableContentView;
 import com.yashoid.talktome.view.Toolbar;
 
@@ -104,11 +105,11 @@ public class MyPostsActivity extends AppCompatActivity implements MyPostList, Ta
     }
 
     private void onModelChanged() {
-//        int state = mMyPostsModel.get(STATE);
-//
-//        if (state == STATE_LOADING) {
-//            return;
-//        }
+        int state = mMyPostsModel.get(STATE);
+
+        if (state == STATE_SUCCESS) {
+            ChangeTracker.get(this).reset();
+        }
 
         mHolderPosts.stopLoading();
 

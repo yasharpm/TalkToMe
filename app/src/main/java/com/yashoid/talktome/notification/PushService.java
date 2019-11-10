@@ -8,6 +8,7 @@ import androidx.annotation.WorkerThread;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.yashoid.office.task.TaskManager;
 import com.yashoid.talktome.R;
 import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.network.SyncResponse;
@@ -71,6 +72,15 @@ public class PushService extends FirebaseMessagingService {
         }
 
         Notifier.notify(this, title, body);
+
+        TTMOffice.get().runTask(TaskManager.MAIN, new Runnable() {
+
+            @Override
+            public void run() {
+                ChangeTracker.get(PushService.this).refresh();
+            }
+
+        }, 0);
     }
 
 }
