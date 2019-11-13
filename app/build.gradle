@@ -35,6 +35,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-analytics:17.2.1'
     implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.android.installreferrer:installreferrer:1.0'
 
     implementation 'ir.abmyapp:abmyapp:1.0.6'
 
@@ -43,6 +44,8 @@ dependencies {
     implementation 'com.yashoid:office:1.2.1'
     implementation 'com.yashoid:network:2.1.0'
     implementation 'com.yashoid:yashson:1.1.0'
+
+    implementation 'ir.metrix:metrix:0.14.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

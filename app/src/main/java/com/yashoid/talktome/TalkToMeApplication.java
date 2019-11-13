@@ -14,6 +14,9 @@ import com.yashoid.talktome.model.post.PostList;
 import com.yashoid.talktome.notification.Notifier;
 import com.yashoid.talktome.notification.PushUtils;
 
+import ir.metrix.sdk.Metrix;
+import ir.metrix.sdk.MetrixConfig;
+
 public class TalkToMeApplication extends Application implements Events {
 
     private static final String TAG = "TalkToMeApplication";
@@ -35,6 +38,10 @@ public class TalkToMeApplication extends Application implements Events {
         Managers.registerModel(MyPostList.FEATURES);
 
         Eval.initialize(this);
+
+        MetrixConfig metrixConfig = new MetrixConfig(this, "ywjyrzlhuwrugdu");
+        metrixConfig.enableLogging(BuildConfig.DEBUG);
+        Metrix.onCreate(metrixConfig);
 
         setupUncaughtExceptionTracker();
 
