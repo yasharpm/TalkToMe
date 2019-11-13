@@ -18,7 +18,7 @@
         android:layout_marginTop="@dimen/passivelogo_name_margin_top"
 
         android:adjustViewBounds="true"
-        app:srcCompat="@drawable/appname_farsi"
+        app:srcCompat="@drawable/appname"
         app:tint="@color/passivelogo_logo_background"/>
 
 </LinearLayout>

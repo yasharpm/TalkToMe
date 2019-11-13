@@ -14,7 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        app:srcCompat="@drawable/appname_farsi"/>
+        app:srcCompat="@drawable/appname"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/button_action"

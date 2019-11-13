@@ -19,7 +19,7 @@
     <dimen name="toolbar_actionsize">36dp</dimen>
     <dimen name="toolbar_notifier_margin">-12dp</dimen>
     <dimen name="toolbar_notifier_textsize">12sp</dimen>
-    <dimen name="toolbar_appname_height">18dp</dimen>
+    <dimen name="toolbar_appname_height">20dp</dimen>
     <dimen name="toolbar_logo_size">24dp</dimen>
     <dimen name="toolbar_logo_margin">8dp</dimen>
     <dimen name="toolbar_padding_horizontal">16dp</dimen>
@@ -197,7 +197,7 @@
     <dimen name="aboutus_padding_top">16dp</dimen>
     <dimen name="aboutus_padding_left">16dp</dimen>
     <dimen name="aboutus_padding_right">24dp</dimen>
-    <dimen name="aboutus_appname_height">18dp</dimen>
+    <dimen name="aboutus_appname_height">20dp</dimen>
     <dimen name="aboutus_appname_margin">8dp</dimen>
     <dimen name="aboutus_logo_size">24dp</dimen>
     <dimen name="aboutus_quote1_margin_top">8dp</dimen>
