@@ -105,7 +105,7 @@
     <dimen name="postfullitem_padding_bottom">4dp</dimen>
     <dimen name="postfullitem_status_margin_left">8dp</dimen>
     <dimen name="postfullitem_more_size">@dimen/postfullitem_status_height</dimen>
-    <dimen name="postfullitem_time_margin_left">0dp</dimen>
+    <dimen name="postfullitem_time_margin_left">16dp</dimen>
     <dimen name="postfullitem_time_margin_right">0dp</dimen>
     <dimen name="postfullitem_statustext_width">40dp</dimen>
     <dimen name="postfullitem_statusimage_width">@dimen/postfullitem_status_height</dimen>

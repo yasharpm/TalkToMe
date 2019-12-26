@@ -1,8 +1,10 @@
 package com.yashoid.talktome.model.post;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
 import com.yashoid.sequencelayout.SequenceReader;
 import com.yashoid.talktome.R;
+import com.yashoid.talktome.Share;
 import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.network.ReportResponse;
 import com.yashoid.talktome.network.Requests;
@@ -44,6 +47,7 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
     private TextView mTextComments;
     private TextView mTextViews;
     private TextView mTextTime;
+    private View mButtonShare;
     private View mButtonMore;
 
     private Model mModel;
@@ -86,7 +90,20 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
         mTextLikes = findViewById(R.id.text_likes);
         mTextViews = findViewById(R.id.text_views);
         mTextTime = findViewById(R.id.text_time);
+        mButtonShare = findViewById(R.id.button_share);
         mButtonMore = findViewById(R.id.button_more);
+
+        mButtonShare.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String postId = mModel.get(ID);
+                String content = mModel.get(CONTENT);
+
+                Share.performShareAction(postId, content, getContext());
+            }
+
+        });
 
         mButtonMore.setOnClickListener(new OnClickListener() {
 

@@ -16,7 +16,7 @@ import java.util.UUID;
 
 public class Requests {
 
-    private static final String BASE_URL = "http://talktome.yashoid.com/api/v1/";
+    private static final String BASE_URL = "http://opentalkz.com/api/v1/";
 
     private static final int REGISTER = 0;
     private static final int GET_TOKEN = 1;

@@ -3,6 +3,9 @@
     <string name="app_name">OpenTalkz</string>
     <string name="default_notification_channel_id">General</string>
 
+    <string name="share_message">متن از بیان آزاد</string>
+    <string name="share_title">انتخاب روش ارسال</string>
+
     <string name="notification_newcomment_title">یک نظر جدید داری:</string>
 
     
@@ -91,7 +94,7 @@
 در دنیایی که مدام خودمان و یا افکارمان را سانسور می‌کنیم، این اپلیکیشن فضایی را به وجود می‌آورد تا بدون دغدغه و به صورت ناشناس، هر چند زمانی کوتاه خودمان باشیم و اجازه دهیم این خود واقعی‌مان را دیگران ببینند و نظر بدهند.&lt;br/&gt;
 &lt;br/&gt;
 &lt;br/&gt;
-&lt;small&gt;توجه: این اپلیکیشن تابع قوانین جمهوری اسلامی ایران بوده و مجموعه «با من حرف بزن» موظف است در صورت بروز تخلف، با عوامل مربوطه همکاری کند.&lt;/small&gt;
+&lt;small&gt;توجه: این اپلیکیشن تابع قوانین جمهوری اسلامی ایران بوده و مجموعه «بیان آزاد» موظف است در صورت بروز تخلف، با عوامل مربوطه همکاری کند.&lt;/small&gt;
     </string>
 
 

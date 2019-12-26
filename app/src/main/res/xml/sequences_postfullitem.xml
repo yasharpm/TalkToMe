@@ -68,9 +68,14 @@
         <Span size="@dimen/postfullitem_padding_bottom"/>
     </Vertical>
 
+    <Vertical start="start@button_more" end="end@button_more">
+        <Span id="button_share" size="100%"/>
+    </Vertical>
+
     <Horizontal>
         <Span size="@dimen/postfullitem_status_margin_left"/>
         <Span id="button_more" size="@dimen/postfullitem_more_size"/>
+        <Span id="button_share" size="@dimen/postfullitem_more_size"/>
         <Span size="@dimen/postfullitem_time_margin_left"/>
         <Span id="text_time" size="1w"/>
         <Span size="@dimen/postfullitem_time_margin_right"/>

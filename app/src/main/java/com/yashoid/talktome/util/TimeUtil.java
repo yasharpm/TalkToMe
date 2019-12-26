@@ -43,7 +43,7 @@ public class TimeUtil {
     }
 
     public static String getAbsoluteTime(long time, Context context) {
-        JalaliCalendar calendar = JalaliCalendar.newInstanceFromGregorian(new Date(time));;
+        JalaliCalendar calendar = JalaliCalendar.newInstanceFromGregorian(new Date(time));
 
         int year = calendar.get(JalaliCalendar.YEAR);
         int month = calendar.get(JalaliCalendar.MONTH);
