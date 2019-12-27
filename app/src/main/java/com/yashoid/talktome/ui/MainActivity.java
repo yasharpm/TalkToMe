@@ -7,19 +7,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
+import com.yashoid.mmv.PersistentTarget;
 import com.yashoid.mmv.Target;
 import com.yashoid.talktome.TTMOffice;
 import com.yashoid.talktome.evaluation.Eval;
 import com.yashoid.talktome.evaluation.Events;
 import com.yashoid.talktome.evaluation.Screens;
+import com.yashoid.talktome.model.post.Post;
 import com.yashoid.talktome.model.post.PostList;
 import com.yashoid.talktome.model.post.PostListPagerFragment;
 import com.yashoid.talktome.model.post.PostListViewBunchAdapter;
+import com.yashoid.talktome.model.post.RandomPostList;
 import com.yashoid.talktome.model.post.SeenPostsTracker;
 import com.yashoid.talktome.notification.ChangeTracker;
 import com.yashoid.talktome.view.LoadableContentView;
@@ -30,8 +34,13 @@ import com.yashoid.talktome.view.popup.Popup;
 import com.yashoid.talktome.view.popup.PopupItem;
 import com.yashoid.talktome.view.viewbunch.ViewBunch;
 
-public class MainActivity extends AppCompatActivity implements Target, PostList,
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements Target, RandomPostList,
         ViewBunch.OnItemClickListener, View.OnClickListener, Screens, Events {
+
+    private static final String EXTRA_POST_ID = "post_id";
 
     private static final String PREF_FIRST_RUN = "first_run";
 
@@ -50,6 +59,16 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
 
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        return intent;
+    }
+
+    public static Intent getIntent(Context context, String postId) {
+        Intent intent = getIntent(context);
+
+        intent.putExtra(EXTRA_POST_ID, postId);
+
         return intent;
     }
 
@@ -60,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
     private View mButtonNewPost;
     private View mTextNewPost;
 
-    private ModelFeatures mPostListFeatures;
     private Model mPostListModel;
 
     @Override
@@ -93,12 +111,8 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
             }
         });
 
-        mPostListFeatures = new ModelFeatures.Builder()
-                .add(TYPE, TYPE_POST_LIST)
-                .build();
-
         mViewBunch = findViewById(R.id.viewbunch);
-        mViewBunch.setAdapter(new PostListViewBunchAdapter(mPostListFeatures));
+        mViewBunch.setAdapter(new PostListViewBunchAdapter(FEATURES));
         mViewBunch.setOnItemClickListener(this);
 
         mButtonNewPost = findViewById(R.id.button_newpost);
@@ -106,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         mButtonNewPost.setOnClickListener(this);
         mTextNewPost.setOnClickListener(this);
 
-        Managers.registerTarget(this, mPostListFeatures);
+        Managers.registerTarget(this, FEATURES);
 
         if (isFirstRun()) {
             mLoadableContent.removeView(mViewBunch);
@@ -125,6 +139,56 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         mToolbar.setTag(changeCountObserver);
 
         ChangeTracker.get(this).registerChangeCountObserver(changeCountObserver);
+
+        handleIntentData(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        handleIntentData(intent);
+    }
+
+    private void handleIntentData(Intent intent) {
+        final String postId = intent.getStringExtra(EXTRA_POST_ID);
+
+        if (TextUtils.isEmpty(postId)) {
+            return;
+        }
+
+        intent.removeExtra(EXTRA_POST_ID);
+        setIntent(intent);
+
+        final ModelFeatures postsFeatures = new ModelFeatures.Builder()
+                .add(TYPE, PostList.TYPE_POST_LIST)
+                .build();
+
+        Managers.registerTarget(new PersistentTarget() {
+
+            @Override
+            public void setModel(Model model) {
+                Managers.unregisterTarget(this);
+
+                ModelFeatures postFeatures = new ModelFeatures.Builder()
+                        .add(TYPE, Post.TYPE_POST)
+                        .add(Post.ID, postId)
+                        .build();
+
+                List<ModelFeatures> posts = new ArrayList<>();
+                posts.add(postFeatures);
+
+                model.set(PostList.MODEL_LIST, posts);
+
+                Fragment fragment = PostListPagerFragment.newInstance(postsFeatures, 1, 0);
+
+                addOnOverlay(fragment);
+            }
+
+            @Override
+            public void onFeaturesChanged(String... featureNames) { }
+
+        }, postsFeatures);
     }
 
     private boolean isFirstRun() {
@@ -246,15 +310,19 @@ public class MainActivity extends AppCompatActivity implements Target, PostList,
         int count = parent.getVisibleItemCount();
         int startPage = count - position - 1;
 
-        Fragment fragment = PostListPagerFragment.newInstance(mPostListFeatures, count, startPage);
+        Fragment fragment = PostListPagerFragment.newInstance(FEATURES, count, startPage);
 
+        addOnOverlay(fragment);
+
+        Eval.setCurrentScreen(this, SCREEN_POSTS_PAGER);
+    }
+
+    private void addOnOverlay(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.overlay, fragment)
                 .addToBackStack(null)
                 .commit();
-
-        Eval.setCurrentScreen(this, SCREEN_POSTS_PAGER);
     }
 
     @Override

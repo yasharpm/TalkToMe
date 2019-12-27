@@ -38,10 +38,17 @@ public interface ModelList extends Basics, Stateful {
             @Override
             public Object perform(Model model, Object... params) {
                 model.set(STATE, STATE_IDLE);
+
+                onModelInitialized(model);
+
                 return null;
             }
 
         };
+
+        protected void onModelInitialized(Model model) {
+
+        }
 
         abstract protected void getModels(Model model, Object... params);
 

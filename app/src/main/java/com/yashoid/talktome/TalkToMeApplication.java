@@ -11,6 +11,7 @@ import com.yashoid.talktome.model.pendingpost.PendingPost;
 import com.yashoid.talktome.model.post.MyPostList;
 import com.yashoid.talktome.model.post.Post;
 import com.yashoid.talktome.model.post.PostList;
+import com.yashoid.talktome.model.post.RandomPostList;
 import com.yashoid.talktome.notification.Notifier;
 import com.yashoid.talktome.notification.PushUtils;
 
@@ -28,7 +29,8 @@ public class TalkToMeApplication extends Application implements Events {
         Managers.enableCache(this, TTMOffice.get());
         Managers.bindLifeCycle(this);
 
-        Managers.addTypeProvider(new PostList.PostListTypeProvider(this));
+        Managers.addTypeProvider(new PostList.PostListTypeProvider());
+        Managers.addTypeProvider(new RandomPostList.RandomPostListTypeProvider(this));
         Managers.addTypeProvider(new Post.PostTypeProvider(this));
         Managers.addTypeProvider(new CommentList.CommentListTypeProvider(this));
         Managers.addTypeProvider(new Comment.CommentTypeProvider(this));

@@ -8,6 +8,11 @@
 
     <string name="notification_newcomment_title">یک نظر جدید داری:</string>
 
+
+    <!-- Start Up Activity -->
+    <string name="startup_postnotfound">پست مورد نظر پیدا نشد!</string>
+    <string name="startup_gettingpostfailed">خطا در گرفتن پست از سرور!</string>
+
     
     <!-- Main Activity -->
     <string name="main_more_myposts">پست‌های من</string>

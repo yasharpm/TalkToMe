@@ -6,7 +6,7 @@ import android.net.Uri;
 
 public class Share {
 
-    private static final String SHARE_URL = "http://opentalkz.com/post/";
+    private static final String SHARE_URL = "http://opentalkz.com/post.html?id=";
 
     public static Uri getShareUri(String postId) {
         return Uri.parse(SHARE_URL + postId);
