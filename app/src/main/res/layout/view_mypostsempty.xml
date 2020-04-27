@@ -11,7 +11,7 @@
     android:clipChildren="false"
     android:clipToPadding="false">
 
-    <com.yashoid.talktome.view.item.ItemContentView
+    <com.opentalkz.view.item.ItemContentView
         android:id="@+id/text_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -67,7 +67,7 @@
         android:textColor="@color/newpost_words_textcolor"
         app:fontFamily="@font/dana_regular_digits"/>
 
-    <com.yashoid.talktome.view.SimpleButton
+    <com.opentalkz.view.SimpleButton
         android:id="@+id/button_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

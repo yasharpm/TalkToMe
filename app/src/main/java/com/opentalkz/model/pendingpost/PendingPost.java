@@ -1,4 +1,4 @@
-package com.yashoid.talktome.model.pendingpost;
+package com.opentalkz.model.pendingpost;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -12,14 +12,14 @@ import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
 import com.yashoid.network.RequestResponse;
 import com.yashoid.network.RequestResponseCallback;
-import com.yashoid.talktome.R;
-import com.yashoid.talktome.TTMOffice;
-import com.yashoid.talktome.model.Basics;
-import com.yashoid.talktome.model.Stateful;
-import com.yashoid.talktome.model.post.MyPostList;
-import com.yashoid.talktome.model.post.Post;
-import com.yashoid.talktome.network.PostResponse;
-import com.yashoid.talktome.network.Requests;
+import com.opentalkz.R;
+import com.opentalkz.TTMOffice;
+import com.opentalkz.model.Basics;
+import com.opentalkz.model.Stateful;
+import com.opentalkz.model.post.MyPostList;
+import com.opentalkz.model.post.Post;
+import com.opentalkz.network.PostResponse;
+import com.opentalkz.network.Requests;
 
 import java.util.ArrayList;
 import java.util.List;

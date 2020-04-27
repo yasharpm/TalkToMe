@@ -6,7 +6,7 @@
 
     android:orientation="vertical">
 
-    <com.yashoid.talktome.view.Toolbar
+    <com.opentalkz.view.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 app:fontFamily="@font/dana_regular"
                 android:text="@string/aboutus_quote1"/>
 
-            <com.yashoid.talktome.view.item.ItemContentView
+            <com.opentalkz.view.item.ItemContentView
                 android:id="@+id/text_about1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                 app:fontFamily="@font/dana_regular"
                 android:text="@string/aboutus_quote2"/>
 
-            <com.yashoid.talktome.view.item.ItemContentView
+            <com.opentalkz.view.item.ItemContentView
                 android:id="@+id/text_about2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                 app:fontFamily="@font/dana_regular"
                 android:text="@string/aboutus_quote3"/>
 
-            <com.yashoid.talktome.view.item.ItemContentView
+            <com.opentalkz.view.item.ItemContentView
                 android:id="@+id/text_about3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

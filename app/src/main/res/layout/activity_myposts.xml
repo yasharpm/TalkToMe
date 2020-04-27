@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     app:sequences="@xml/sequences_myposts">
 
-    <com.yashoid.talktome.view.Toolbar
+    <com.opentalkz.view.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,7 +13,7 @@
         app:title="@string/myposts_title"
         app:actionIcon="@drawable/ic_action_back"/>
 
-    <com.yashoid.talktome.view.LoadableContentView
+    <com.opentalkz.view.LoadableContentView
         android:id="@+id/holder_posts"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </com.yashoid.talktome.view.LoadableContentView>
+    </com.opentalkz.view.LoadableContentView>
 
     <FrameLayout
         android:id="@+id/overlay"

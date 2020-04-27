@@ -6,7 +6,7 @@
 
     android:orientation="vertical">
 
-    <com.yashoid.talktome.view.item.ItemContentView
+    <com.opentalkz.view.item.ItemContentView
         android:id="@+id/text_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

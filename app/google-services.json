@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "77777160649",
-    "firebase_url": "https://talk-to-me-37911.firebaseio.com",
-    "project_id": "talk-to-me-37911",
-    "storage_bucket": "talk-to-me-37911.appspot.com"
+    "project_number": "577087569126",
+    "firebase_url": "https://opentalkz.firebaseio.com",
+    "project_id": "opentalkz",
+    "storage_bucket": "opentalkz.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:77777160649:android:cb74be22699a5d37",
+        "mobilesdk_app_id": "1:577087569126:android:d79d410ae4f2a8bb758f27",
         "android_client_info": {
-          "package_name": "com.yashoid.talktome"
+          "package_name": "com.opentalkz"
         }
       },
       "oauth_client": [
         {
-          "client_id": "77777160649-k2ao69b35o2drb7nj7c7tq08p34v5bb5.apps.googleusercontent.com",
+          "client_id": "577087569126-4of4oejv0ato0fplaoqj34l5s2p25idv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDPflssKMMPhmHETRCTlzQiQbzKyRPKR38"
+          "current_key": "AIzaSyAzzIAwyqEW5hVOfyiU1lGtvaU-nAj6pSo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "77777160649-k2ao69b35o2drb7nj7c7tq08p34v5bb5.apps.googleusercontent.com",
+              "client_id": "577087569126-4of4oejv0ato0fplaoqj34l5s2p25idv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
