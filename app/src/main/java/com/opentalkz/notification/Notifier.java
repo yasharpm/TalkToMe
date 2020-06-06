@@ -93,7 +93,6 @@ public class Notifier {
 
         Notification notification = new NotificationCompat.Builder(context, CHANNEL_EVENTS)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setColorized(true)
                 .setColor(ContextCompat.getColor(context, R.color.themeColor))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_SOCIAL)

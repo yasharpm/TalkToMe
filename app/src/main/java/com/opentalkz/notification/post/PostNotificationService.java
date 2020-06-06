@@ -169,7 +169,6 @@ public class PostNotificationService extends Service {
 
         Notification notification = new NotificationCompat.Builder(this, channelId)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setColorized(true)
                 .setColor(ABResources.get(this).getColor(R.color.themeColor))
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .setCategory(NotificationCompat.CATEGORY_SOCIAL)
@@ -194,6 +193,8 @@ public class PostNotificationService extends Service {
                 .build();
 
         NotificationManagerCompat.from(this).notify(Notifier.NOTIFICATION_ID_POST, notification);
+
+        startForeground(Notifier.NOTIFICATION_ID_POST, notification);
     }
 
 }
