@@ -35,6 +35,10 @@ public class Preferences {
         return Integer.valueOf(mPreferences.getString(key, String.valueOf(defaultValue)));
     }
 
+    public long readLong(String key, long defaultValue) {
+        return Long.valueOf(mPreferences.getString(key, String.valueOf(defaultValue)));
+    }
+
     public boolean readBoolean(String key, boolean defaultValue) {
         return Boolean.valueOf(mPreferences.getString(key, Boolean.valueOf(defaultValue).toString()));
     }

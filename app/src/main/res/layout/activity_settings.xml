@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yashoid.sequencelayout.SequenceLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:sequences="@xml/sequences_settings">
+
+    <com.opentalkz.view.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:actionIcon="@drawable/ic_action_back"
+        app:title="@string/settings_title"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_notificationtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_regular"
+        android:textSize="@dimen/settings_title_textsize"
+        android:textColor="@color/settings_title_textcolor"
+        android:text="@string/settings_notification"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:buttonTint="@color/settings_spinner_tint"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_widgettitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_regular"
+        android:textSize="@dimen/settings_title_textsize"
+        android:textColor="@color/settings_title_textcolor"
+        android:text="@string/settings_widget"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:buttonTint="@color/settings_spinner_tint"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_widgetguide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_regular"
+        android:textSize="@dimen/settings_widgetguide_textsize"
+        android:textColor="@color/settings_widgetguide_textcolor"
+        android:text="@string/settings_widgetguide"
+        android:textStyle="italic"/>
+
+</com.yashoid.sequencelayout.SequenceLayout>

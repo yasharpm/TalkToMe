@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Horizontal>
+        <Span id="toolbar" size="100%"/>
+    </Horizontal>
+
+    <Vertical>
+        <Span id="toolbar" size="wrap"/>
+        <Span size="@dimen/settings_padding_vertical"/>
+        <Span id="text_notificationtitle" size="wrap"/>
+        <Span size="@dimen/settings_options_margin"/>
+        <Span id="text_widgettitle" size="wrap"/>
+        <Span size="1w"/>
+        <Span id="text_widgetguide" size="wrap"/>
+        <Span size="@dimen/settings_padding_vertical"/>
+    </Vertical>
+
+    <Vertical start="start@text_notificationtitle" end="end@text_notificationtitle">
+        <Span size="1w"/>
+        <Span id="spinner_notification" size="wrap"/>
+        <Span size="1w"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="@dimen/settings_padding_horizontal"/>
+        <Span id="spinner_notification" size="40%"/>
+        <Span size="1w"/>
+        <Span id="text_notificationtitle" size="wrap"/>
+        <Span size="@dimen/settings_padding_horizontal"/>
+    </Horizontal>
+
+    <Vertical start="start@text_widgettitle" end="end@text_widgettitle">
+        <Span size="1w"/>
+        <Span id="spinner_widget" size="wrap"/>
+        <Span size="1w"/>
+    </Vertical>
+
+    <Horizontal start="start@spinner_notification" end="end@text_notificationtitle">
+        <Span id="spinner_widget" size="100%spinner_notification"/>
+        <Span size="1w"/>
+        <Span id="text_widgettitle" size="wrap"/>
+    </Horizontal>
+
+    <Horizontal start="start@spinner_notification" end="end@text_notificationtitle">
+        <Span id="text_widgetguide" size="100%"/>
+    </Horizontal>
+
+</Sequences>

@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.opentalkz.network.SyncResponse;
 import com.opentalkz.notification.PushService;
+import com.opentalkz.notification.post.PostNotificationService;
+import com.opentalkz.notification.post.RandomPostWidgetUpdatingService;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.network.RequestResponse;
@@ -43,6 +45,12 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup);
+
+        startService(PostNotificationService.getIntent(this));
+
+        if (RandomPostWidgetUpdatingService.getRefreshPeriod(this) == 0) {
+            RandomPostWidgetUpdatingService.setDefaultRefreshPeriod(this);
+        }
     }
 
     @Override

@@ -133,6 +133,16 @@
     <color name="mypostsempty_post_tint">@color/mypostsempty_newpost_textcolor</color>
 
 
+    <!-- Settings Activity -->
+    <color name="settings_title_textcolor">@color/contentColor</color>
+    <color name="settings_spinner_tint">@color/actionColor</color>
+    <color name="settings_widgetguide_textcolor">@color/contentPassiveColor</color>
+
+
+    <!-- Settings Option Item -->
+    <color name="item_settingsoption_textcolor">@color/contentColor</color>
+
+
     <!-- About Us Activity -->
     <color name="aboutus_quote_textcolor">@color/contentColor</color>
     <color name="aboutus_indicatortint">@color/infoitem_infoindicatorcolor</color>

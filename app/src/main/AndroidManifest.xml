@@ -66,6 +66,9 @@
         <activity android:name=".ui.MyPostsActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.SettingsActivity"
+            android:screenOrientation="portrait"/>
+
         <service
             android:name=".notification.PushService"
             android:exported="false">
@@ -73,6 +76,29 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <service android:name=".notification.post.PostNotificationService"
+            android:exported="false">
+
+        </service>
+
+        <service android:name=".notification.post.RandomPostWidgetUpdatingService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true">
+        </service>
+
+        <receiver android:name=".notification.post.RandomPostWidgetProvider">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/randompost_widgetprovider_info" />
+
+        </receiver>
+
+        <receiver android:name=".notification.post.RefreshReceiver">
+        </receiver>
 
         <receiver
             android:name="ir.metrix.sdk.MetrixReferrerReceiver"

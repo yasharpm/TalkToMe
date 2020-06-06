@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
 
     private static final PopupItem[] MORE_ITEMS = {
             MY_POSTS,
-//            SETTINGS,
+            SETTINGS,
             ABOUT_US,
 //            GUIDE_ME,
     };
@@ -230,6 +230,9 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
         public void onItemClicked(int position, PopupItem item) {
             if (item == MY_POSTS) {
                 startActivity(MyPostsActivity.getIntent(MainActivity.this));
+            }
+            else if (item == SETTINGS) {
+                startActivity(SettingsActivity.getIntent(MainActivity.this));
             }
             else if (item == ABOUT_US) {
                 startActivity(AboutUsActivity.getIntent(MainActivity.this));

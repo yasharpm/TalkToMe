@@ -193,6 +193,20 @@
     <dimen name="mypostsempty_elevation">@dimen/item_elevation</dimen>
 
 
+    <!-- Settings Activity -->
+    <dimen name="settings_title_textsize">14sp</dimen>
+    <dimen name="settings_widgetguide_textsize">14sp</dimen>
+    <dimen name="settings_padding_vertical">24dp</dimen>
+    <dimen name="settings_padding_horizontal">16dp</dimen>
+    <dimen name="settings_options_margin">16dp</dimen>
+
+
+    <!-- Settings Option Item -->
+    <dimen name="item_settingsoption_textsize">15sp</dimen>
+    <dimen name="item_settingsoption_padding_horizontal">2dp</dimen>
+    <dimen name="item_settingsoption_padding_vertical">4dp</dimen>
+
+
     <!-- About Us Activity -->
     <dimen name="aboutus_padding_top">16dp</dimen>
     <dimen name="aboutus_padding_left">16dp</dimen>

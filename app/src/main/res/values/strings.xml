@@ -2,11 +2,15 @@
 
     <string name="app_name">OpenTalkz</string>
     <string name="default_notification_channel_id">General</string>
+    <string name="event_notification_channel">عکس العمل به فعالیت ها</string>
+    <string name="post_notification_channel">پست های دیگران</string>
 
     <string name="share_message">متن از بیان آزاد</string>
     <string name="share_title">انتخاب روش ارسال</string>
 
     <string name="notification_newcomment_title">یک نظر جدید داری:</string>
+    <string name="notification_next">یکی دیگه</string>
+    <string name="notification_turnoff">خاموش کردن</string>
 
 
     <!-- Start Up Activity -->
@@ -81,6 +85,17 @@
     <string name="mypostsempty_info">هنوز پستی ننوشتی. اولین پستت را بنویس!</string>
     <string name="mypostsempty_info_suffix">(-:</string>
     <string name="mypostsempty_newpost">افکارت را به قلم بیاور</string>
+
+
+    <!-- Settings Activity -->
+    <string name="settings_title">@string/main_more_settings</string>
+    <string name="settings_notification">نمایش پست ها به صورت اعلان</string>
+    <string name="settings_widget">تغییر پست در ویجت</string>
+    <string name="settings_widgetguide">ویجت ها همون المان هایی هستن که می‌تونی روی صفحه اصلی گوشیت قرار بدی. برای اضافه کردنشون کافیه که صفحه اصلی دستگاه رو طولانی لمس کنی. بعد میتونی از توی منو ها ویجتی که میخوای اضافه کنی رو پیدا کنی.</string>
+    <string name="settings_period_off">خاموش</string>
+    <string name="settings_period_fivemins">هر 5 دقیقه</string>
+    <string name="settings_period_halfhour">هر نیم ساعت</string>
+    <string name="settings_period_twohours">هر 2 ساعت</string>
 
 
     <!-- About Us Activity -->

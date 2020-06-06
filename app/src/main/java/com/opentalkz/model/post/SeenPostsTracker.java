@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.network.RequestResponse;
 import com.yashoid.network.RequestResponseCallback;
@@ -63,6 +64,14 @@ public class SeenPostsTracker implements Post {
         for (ModelFeatures post: posts) {
             mSeenPostIds.add((String) post.get(ID));
         }
+
+        updateSeenPosts();
+
+        checkToSend();
+    }
+
+    public void onSeenPost(Model post) {
+        mSeenPostIds.add((String) post.get(ID));
 
         updateSeenPosts();
 

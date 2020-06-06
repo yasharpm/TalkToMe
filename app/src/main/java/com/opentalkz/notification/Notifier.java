@@ -3,6 +3,8 @@ package com.opentalkz.notification;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +23,12 @@ import com.opentalkz.R;
 import com.opentalkz.ui.StartUpActivity;
 
 public class Notifier {
+
+    public static final int NOTIFICATION_ID_DEFAULT = 0;
+    public static final String CHANNEL_EVENTS = "Events";
+
+    public static final int NOTIFICATION_ID_POST = 1;
+    public static final String CHANNEL_POST = "RandomPosts";
 
     private static int mOpenActivitiesCount = 0;
 
@@ -64,7 +72,15 @@ public class Notifier {
             return;
         }
 
-        String channelId = context.getString(R.string.default_notification_channel_id);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                    CHANNEL_EVENTS,
+                    context.getString(R.string.event_notification_channel),
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+
+            NotificationManagerCompat.from(context).createNotificationChannel(channel);
+        }
 
         Intent intent = StartUpActivity.newIntent(context);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -75,18 +91,21 @@ public class Notifier {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Notification notification = new NotificationCompat.Builder(context, channelId)
-                .setColor(ContextCompat.getColor(context, R.color.themeColor))
+        Notification notification = new NotificationCompat.Builder(context, CHANNEL_EVENTS)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setColorized(true)
+                .setColor(ContextCompat.getColor(context, R.color.themeColor))
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_SOCIAL)
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
+                .setOngoing(true)
                 .build();
 
-        NotificationManagerCompat.from(context).notify(0, notification);
+        NotificationManagerCompat.from(context).notify(NOTIFICATION_ID_DEFAULT, notification);
     }
 
 }
