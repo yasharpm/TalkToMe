@@ -48,6 +48,8 @@
                     android:scheme="http"
                     android:host="opentalkz.com"
                     android:path="/post.html"/>
+                <data
+                    android:scheme="opentalkz"/>
             </intent-filter>
         </activity>
 

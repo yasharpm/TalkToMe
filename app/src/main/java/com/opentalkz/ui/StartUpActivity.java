@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.opentalkz.Scheme;
 import com.opentalkz.network.SyncResponse;
 import com.opentalkz.notification.PushService;
 import com.opentalkz.notification.post.PostNotificationService;
@@ -61,11 +62,19 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
 
         Intent intent = getIntent();
 
+        Scheme.extrasToUri(intent);
+
         Uri data = intent.getData();
 
-        if (data != null) {
-            String postId = data.getQueryParameter("id");
-            moveOnWithPostId(postId);
+        if (data!= null) {
+            if (Scheme.canHandle(data)) {
+                moveOn(data);
+            }
+            else {
+                String postId = data.getQueryParameter("id");
+                moveOnWithPostId(postId);
+            }
+
             return;
         }
 
@@ -98,12 +107,12 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
             return;
         }
 
-        moveOn();
+        moveOn(null);
     }
 
     private void moveOnWithPostId(final String postId) {
         if (TextUtils.isEmpty(postId)) {
-            moveOn();
+            moveOn(null);
             return;
         }
 
@@ -127,19 +136,25 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
 
                 Toast.makeText(StartUpActivity.this, response.getResponseCode() == 404 ? R.string.startup_postnotfound : R.string.startup_gettingpostfailed, Toast.LENGTH_LONG).show();
 
-                moveOn();
+                moveOn(null);
             }
 
         });
     }
 
-    private void moveOn() {
+    private void moveOn(final Uri data) {
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
                 if (!isFinishing()) {
-                    startActivity(MainActivity.getIntent(StartUpActivity.this));
+                    Intent intent = MainActivity.getIntent(StartUpActivity.this);
+
+                    if (data != null) {
+                        intent.setData(data);
+                    }
+
+                    startActivity(intent);
                     finish();
                 }
             }

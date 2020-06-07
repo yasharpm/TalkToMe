@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.opentalkz.Scheme;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
@@ -151,6 +153,14 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
     }
 
     private void handleIntentData(Intent intent) {
+        Uri data = intent.getData();
+
+        if (data != null) {
+            Scheme.handleUri(this, data);
+
+            intent.setData(null);
+        }
+
         final String postId = intent.getStringExtra(EXTRA_POST_ID);
 
         if (TextUtils.isEmpty(postId)) {
