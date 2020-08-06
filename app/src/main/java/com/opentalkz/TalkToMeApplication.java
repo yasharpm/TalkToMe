@@ -2,7 +2,6 @@ package com.opentalkz;
 
 import android.app.Application;
 
-import com.opentalkz.BuildConfig;
 import com.yashoid.mmv.Managers;
 import com.opentalkz.evaluation.Eval;
 import com.opentalkz.evaluation.Events;
@@ -15,9 +14,6 @@ import com.opentalkz.model.post.PostList;
 import com.opentalkz.model.post.RandomPostList;
 import com.opentalkz.notification.Notifier;
 import com.opentalkz.notification.PushUtils;
-
-import ir.metrix.sdk.Metrix;
-import ir.metrix.sdk.MetrixConfig;
 
 public class TalkToMeApplication extends Application implements Events {
 
@@ -42,9 +38,9 @@ public class TalkToMeApplication extends Application implements Events {
 
         Eval.initialize(this);
 
-        MetrixConfig metrixConfig = new MetrixConfig(this, "ywjyrzlhuwrugdu");
-        metrixConfig.enableLogging(BuildConfig.DEBUG);
-        Metrix.onCreate(metrixConfig);
+//        MetrixConfig metrixConfig = new MetrixConfig(this, "ywjyrzlhuwrugdu");
+//        metrixConfig.enableLogging(BuildConfig.DEBUG);
+//        Metrix.onCreate(metrixConfig);
 
         setupUncaughtExceptionTracker();
 

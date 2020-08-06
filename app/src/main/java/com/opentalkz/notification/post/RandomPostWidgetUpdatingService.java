@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -118,20 +119,30 @@ public class RandomPostWidgetUpdatingService extends JobIntentService {
         int widgetWidthDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
         int widgetHeightDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT);
 
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        Resources res = getResources();
+        DisplayMetrics metrics = res.getDisplayMetrics();
 
         int widgetWidth = (int) (metrics.density * widgetWidthDp);
         int widgetHeight = (int) (metrics.density * widgetHeightDp);
+
+        int horizontalPadding =
+                res.getDimensionPixelSize(R.dimen.postitem_padding_left) +
+                res.getDimensionPixelSize(R.dimen.postitem_padding_right);
+
+        int verticalPadding = 2 * res.getDimensionPixelSize(R.dimen.postitem_padding_vertical);
+
+        int availableWidth = widgetWidth - horizontalPadding;
+        int availableHeight = widgetHeight - verticalPadding;
 
         PostContentView view = new PostContentView(this);
 
         Paint.FontMetrics fm = view.getPaint().getFontMetrics();
         int lineHeight = (int) (fm.bottom - fm.top + fm.leading);
 
-        int lineCount = widgetHeight / lineHeight;
+        int lineCount = Math.max(1, availableHeight / lineHeight);
         view.setMaxLines(lineCount);
 
-        int width = widgetWidth;
+        int width = availableWidth;
         int height = lineCount * lineHeight;
 
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
