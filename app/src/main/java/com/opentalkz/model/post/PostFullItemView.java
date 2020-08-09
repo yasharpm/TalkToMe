@@ -2,13 +2,13 @@ package com.opentalkz.model.post;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 
@@ -18,9 +18,7 @@ import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.Target;
 import com.yashoid.network.RequestResponse;
 import com.yashoid.network.RequestResponseCallback;
-import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
-import com.yashoid.sequencelayout.SequenceReader;
 import com.opentalkz.R;
 import com.opentalkz.Share;
 import com.opentalkz.TTMOffice;
@@ -40,13 +38,22 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
 
     private static final PopupItem[] MORE_ITEMS = { REPORT, REPORT_A_COMMENT };
 
+    public interface OnActionListener {
+
+        void onProfileButtonClicked(String userId);
+
+    }
+
     private PostContentView mContent;
     private TextView mTextLikes;
     private TextView mTextComments;
     private TextView mTextViews;
     private TextView mTextTime;
+    private AppCompatImageView mButtonProfile;
     private View mButtonShare;
     private View mButtonMore;
+
+    private OnActionListener mOnActionListener = null;
 
     private Model mModel;
 
@@ -72,24 +79,38 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
 
         LayoutInflater.from(context).inflate(R.layout.postfullitem, this, true);
 
-        try {
-            XmlResourceParser parser = getResources().getXml(R.xml.sequences_postfullitem);
-            List<Sequence> sequences = new SequenceReader(context).readSequences(parser);
-
-            for (Sequence sequence: sequences) {
-                addSequence(sequence);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        addSequences(R.xml.sequences_postfullitem);
 
         mContent = findViewById(R.id.content);
         mTextComments = findViewById(R.id.text_comments);
         mTextLikes = findViewById(R.id.text_likes);
         mTextViews = findViewById(R.id.text_views);
         mTextTime = findViewById(R.id.text_time);
+        mButtonProfile = findViewById(R.id.button_profile);
         mButtonShare = findViewById(R.id.button_share);
         mButtonMore = findViewById(R.id.button_more);
+
+        mButtonProfile.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (mModel == null) {
+                    return;
+                }
+
+                String userId = mModel.get(USER_ID);
+
+                if (userId == null) {
+                    // This is not necessary. Just to be safe.
+                    return;
+                }
+
+                if (mOnActionListener != null) {
+                    mOnActionListener.onProfileButtonClicked(userId);
+                }
+            }
+
+        });
 
         mButtonShare.setOnClickListener(new OnClickListener() {
 
@@ -116,6 +137,10 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
             }
 
         });
+    }
+
+    public void setOnActionListener(OnActionListener listener) {
+        mOnActionListener = listener;
     }
 
     private Popup.OnItemSelectedListener mOnMoreItemSelectedListener = new Popup.OnItemSelectedListener() {
@@ -178,6 +203,10 @@ public class PostFullItemView extends SequenceLayout implements Target, Post {
     }
 
     private void onModelChanged() {
+        String userId = mModel.get(USER_ID);
+
+        mButtonProfile.setEnabled(userId != null);
+
         Integer views = mModel.get(VIEWS);
         mTextViews.setText(views == null ? "" : String.valueOf(views));
 

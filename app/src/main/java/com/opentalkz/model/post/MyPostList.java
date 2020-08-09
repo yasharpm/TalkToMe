@@ -60,7 +60,7 @@ public interface MyPostList extends ModelList {
                 }
             }
 
-            TTMOffice.runner(mContext).runForUI(Requests.myPosts(20, 0), new RequestResponseCallback<PostListResponse>() {
+            TTMOffice.runner(mContext).runForUI(Requests.myPosts(50, 0), new RequestResponseCallback<PostListResponse>() {
 
                 @Override
                 public void onRequestResponse(RequestResponse<PostListResponse> response) {
@@ -77,7 +77,7 @@ public interface MyPostList extends ModelList {
 
                         model.set(MODEL_LIST, posts);
 
-                        model.cache(true);
+                        model.cache(true); // If not caching, MUST register the models.
                         model.set(STATE, STATE_SUCCESS);
                     }
                     else {

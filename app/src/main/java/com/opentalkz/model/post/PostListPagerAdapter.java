@@ -29,7 +29,9 @@ public class PostListPagerAdapter extends FragmentPagerAdapter implements ModelL
 
     @Override
     public void setModel(Model model) {
-        mPosts = ((List<ModelFeatures>) model.get(MODEL_LIST)).subList(0, mCount);
+        List<ModelFeatures> posts = model.get(MODEL_LIST);
+
+        mPosts = posts.subList(0, Math.min(mCount, posts.size()));
 
         Managers.unregisterTarget(this);
     }

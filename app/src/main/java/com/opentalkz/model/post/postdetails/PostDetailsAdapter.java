@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.opentalkz.model.post.PostFullItemView;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
@@ -26,11 +27,16 @@ public class PostDetailsAdapter extends RecyclerView.Adapter implements CommentL
 
     private ModelFeatures mPostFeatures;
 
+    private PostFullItemView.OnActionListener mOnItemActionListener;
+
     private ModelFeatures mCommentListFeatures;
     private Model mCommentListModel;
 
-    public PostDetailsAdapter(ModelFeatures postFeatures) {
+    public PostDetailsAdapter(ModelFeatures postFeatures,
+                              PostFullItemView.OnActionListener onItemActionListener) {
         mPostFeatures = postFeatures;
+
+        mOnItemActionListener = onItemActionListener;
 
         mCommentListFeatures = new ModelFeatures.Builder()
                 .add(TYPE, TYPE_COMMENT_LIST)
@@ -74,7 +80,7 @@ public class PostDetailsAdapter extends RecyclerView.Adapter implements CommentL
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         switch (viewType) {
             case VIEW_TYPE_POST:
-                return DetailedPostContentViewHolder.newInstance(parent.getContext());
+                return DetailedPostContentViewHolder.newInstance(parent.getContext(), mOnItemActionListener);
             case VIEW_TYPE_COMMENTS_TITLE:
                 return CommentsTitleViewHolder.newInstance(parent);
             case VIEW_TYPE_LOADING:

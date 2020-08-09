@@ -19,6 +19,7 @@ class EventTracker implements Events, Tags {
     private UnitTracker mVisitEventTracker;
     private UnitTracker mPostEventTracker;
     private UnitTracker mMyPostsEventTracker;
+    private UnitTracker mUserProfileEventTracker;
     private UnitTracker mCommentEventTracker;
     private UnitTracker mShareEventTracker;
     private UnitTracker mSelfShareEventTracker;
@@ -29,7 +30,8 @@ class EventTracker implements Events, Tags {
 
         mVisitEventTracker = new UnitTracker(application, EVENT_VISITED, true, LAST_VISIT, null, VISITS_LAST_MONTH, VISITS_LAST_SEVEN_DAYS);
         mPostEventTracker = new UnitTracker(application, EVENT_POSTED, false, LAST_POST_TIME, SENT_POSTS, null, null);
-        mMyPostsEventTracker = new UnitTracker(application, EVENT_VISITED_MY_POSTS, true, MY_POSTS_LAST_VISIT, null, null, MY_POSTS_VISIT_COUNT_LAST_SEVEN_DAYS);
+        mMyPostsEventTracker = new UnitTracker(application, EVENT_VISITED_MY_POSTS, false, MY_POSTS_LAST_VISIT, null, null, MY_POSTS_VISIT_COUNT_LAST_SEVEN_DAYS);
+        mUserProfileEventTracker = new UnitTracker(application, EVENT_VISITED_USER_PROFILE, false, null, null, null, null);
         mCommentEventTracker = new UnitTracker(application, EVENT_COMMENTED, false, LAST_COMMENT_TIME, null, SENT_COMMENT_LAST_MONTH, SENT_COMMENTS_LAST_SEVEN_DAYS);
         mShareEventTracker = new UnitTracker(application, EVENT_SHARED, false, null, null, SHARED_POSTS_LAST_MONTH, null);
         mSelfShareEventTracker = new UnitTracker(application, EVENT_SHARED, false, null, null, SHARED_SELF_POSTS_LAST_MONTH, null);
@@ -79,6 +81,10 @@ class EventTracker implements Events, Tags {
 
             case EVENT_VISITED_MY_POSTS:
                 mMyPostsEventTracker.onEvent();
+                return;
+
+            case EVENT_VISITED_USER_PROFILE:
+                mUserProfileEventTracker.onEvent();
                 return;
 
             case EVENT_CRASHED:

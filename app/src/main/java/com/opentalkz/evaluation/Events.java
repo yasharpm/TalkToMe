@@ -12,6 +12,7 @@ public interface Events {
     /* ********** AB Events ********** */
     String EVENT_VISITED = "visited";
     String EVENT_VISITED_MY_POSTS = "visited_my_posts";
+    String EVENT_VISITED_USER_PROFILE = "visited_user_profile";
     String EVENT_CRASHED = "crashed";
 
 }

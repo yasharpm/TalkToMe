@@ -99,18 +99,17 @@
     <dimen name="postfullitem_content_margin_left">@dimen/postitem_padding_left</dimen>
     <dimen name="postfullitem_content_margin_right">@dimen/postitem_padding_right</dimen>
     <dimen name="postfullitem_divider_margin_horizontal">@dimen/postfullitem_content_margin_left</dimen>
-    <dimen name="postfullitem_divider_margin_vertical">12dp</dimen>
+    <dimen name="postfullitem_divider_margin_vertical">8dp</dimen>
     <dimen name="postfullitem_divider_height">1dp</dimen>
     <dimen name="postfullitem_status_height">36dp</dimen>
-    <dimen name="postfullitem_padding_bottom">4dp</dimen>
-    <dimen name="postfullitem_status_margin_left">8dp</dimen>
-    <dimen name="postfullitem_more_size">@dimen/postfullitem_status_height</dimen>
-    <dimen name="postfullitem_time_margin_left">16dp</dimen>
+    <dimen name="postfullitem_status_margin_left">@dimen/postfullitem_divider_margin_horizontal</dimen>
     <dimen name="postfullitem_time_margin_right">0dp</dimen>
     <dimen name="postfullitem_statustext_width">40dp</dimen>
     <dimen name="postfullitem_statusimage_width">@dimen/postfullitem_status_height</dimen>
-    <dimen name="postfullitem_status_margin_right">12dp</dimen>
+    <dimen name="postfullitem_status_margin_right">@dimen/postfullitem_divider_margin_horizontal</dimen>
     <dimen name="postfullitem_statusimage_padding">12dp</dimen>
+    <dimen name="postfullitem_button_size">36dp</dimen>
+    <dimen name="postfullitem_button_padding">4dp</dimen>
 
 
     <!-- Comments Title Item -->

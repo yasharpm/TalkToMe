@@ -29,6 +29,7 @@ public interface Post extends Basics, WithIndicator, Stateful {
     String TYPE_POST = "Post";
 
     String ID = "id";
+    String USER_ID = "userId";
     String CONTENT = "content";
     String CREATED_TIME = "createdTime";
     String VIEWS = "views";

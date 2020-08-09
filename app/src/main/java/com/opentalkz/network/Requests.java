@@ -23,12 +23,13 @@ public class Requests {
     private static final int RANDOM_POSTS = 3;
     private static final int GET_POST = 4;
     private static final int MY_POSTS = 5;
-    private static final int SEEN_POSTS = 6;
-    private static final int NEW_COMMENT = 7;
-    private static final int LIKE_OR_DISLIKE = 8;
-    private static final int REPORT = 9;
-    private static final int SYNC = 10;
-    private static final int UPDATE_FCM_TOKEN = 11;
+    private static final int USER_POSTS = 6;
+    private static final int SEEN_POSTS = 7;
+    private static final int NEW_COMMENT = 8;
+    private static final int LIKE_OR_DISLIKE = 9;
+    private static final int REPORT = 10;
+    private static final int SYNC = 11;
+    private static final int UPDATE_FCM_TOKEN = 12;
 
     private static SparseArray<NetworkRequest> sRequests = new SparseArray<>();
 
@@ -140,6 +141,22 @@ public class Requests {
         }
 
         return (PreparedRequest<PostListResponse>) request.prepare("count", count, "offset", offset);
+    }
+
+    public static PreparedRequest<PostListResponse> userPosts(String userId, int count, int offset) {
+        NetworkRequest request = sRequests.get(USER_POSTS);
+
+        if (request == null) {
+            request = TTMOffice.network().getRequest(
+                    PostListResponse.class,
+                    "GET",
+                    BASE_URL + "post/userPosts?id={id}&count={count}&offset={offset}"
+            );
+
+            sRequests.put(USER_POSTS, request);
+        }
+
+        return (PreparedRequest<PostListResponse>) request.prepare("id", userId, "count", count, "offset", offset);
     }
 
     public static PreparedRequest<SeenPostsResponse> seenPosts(List<String> postIds) {

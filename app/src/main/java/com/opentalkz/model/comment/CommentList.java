@@ -9,6 +9,7 @@ import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
 import com.opentalkz.model.list.ModelList;
 import com.opentalkz.model.post.Post;
+import com.yashoid.mmv.SingleShotTarget;
 
 import java.util.List;
 
@@ -50,22 +51,17 @@ public interface CommentList extends ModelList {
                     .add(Post.ID, postId)
                     .build();
 
-            Managers.registerTarget(new PersistentTarget() {
+            SingleShotTarget.get(postFeatures, new SingleShotTarget.ModelCallback() {
 
                 @Override
-                public void setModel(Model post) {
-                    Managers.unregisterTarget(this);
-
+                public void onModelReady(Model post) {
                     List<ModelFeatures> comments = post.get(Post.COMMENTS);
 
                     model.set(MODEL_LIST, comments);
                     model.set(STATE, STATE_SUCCESS);
                 }
 
-                @Override
-                public void onFeaturesChanged(String... featureNames) { }
-
-            }, postFeatures);
+            });
         }
 
     }

@@ -33,4 +33,9 @@
         <item name="tint">@color/postfullitem_statusimage_tint</item>
     </style>
 
+    <style name="PostButton">
+        <item name="android:padding">@dimen/postfullitem_button_padding</item>
+        <item name="tint">@color/postfullitem_button_tint</item>
+    </style>
+
 </resources>

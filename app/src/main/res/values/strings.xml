@@ -81,6 +81,10 @@
     <string name="myposts_title">پست‌های من</string>
 
 
+    <!-- Profile Activity -->
+    <string name="profile_title">پست های کاربر</string>
+
+
     <!-- My Posts Empty View Holder -->
     <string name="mypostsempty_info">هنوز پستی ننوشتی. اولین پستت را بنویس!</string>
     <string name="mypostsempty_info_suffix">(-:</string>

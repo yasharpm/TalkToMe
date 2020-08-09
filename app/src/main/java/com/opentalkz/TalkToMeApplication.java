@@ -2,6 +2,7 @@ package com.opentalkz;
 
 import android.app.Application;
 
+import com.opentalkz.model.post.UserPostList;
 import com.yashoid.mmv.Managers;
 import com.opentalkz.evaluation.Eval;
 import com.opentalkz.evaluation.Events;
@@ -33,6 +34,7 @@ public class TalkToMeApplication extends Application implements Events {
         Managers.addTypeProvider(new Comment.CommentTypeProvider(this));
         Managers.addTypeProvider(new PendingPost.PendingPostTypeProvider(this));
         Managers.addTypeProvider(new MyPostList.MyPostListTypeProvider(this));
+        Managers.addTypeProvider(new UserPostList.UserPostListTypeProvider(this));
 
         Managers.registerModel(MyPostList.FEATURES);
 

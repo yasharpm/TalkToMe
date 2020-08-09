@@ -157,26 +157,34 @@ public class LoadableContentView extends ViewGroup {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         mGestureDetector.onTouchEvent(ev);
 
-        return super.dispatchTouchEvent(ev);
-    }
+        super.dispatchTouchEvent(ev);
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return mState == STATE_SCROLLING || mState == STATE_SETTLING;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        boolean result = mGestureDetector.onTouchEvent(event);
-
-        if (event.getAction() != MotionEvent.ACTION_DOWN && event.getAction() != MotionEvent.ACTION_MOVE) {
+        if (ev.getAction() != MotionEvent.ACTION_DOWN && ev.getAction() != MotionEvent.ACTION_MOVE) {
             if (mState != STATE_LOADING && mState != STATE_IDLE) {
                 settle();
             }
         }
 
-        return result;
+        return true;
     }
+
+//    @Override
+//    public boolean onInterceptTouchEvent(MotionEvent ev) {
+//        return mState == STATE_SCROLLING || mState == STATE_SETTLING;
+//    }
+//
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        boolean result = mGestureDetector.onTouchEvent(event);
+//
+//        if (event.getAction() != MotionEvent.ACTION_DOWN && event.getAction() != MotionEvent.ACTION_MOVE) {
+//            if (mState != STATE_LOADING && mState != STATE_IDLE) {
+//                settle();
+//            }
+//        }
+//
+//        return result;
+//    }
 
     private GestureDetector.OnGestureListener mOnGestureListener = new GestureDetector.OnGestureListener() {
 
@@ -201,6 +209,14 @@ public class LoadableContentView extends ViewGroup {
                 return false;
             }
 
+            boolean scrollingDown = distanceY > 0;
+
+            View child = getChildAt(0);
+
+            if (child.canScrollVertically(scrollingDown ? 1 : -1) && mState != STATE_SCROLLING) {
+                return true;
+            }
+
             if (mState == STATE_IDLE) {
                 mState = STATE_SCROLLING;
 
@@ -211,7 +227,21 @@ public class LoadableContentView extends ViewGroup {
                 onStateChanged();
             }
 
+            float previousScrollDistance = mScrollDistance;
+
             mScrollDistance += -distanceY;
+
+            if (previousScrollDistance * mScrollDistance < 0) {
+                // We have a direction change in scroll.
+                mState = STATE_IDLE;
+
+                mScrollDistance = 0;
+                mDisplacementProgress = 0;
+
+                onDisplacementProgressChanged();
+
+                return true;
+            }
 
             float adjustedScroll = (float) Math.min(mLoadAreaHeight, Math.pow(Math.abs(mScrollDistance), SCROLL_REDUCTION_RATE));
 

@@ -66,9 +66,16 @@
 
         android:gravity="left|center_vertical"/>
 
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/postfullitem_divider"/>
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/button_more"
-        style="@style/PostStatusImageStyle"
+        style="@style/PostButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
@@ -76,10 +83,18 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/button_share"
-        style="@style/PostStatusImageStyle"
+        style="@style/PostButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
         app:srcCompat="@drawable/ic_share"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/button_profile"
+        style="@style/PostButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:srcCompat="@drawable/ic_profile"/>
 
 </merge>

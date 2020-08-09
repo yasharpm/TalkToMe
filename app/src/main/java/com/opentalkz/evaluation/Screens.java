@@ -9,5 +9,7 @@ public interface Screens {
     String SCREEN_NEW_POST = "new_post";
     String SCREEN_MY_POSTS = "my_posts";
     String SCREEN_MY_POSTS_PAGER = "my_posts_pager";
+    String SCREEN_USER_PROFILE = "user_profile";
+    String SCREEN_USER_PROFILE_PAGER = "user_profile_pager";
 
 }

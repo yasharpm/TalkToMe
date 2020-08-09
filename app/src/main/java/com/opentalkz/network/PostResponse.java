@@ -28,6 +28,7 @@ public class PostResponse implements Post {
         builder.add(TYPE, TYPE_POST);
 
         builder.add(ID, mId);
+        builder.add(USER_ID, mUserId);
         builder.add(CONTENT, mContent);
         builder.add(CREATED_TIME, mCreatedTime);
         builder.add(VIEWS, mViewCount);

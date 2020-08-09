@@ -20,7 +20,7 @@ public class RequestRunner {
 
     private static final String PREFERENCES = "RequestRunner";
 
-    private static final String USER_ID = "user_id";
+    public static final String USER_ID = "user_id";
     private static final String REFRESH_TOKEN = "refresh_token";
     private static final String TOKEN = "token";
     private static final String TOKEN_EXPIRATION = "token_expiration";
