@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Vertical>
+        <Span size="0.75w"/>
+        <Span id="logo" size="60dp"/>
+        <Span size="96dp"/>
+        <Span id="slang_1" size="48dp"/>
+        <Span size="36dp"/>
+        <Span id="slang_2" size="60dp"/>
+        <Span size="1.5w"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="1w"/>
+        <Span id="logo" size="60dp"/>
+        <Span size="1w"/>
+    </Horizontal>
+
+<!--    <Horizontal>-->
+<!--        <Span size="1w"/>-->
+<!--        <Span id="slang_1" size="wrap"/>-->
+<!--        <Span size="24dp"/>-->
+<!--    </Horizontal>-->
+
+<!--    <Horizontal>-->
+<!--        <Span size="24dp"/>-->
+<!--        <Span id="slang_2" size="wrap"/>-->
+<!--        <Span size="1w"/>-->
+<!--    </Horizontal>-->
+
+    <Horizontal>
+        <Span size="1w"/>
+        <Span id="slang_1" size="wrap"/>
+        <Span size="1w"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="1w"/>
+        <Span id="slang_2" size="wrap"/>
+        <Span size="1w"/>
+    </Horizontal>
+
+</Sequences>

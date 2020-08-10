@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.opentalkz.Preferences;
 import com.opentalkz.Scheme;
 import com.opentalkz.network.SyncResponse;
 import com.opentalkz.notification.PushService;
@@ -34,7 +35,8 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
 
     private static final String TAG = "StartUpActivity";
 
-    private static final long START_DELAY = 1000;
+    private static final long FIRST_START_DELAY = 6_000;
+    private static final long START_DELAY = 2_000;
 
     public static Intent newIntent(Context context) {
         Intent intent = new Intent(context, StartUpActivity.class);
@@ -143,11 +145,18 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
     }
 
     private void moveOn(final Uri data) {
+        final boolean firstRun =
+                Preferences.get(this).readBoolean(MainActivity.PREF_FIRST_RUN, true);
+
+        long delay = firstRun ? FIRST_START_DELAY : START_DELAY;
+
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
                 if (!isFinishing()) {
+                    // TODO If first run, go to intro screen and community selection.
+
                     Intent intent = MainActivity.getIntent(StartUpActivity.this);
 
                     if (data != null) {
@@ -159,7 +168,7 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
                 }
             }
 
-        }, START_DELAY);
+        }, delay);
     }
 
 }

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.yashoid.sequencelayout.SequenceLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    app:sequences="@xml/sequences_startup"
 
     android:background="@color/startup_background">
     
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_gravity="center"
@@ -14,4 +17,22 @@
         android:background="@drawable/startup_icon_background"
         app:srcCompat="@drawable/startup_icon"/>
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/slang_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:srcCompat="@drawable/slang_1"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/slang_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:srcCompat="@drawable/slang_2"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
+
+</com.yashoid.sequencelayout.SequenceLayout>

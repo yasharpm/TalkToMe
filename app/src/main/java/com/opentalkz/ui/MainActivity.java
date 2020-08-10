@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
 
     private static final String EXTRA_POST_ID = "post_id";
 
-    private static final String PREF_FIRST_RUN = "first_run";
+    public static final String PREF_FIRST_RUN = "first_run";
 
     private static final PopupItem MY_POSTS = new PopupItem(R.string.main_more_myposts, R.drawable.ic_post);
     private static final PopupItem SETTINGS = new PopupItem(R.string.main_more_settings, R.drawable.ic_settings);

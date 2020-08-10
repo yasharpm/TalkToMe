@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">OpenTalkz</string>
+    <string name="app_name">بیان آزاد</string>
     <string name="default_notification_channel_id">General</string>
     <string name="event_notification_channel">عکس العمل به فعالیت ها</string>
     <string name="post_notification_channel">پست های دیگران</string>
@@ -14,17 +14,17 @@
 
 
     <!-- Start Up Activity -->
-    <string name="startup_postnotfound">پست مورد نظر پیدا نشد!</string>
-    <string name="startup_gettingpostfailed">خطا در گرفتن پست از سرور!</string>
+    <string name="startup_postnotfound">دلنوشته مورد نظر پیدا نشد!</string>
+    <string name="startup_gettingpostfailed">خطا در گرفتن دلنوشته از سرور!</string>
 
     
     <!-- Main Activity -->
-    <string name="main_more_myposts">پست‌های من</string>
+    <string name="main_more_myposts">دلنوشته‌های من</string>
     <string name="main_more_settings">تنظیمات</string>
     <string name="main_more_aboutus">درباره ما</string>
     <string name="main_more_guide">راهنما</string>
-    <string name="main_newpost">حرف بزن</string>
-    <string name="main_firsttimeinfo">برای دیدن پست‌های جدید، این پست را به سمت پایین بکشید…</string>
+    <string name="main_newpost">چه احساسی داری</string>
+    <string name="main_firsttimeinfo">برای دیدن دلنوشته‌های جدید، این پیغام را به سمت پایین بکشید…</string>
     <string name="main_loaderror">متاسفانه مشکلی در ارتباط با سرور پیش آمده است. لطفا مجدد تلاش نمایید…</string>
 
 
@@ -44,7 +44,7 @@
     
 
     <!-- Post Details Fragment -->
-    <string name="postdetails_editcomment_hint">نظر خود را اینجا بنویسید…</string>
+    <string name="postdetails_editcomment_hint">چه احساسی پیدا کردی؟</string>
 
 
     <!-- Time Util -->
@@ -56,16 +56,16 @@
 
 
     <!-- Comments Title Item -->
-    <string name="commentstitle">نظرات شما:</string>
+    <string name="commentstitle">افکار شما:</string>
 
 
     <!-- No Comments -->
-    <string name="nocomments">هنوز نظری نوشته نشده است. اولین نظر را بنویس!</string>
+    <string name="nocomments">هنوز نظری نوشته نشده است. اولین نفر باش!</string>
     <string name="nocomments_smiley">:-)</string>
 
 
     <!-- New Post Activity -->
-    <string name="newpost_title">افکارت را به قلم بیاور…</string>
+    <string name="newpost_title">حرف دلت رو بنویس…</string>
     <string name="newpost_wordcount">تعداد کلمات:</string>
     <string name="newpost_button">ارسال</string>
 
@@ -73,28 +73,28 @@
     <!-- Pending Post -->
     <string name="pendingpost_no_content">متنی برای ارسال نوشته نشده است.</string>
     <string name="pendingpost_short_content">متن وارد شده خیلی کوتاه است. (حداقل %d کاراکتر)</string>
-    <string name="pendingpost_error">ارسال پست ممکن نشد. خطای اتصال به سرور.</string>
+    <string name="pendingpost_error">ارسال دلنوشته ممکن نشد. خطای اتصال به سرور.</string>
     <string name="pendingpost_success">ارسال موفق</string>
 
 
     <!-- My Posts Activity -->
-    <string name="myposts_title">پست‌های من</string>
+    <string name="myposts_title">دلنوشته‌های من</string>
 
 
     <!-- Profile Activity -->
-    <string name="profile_title">پست های کاربر</string>
+    <string name="profile_title">دلنوشته‌های یک ناشناس</string>
 
 
     <!-- My Posts Empty View Holder -->
-    <string name="mypostsempty_info">هنوز پستی ننوشتی. اولین پستت را بنویس!</string>
+    <string name="mypostsempty_info">دلنوشته‌ای نداری. جان را چه خوشی باشد بی صحبت جانانه!</string>
     <string name="mypostsempty_info_suffix">(-:</string>
-    <string name="mypostsempty_newpost">افکارت را به قلم بیاور</string>
+    <string name="mypostsempty_newpost">الآن چه احساسی داری؟</string>
 
 
     <!-- Settings Activity -->
     <string name="settings_title">@string/main_more_settings</string>
-    <string name="settings_notification">نمایش پست ها به صورت اعلان</string>
-    <string name="settings_widget">تغییر پست در ویجت</string>
+    <string name="settings_notification">نمایش دلنوشته‌ها به صورت اعلان</string>
+    <string name="settings_widget">تغییر دلنوشته در ویجت</string>
     <string name="settings_widgetguide">ویجت ها همون المان هایی هستن که می‌تونی روی صفحه اصلی گوشیت قرار بدی. برای اضافه کردنشون کافیه که صفحه اصلی دستگاه رو طولانی لمس کنی. بعد میتونی از توی منو ها ویجتی که میخوای اضافه کنی رو پیدا کنی.</string>
     <string name="settings_period_off">خاموش</string>
     <string name="settings_period_fivemins">هر 5 دقیقه</string>
@@ -104,7 +104,8 @@
 
     <!-- About Us Activity -->
     <string name="aboutus_title">@string/main_more_aboutus</string>
-    <string name="aboutus_quote1">افکار زنده می‌مانند و به دوردست‌ها سفر می‌کنند</string>
+    <string name="aboutus_quote1">جانا به خرابات آ تا لذت جان بینی\n
+    جان را چه خوشی باشد بی صحبت جانانه</string>
     <string name="aboutus_about1">«بیان آزاد» فضای گفتگوی آزادی است که همه در آن شرکت دارند. این فضا بر خلاف شبکه‌های اجتماعی معمول، که کاربران خود را تشویق به جلب توجه می‌کنند، به آدم‌ها این امکان را می‌دهد تا افکار واقعی و احساسات درونی خود را بدون ترس از قضاوت، با دیگران در میان گذاشته و تبادل نظر کنند</string>
     <string name="aboutus_quote2">وقتی مترسک نمیتونه بره پس همون یه پاشم اضافیه</string>
     <string name="aboutus_about2">ما آرمان‌هایی فراتر از تنها ایجاد یک محیط سالم و امن در فضای مجازی داریم. «بیان آزاد» تلاش می‌کند تا محیط کاریه عادلانه‌تری ایجاد کرده و راه را برای داشتن جامعه‌ای بهتر و سالم‌تر هموار نماید.</string>
