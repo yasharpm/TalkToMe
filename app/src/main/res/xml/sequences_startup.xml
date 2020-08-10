@@ -2,13 +2,13 @@
 <Sequences>
 
     <Vertical>
-        <Span size="0.75w"/>
+        <Span size="0.3w"/>
         <Span id="logo" size="60dp"/>
-        <Span size="96dp"/>
+        <Span size="0.4w"/>
         <Span id="slang_1" size="48dp"/>
         <Span size="36dp"/>
         <Span id="slang_2" size="60dp"/>
-        <Span size="1.5w"/>
+        <Span size="1w"/>
     </Vertical>
 
     <Horizontal>
