@@ -49,6 +49,10 @@
                     android:host="opentalkz.com"
                     android:path="/post.html"/>
                 <data
+                    android:scheme="https"
+                    android:host="opentalkz.com"
+                    android:path="/post.html"/>
+                <data
                     android:scheme="opentalkz"/>
             </intent-filter>
         </activity>
@@ -103,15 +107,6 @@
         </receiver>
 
         <receiver android:name=".notification.post.RefreshReceiver">
-        </receiver>
-
-        <receiver
-            android:name="ir.metrix.sdk.MetrixReferrerReceiver"
-            android:permission="android.permission.INSTALL_PACKAGES"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
         </receiver>
 
         <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
