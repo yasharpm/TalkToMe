@@ -103,7 +103,7 @@ public class RandomPostBox {
         mIsGettingPosts = true;
 
         TTMOffice.runner(mContext).runInBackground(
-                Requests.randomPosts(NUMBER_OF_POSTS_TO_GET, "fa", "IR"),
+                Requests.randomPosts(NUMBER_OF_POSTS_TO_GET, "fa", "IR", null),
                 new RequestResponseCallback<RandomPostsResponse>() {
 
                     @Override

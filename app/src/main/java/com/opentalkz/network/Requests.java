@@ -30,6 +30,7 @@ public class Requests {
     private static final int REPORT = 10;
     private static final int SYNC = 11;
     private static final int UPDATE_FCM_TOKEN = 12;
+    private static final int GET_COMMUNITY = 13;
 
     private static SparseArray<NetworkRequest> sRequests = new SparseArray<>();
 
@@ -95,20 +96,28 @@ public class Requests {
         return (PreparedRequest<PostResponse>) request.prepare(body);
     }
 
-    public static PreparedRequest<RandomPostsResponse> randomPosts(int count, String language, String country) {
+    public static PreparedRequest<RandomPostsResponse> randomPosts(int count, String language,
+                                                                   String country,
+                                                                   String communityId) {
         NetworkRequest request = sRequests.get(RANDOM_POSTS);
 
         if (request == null) {
             request = TTMOffice.network().getRequest(
                     RandomPostsResponse.class,
                     "GET",
-                    BASE_URL + "post/random?count={count}&language={lang}&country={country}"
+                    BASE_URL + "post/random?count={count}&language={lang}&country={country}&community={communityId}"
             );
 
             sRequests.put(RANDOM_POSTS, request);
         }
 
-        return (PreparedRequest<RandomPostsResponse>) request.prepare("count", count, "lang", language, "country", country);
+        communityId = communityId == null ? "" : communityId;
+
+        return (PreparedRequest<RandomPostsResponse>) request.prepare(
+                "count", count,
+                "lang", language,
+                "country", country,
+                "communityId", communityId);
     }
 
     public static PreparedRequest<PostResponse> getPost(String postId) {
@@ -125,6 +134,22 @@ public class Requests {
         }
 
         return (PreparedRequest<PostResponse>) request.prepare("id", postId);
+    }
+
+    public static PreparedRequest<CommunityResponse> getCommunity(String communityId) {
+        NetworkRequest request = sRequests.get(GET_COMMUNITY);
+
+        if (request == null) {
+            request = TTMOffice.network().getRequest(
+                    PostResponse.class,
+                    "GET",
+                    BASE_URL + "community?id={id}"
+            );
+
+            sRequests.put(GET_COMMUNITY, request);
+        }
+
+        return (PreparedRequest<CommunityResponse>) request.prepare("id", communityId);
     }
 
     public static PreparedRequest<PostListResponse> myPosts(int count, int offset) {

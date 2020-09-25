@@ -75,6 +75,12 @@
         <activity android:name=".ui.ProfileActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".model.community.AddCommunityActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".model.community.CommunityListActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ui.SettingsActivity"
             android:screenOrientation="portrait"/>
 

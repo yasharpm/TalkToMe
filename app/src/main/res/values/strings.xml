@@ -12,18 +12,25 @@
     <string name="notification_next">یکی دیگه</string>
     <string name="notification_turnoff">خاموش کردن</string>
 
+    <string name="default_community_name">جامعه عموم</string>
+    <string name="default_community_description">جامعه پیش فرض که بین همه کاربران بیان آزاد مشترک می‌باشد.</string>
 
-    <!-- Start Up Activity -->
-    <string name="startup_postnotfound">دلنوشته مورد نظر پیدا نشد!</string>
-    <string name="startup_gettingpostfailed">خطا در گرفتن دلنوشته از سرور!</string>
+
+    <!-- Scheme -->
+    <string name="scheme_postnotfound">دلنوشته مورد نظر پیدا نشد!</string>
+    <string name="scheme_gettingpostfailed">خطا در گرفتن دلنوشته از سرور!</string>
+    <string name="scheme_communitynotfound">جامعه مورد نظر پیدا نشد!</string>
+    <string name="scheme_gettingcommunityfailed">خطا در گرفتن اطلاعات از سرور!</string>
 
     
     <!-- Main Activity -->
     <string name="main_more_myposts">دلنوشته‌های من</string>
+    <string name="main_more_communities">لیست جوامع</string>
     <string name="main_more_settings">تنظیمات</string>
     <string name="main_more_aboutus">درباره ما</string>
     <string name="main_more_guide">راهنما</string>
     <string name="main_newpost">چه احساسی داری</string>
+    <string name="main_unnamed_community">جامعه بی نام</string>
     <string name="main_firsttimeinfo">برای دیدن دلنوشته‌های جدید، این پیغام را به سمت پایین بکشید…</string>
     <string name="main_loaderror">متاسفانه مشکلی در ارتباط با سرور پیش آمده است. لطفا مجدد تلاش نمایید…</string>
 
@@ -89,6 +96,18 @@
     <string name="mypostsempty_info">دلنوشته‌ای نداری. جان را چه خوشی باشد بی صحبت جانانه!</string>
     <string name="mypostsempty_info_suffix">(-:</string>
     <string name="mypostsempty_newpost">الآن چه احساسی داری؟</string>
+
+
+    <!-- Add Community Activity -->
+    <string name="addcommunity_title">جامعه جدید</string>
+    <string name="addcommunity_add">اضافه کردن</string>
+    <string name="addcommunity_alreadyexists">این جامعه قبلا اضافه شده است.</string>
+
+
+    <!-- Community List Activity -->
+    <string name="communitylist_title">لیست جوامع</string>
+    <string name="communitylist_intro">جامعه ها زیر مجموعه های مخفی یا آشکار از کل جامعه کاربرها هستند. جامعه‌های مختلف برای کسانی که دردهای مشترکی دارند، ساخته شده‌اند. با عضویت در این جوامع می‌توانید با کسانی صحبت کنید که شما را بهتر درک میکنند. جامعه ها را فقط با داشتن لینک آنها میتوانید اضافه کنید.</string>
+    <string name="communitylist_select">یک جامعه را انتخاب کنید:</string>
 
 
     <!-- Settings Activity -->

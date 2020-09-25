@@ -12,143 +12,102 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.yashoid.mmv.ModelFeatures;
+import com.opentalkz.model.list.ModelListAdapter;
+import com.opentalkz.model.list.TargetViewHolder;
+import com.yashoid.mmv.Model;
 import com.opentalkz.R;
 
-import java.util.List;
-
-public class PostListAdapter extends RecyclerView.Adapter {
+public class PostListAdapter extends ModelListAdapter<PostListAdapter.OnPostItemClickListener> {
 
     private static final int POST_MAX_LINES = 4;
 
-    private static final int TYPE_POST = 0;
-    private static final int TYPE_NO_POSTS = 1;
-
-    public interface OnItemClickListener {
-
-        void onItemClicked(int position, ModelFeatures modelFeatures);
+    public interface OnPostItemClickListener extends ModelListAdapter.OnItemClickListener {
 
         void onNewPostClicked();
 
     }
 
-    private List<ModelFeatures> mPosts = null;
-
-    private OnItemClickListener mOnItemClickListener = null;
-
     public PostListAdapter() {
 
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mOnItemClickListener = listener;
-    }
+    @Override
+    protected TargetViewHolder onCreateItemViewHolder(ViewGroup parent, OnPostItemClickListener itemListener) {
+        PostFullItemView view = new PostFullItemView(parent.getContext());
 
-    public void setPosts(List<ModelFeatures> posts) {
-        mPosts = posts;
+        view.setMaxLines(POST_MAX_LINES);
 
-        notifyDataSetChanged();
+        final TargetViewHolder viewHolder = new TargetViewHolder(view) {
+
+            @Override
+            protected void onModelChanged(Model model) {
+                ((PostFullItemView) itemView).setModel(model);
+            }
+
+        };
+
+        view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                onItemClicked(viewHolder.getBindingAdapterPosition());
+            }
+
+        });
+
+        return viewHolder;
     }
 
     @Override
-    public int getItemViewType(int position) {
-        return (mPosts == null || !mPosts.isEmpty()) ? TYPE_POST : TYPE_NO_POSTS;
-    }
-
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    protected TargetViewHolder onCreateNoItemsViewHolder(ViewGroup parent, OnPostItemClickListener itemListener) {
         Context context = parent.getContext();
 
-        switch (viewType) {
-            case TYPE_POST:
-                PostFullItemView view = new PostFullItemView(context);
+        View emptyView = LayoutInflater.from(context).inflate(R.layout.view_mypostsempty, parent, false);
 
-                view.setMaxLines(POST_MAX_LINES);
+        TextView textInfo = emptyView.findViewById(R.id.text_info);
 
-                final RecyclerView.ViewHolder viewHolder = new RecyclerView.ViewHolder(view) { };
+        String info = context.getString(R.string.mypostsempty_info);
+        String suffix = context.getString(R.string.mypostsempty_info_suffix);
+        final int suffixColor = ResourcesCompat.getColor(context.getResources(), R.color.mypostsitem_info_suffix_textcolor, null);
 
-                view.setOnClickListener(new View.OnClickListener() {
+        SpannableStringBuilder ssb = new SpannableStringBuilder(info + " " + suffix);
+        ssb.setSpan(new MetricAffectingSpan() {
 
-                    @Override
-                    public void onClick(View v) {
-                        onItemClicked(viewHolder.getAdapterPosition());
-                    }
+            @Override
+            public void updateMeasureState(@NonNull TextPaint textPaint) { }
 
-                });
+            @Override
+            public void updateDrawState(TextPaint tp) {
+                tp.setColor(suffixColor);
+            }
 
-                return viewHolder;
-            case TYPE_NO_POSTS:
-                View emptyView = LayoutInflater.from(context).inflate(R.layout.view_mypostsempty, parent, false);
+        }, info.length() + 1, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-                TextView textInfo = emptyView.findViewById(R.id.text_info);
+        textInfo.setText(ssb);
 
-                String info = context.getString(R.string.mypostsempty_info);
-                String suffix = context.getString(R.string.mypostsempty_info_suffix);
-                final int suffixColor = ResourcesCompat.getColor(context.getResources(), R.color.mypostsitem_info_suffix_textcolor, null);
+        TargetViewHolder emptyHolder = new TargetViewHolder(emptyView) {
 
-                SpannableStringBuilder ssb = new SpannableStringBuilder(info + " " + suffix);
-                ssb.setSpan(new MetricAffectingSpan() {
+            @Override
+            protected void onModelChanged(Model model) { }
 
-                    @Override
-                    public void updateMeasureState(@NonNull TextPaint textPaint) { }
+        };
 
-                    @Override
-                    public void updateDrawState(TextPaint tp) {
-                        tp.setColor(suffixColor);
-                    }
+        emptyView.findViewById(R.id.button_newpost).setOnClickListener(new View.OnClickListener() {
 
-                }, info.length() + 1, ssb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            @Override
+            public void onClick(View v) {
+                onNewPostClicked();
+            }
 
-                textInfo.setText(ssb);
+        });
 
-                RecyclerView.ViewHolder emptyHolder = new RecyclerView.ViewHolder(emptyView) { };
-
-                emptyView.findViewById(R.id.button_newpost).setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        onNewPostClicked();
-                    }
-
-                });
-
-                return emptyHolder;
-        }
-
-        throw new IllegalArgumentException("Unrecognized view type '" + viewType + "'.");
+        return emptyHolder;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (mPosts == null || mPosts.isEmpty()) {
-            // Bypassing the binding of the empty view.
-            return;
-        }
-
-        ModelFeatures postFeatures = mPosts.get(position);
-
-        PostFullItemView itemView = (PostFullItemView) holder.itemView;
-
-        itemView.setPost(postFeatures);
-    }
-
-    @Override
-    public int getItemCount() {
-        return mPosts == null ? 0 : (mPosts.isEmpty() ? 1 : mPosts.size());
-    }
-
-    private void onItemClicked(int position) {
-        if (mOnItemClickListener != null) {
-            mOnItemClickListener.onItemClicked(position, mPosts.get(position));
-        }
-    }
-
-    private void onNewPostClicked() {
-        if (mOnItemClickListener != null) {
-            mOnItemClickListener.onNewPostClicked();
+    protected void onNewPostClicked() {
+        if (getOnItemClickListener() != null) {
+            getOnItemClickListener().onNewPostClicked();
         }
     }
 

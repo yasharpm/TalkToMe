@@ -29,7 +29,7 @@ import com.yashoid.mmv.Target;
 import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity implements UserPostList, Target,
-        PostListAdapter.OnItemClickListener, Screens, Events {
+        PostListAdapter.OnPostItemClickListener, Screens, Events {
 
     private static final String EXTRA_USER_ID = "user_id";
 
@@ -127,7 +127,7 @@ public class ProfileActivity extends AppCompatActivity implements UserPostList, 
 
         List<ModelFeatures> posts = mPostsModel.get(MODEL_LIST);
 
-        mPostListAdapter.setPosts(posts);
+        mPostListAdapter.setModels(posts);
     }
 
     @Override

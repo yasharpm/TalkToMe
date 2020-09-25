@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_regular"
+        android:textSize="@dimen/item_community_name_textsize"
+        android:textColor="@color/item_community_name_textcolor"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_regular"
+        android:textSize="@dimen/item_community_description_textsize"
+        android:textColor="@color/item_community_description_textcolor"/>
+
+</merge>

@@ -2,6 +2,8 @@ package com.opentalkz;
 
 import android.app.Application;
 
+import com.opentalkz.model.community.Community;
+import com.opentalkz.model.community.CommunityList;
 import com.opentalkz.model.post.UserPostList;
 import com.yashoid.mmv.Managers;
 import com.opentalkz.evaluation.Eval;
@@ -27,6 +29,8 @@ public class TalkToMeApplication extends Application implements Events {
         Managers.enableCache(this, TTMOffice.get());
         Managers.bindLifeCycle(this);
 
+        Managers.addTypeProvider(new Community.CommunityTypeProvider());
+        Managers.addTypeProvider(new CommunityList.CommunityListTypeProvider());
         Managers.addTypeProvider(new PostList.PostListTypeProvider());
         Managers.addTypeProvider(new RandomPostList.RandomPostListTypeProvider(this));
         Managers.addTypeProvider(new Post.PostTypeProvider(this));
@@ -39,10 +43,6 @@ public class TalkToMeApplication extends Application implements Events {
         Managers.registerModel(MyPostList.FEATURES);
 
         Eval.initialize(this);
-
-//        MetrixConfig metrixConfig = new MetrixConfig(this, "ywjyrzlhuwrugdu");
-//        metrixConfig.enableLogging(BuildConfig.DEBUG);
-//        Metrix.onCreate(metrixConfig);
 
         setupUncaughtExceptionTracker();
 

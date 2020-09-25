@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Horizontal>
+        <Span id="toolbar" size="100%"/>
+    </Horizontal>
+
+    <Vertical>
+        <Span id="toolbar" size="wrap"/>
+        <Span size="12dp"/>
+        <Span size="2w"/>
+        <Span id="text_name" size="wrap"/>
+        <Span size="8dp"/>
+        <Span size="0.5w"/>
+        <Span id="text_description" size="wrap"/>
+        <Span size="12dp"/>
+        <Span size="8w"/>
+        <Span id="button_add" size="wrap"/>
+        <Span size="24dp"/>
+        <Span size="0.75w"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="1w"/>
+        <Span id="text_name" size="wrap"/>
+        <Span size="1w"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="@dimen/addcommunity_padding_horizontal"/>
+        <Span id="text_description" size="1w"/>
+        <Span size="@dimen/addcommunity_padding_horizontal"/>
+    </Horizontal>
+
+    <Horizontal start="start@text_description" end="end@text_description">
+        <Span id="button_add" size="100%"/>
+    </Horizontal>
+
+    <Horizontal start="start@button_add" end="end@button_add">
+        <Span size="1w"/>
+        <Span id="text_alreadyexists" size="wrap"/>
+        <Span size="1w"/>
+    </Horizontal>
+
+    <Vertical start="start@button_add" end="end@button_add">
+        <Span size="1w"/>
+        <Span id="text_alreadyexists" size="wrap"/>
+        <Span size="1w"/>
+    </Vertical>
+
+</Sequences>

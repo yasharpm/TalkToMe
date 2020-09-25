@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yashoid.sequencelayout.SequenceLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:sequences="@xml/sequences_addcommunity">
+
+    <com.opentalkz.view.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:actionIcon="@drawable/ic_action_back"
+        app:title="@string/addcommunity_title"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_medium"
+        android:textSize="@dimen/addcommunity_name_textsize"
+        android:textColor="@color/addcommunity_name_textcolor"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_regular"
+        android:textSize="@dimen/addcommunity_description_textsize"
+        android:textColor="@color/addcommunity_description_textcolor"
+        android:lineSpacingExtra="@dimen/addcommunity_description_linespacingextra"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/button_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_medium"
+        android:gravity="center"
+        android:textSize="@dimen/addcommunity_add_textsize"
+        android:textColor="@color/addcommunity_add_textcolor"
+        android:paddingTop="@dimen/addcommunity_add_padding_vertical"
+        android:paddingBottom="@dimen/addcommunity_add_padding_vertical"
+        android:background="@drawable/button"
+        android:elevation="@dimen/addcommunity_add_elevation"
+        android:text="@string/addcommunity_add"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_alreadyexists"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_medium"
+        android:textSize="@dimen/addcommunity_alreadyexists_textsize"
+        android:textColor="@color/addcommunity_alreadyexists_textcolor"
+        android:text="@string/addcommunity_alreadyexists"/>
+
+</com.yashoid.sequencelayout.SequenceLayout>

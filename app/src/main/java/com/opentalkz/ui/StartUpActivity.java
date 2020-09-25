@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,16 +16,10 @@ import com.opentalkz.network.SyncResponse;
 import com.opentalkz.notification.PushService;
 import com.opentalkz.notification.post.PostNotificationService;
 import com.opentalkz.notification.post.RandomPostWidgetUpdatingService;
-import com.yashoid.mmv.Managers;
-import com.yashoid.mmv.ModelFeatures;
-import com.yashoid.network.RequestResponse;
-import com.yashoid.network.RequestResponseCallback;
 import com.opentalkz.R;
 import com.opentalkz.TTMOffice;
 import com.opentalkz.evaluation.Eval;
 import com.opentalkz.evaluation.Screens;
-import com.opentalkz.network.PostResponse;
-import com.opentalkz.network.Requests;
 
 import java.io.IOException;
 
@@ -66,15 +58,21 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
 
         Scheme.extrasToUri(intent);
 
-        Uri data = intent.getData();
+        final Uri data = intent.getData();
 
-        if (data!= null) {
+        if (data != null) {
             if (Scheme.canHandle(data)) {
-                moveOn(data);
+                Scheme.prepareForUri(this, data, new Runnable() {
+
+                    @Override
+                    public void run() {
+                        moveOn(data);
+                    }
+
+                });
             }
             else {
-                String postId = data.getQueryParameter("id");
-                moveOnWithPostId(postId);
+                moveOn(data);
             }
 
             return;
@@ -95,7 +93,16 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
                 }
 
                 if (postId != null) {
-                    moveOnWithPostId(postId);
+                    final Uri uri = Scheme.makePostUri(postId);
+
+                    Scheme.prepareForUri(this, uri, new Runnable() {
+
+                        @Override
+                        public void run() {
+                            moveOn(uri);
+                        }
+
+                    });
                     return;
                 }
             } catch (IOException e) {
@@ -104,44 +111,20 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
         }
         else if (intent.hasExtra(PushService.POST_ID)) {
             String postId = intent.getStringExtra(PushService.POST_ID);
+            final Uri uri = Scheme.makePostUri(postId);
 
-            moveOnWithPostId(postId);
+            Scheme.prepareForUri(this, uri, new Runnable() {
+
+                @Override
+                public void run() {
+                    moveOn(uri);
+                }
+
+            });
             return;
         }
 
         moveOn(null);
-    }
-
-    private void moveOnWithPostId(final String postId) {
-        if (TextUtils.isEmpty(postId)) {
-            moveOn(null);
-            return;
-        }
-
-        TTMOffice.runner(this).runForUI(Requests.getPost(postId), new RequestResponseCallback<PostResponse>() {
-
-            @Override
-            public void onRequestResponse(RequestResponse<PostResponse> response) {
-                if (response.isSuccessful()) {
-                    ModelFeatures postFeatures = response.getContent().asModelFeatures();
-
-                    Managers.registerModel(postFeatures);
-
-                    startActivity(MainActivity.getIntent(StartUpActivity.this, postId));
-
-                    finish();
-
-                    return;
-                }
-
-                Log.i(TAG, "Failed to get post from server.");
-
-                Toast.makeText(StartUpActivity.this, response.getResponseCode() == 404 ? R.string.startup_postnotfound : R.string.startup_gettingpostfailed, Toast.LENGTH_LONG).show();
-
-                moveOn(null);
-            }
-
-        });
     }
 
     private void moveOn(final Uri data) {
@@ -157,7 +140,7 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
                 if (!isFinishing()) {
                     // TODO If first run, go to intro screen and community selection.
 
-                    Intent intent = MainActivity.getIntent(StartUpActivity.this);
+                    Intent intent = getMainIntent();
 
                     if (data != null) {
                         intent.setData(data);
@@ -169,6 +152,10 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
             }
 
         }, delay);
+    }
+
+    private Intent getMainIntent() {
+        return MainActivity.getIntent(this);
     }
 
 }

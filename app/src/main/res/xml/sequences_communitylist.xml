@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Horizontal>
+        <Span id="toolbar" size="100%"/>
+    </Horizontal>
+
+    <Vertical>
+        <Span id="toolbar" size="wrap"/>
+        <Span size="@dimen/communitylist_padding_top"/>
+        <Span id="text_intro" size="wrap"/>
+        <Span size="@dimen/communitylist_select_margin_top"/>
+        <Span id="text_select" size="wrap"/>
+        <Span size="@dimen/communitylist_select_margin_bottom"/>
+        <Span id="list_community" size="1w"/>
+        <Span size="@dimen/communitylist_padding_bottom"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="@dimen/communitylist_padding_horizontal"/>
+        <Span id="text_intro" size="1w"/>
+        <Span size="@dimen/communitylist_padding_horizontal"/>
+    </Horizontal>
+
+    <Horizontal start="start@text_intro" end="end@text_intro">
+        <Span size="1w"/>
+        <Span id="text_select" size="wrap"/>
+    </Horizontal>
+
+    <Horizontal start="start@text_intro" end="end@text_intro">
+        <Span id="list_community" size="100%"/>
+    </Horizontal>
+
+</Sequences>

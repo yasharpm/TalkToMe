@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sequences>
+
+    <Vertical>
+        <Span size="@dimen/item_community_padding_vertical"/>
+        <Span id="text_name" size="wrap"/>
+        <Span size="@dimen/item_community_name_margin_bottom"/>
+        <Span id="text_description" size="wrap"/>
+        <Span size="@dimen/item_community_padding_vertical"/>
+    </Vertical>
+
+    <Horizontal>
+        <Span size="1w"/>
+        <Span id="text_name" size="wrap"/>
+        <Span size="@dimen/item_community_padding_horizontal"/>
+    </Horizontal>
+
+    <Horizontal>
+        <Span size="@dimen/item_community_padding_horizontal"/>
+        <Span id="text_description" size="1w"/>
+        <Span size="@dimen/item_community_padding_horizontal"/>
+    </Horizontal>
+
+</Sequences>

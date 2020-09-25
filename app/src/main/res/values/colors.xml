@@ -133,6 +133,24 @@
     <color name="mypostsempty_post_tint">@color/mypostsempty_newpost_textcolor</color>
 
 
+    <!-- Add Community Activity -->
+    <color name="addcommunity_name_textcolor">@color/contentColor</color>
+    <color name="addcommunity_description_textcolor">@color/contentColor</color>
+    <color name="addcommunity_add_textcolor">@color/contentBackground</color>
+    <color name="addcommunity_alreadyexists_textcolor">@color/contentPassiveColor</color>
+
+
+    <!-- Community List Activity -->
+    <color name="communitylist_background">@color/contentBackground</color>
+    <color name="communitylist_intro_textcolor">@color/contentPassiveColor</color>
+    <color name="communitylist_select_textcolor">@color/actionColor</color>
+
+
+    <!-- Community Item View -->
+    <color name="item_community_name_textcolor">@color/contentColor</color>
+    <color name="item_community_description_textcolor">@color/contentPassiveColor</color>
+
+
     <!-- Settings Activity -->
     <color name="settings_title_textcolor">@color/contentColor</color>
     <color name="settings_spinner_tint">@color/actionColor</color>

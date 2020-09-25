@@ -29,7 +29,7 @@ import com.opentalkz.view.Toolbar;
 import java.util.List;
 
 public class MyPostsActivity extends AppCompatActivity implements MyPostList, Target,
-        PostListAdapter.OnItemClickListener, Screens, Events {
+        PostListAdapter.OnPostItemClickListener, Screens, Events {
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, MyPostsActivity.class);
@@ -115,7 +115,7 @@ public class MyPostsActivity extends AppCompatActivity implements MyPostList, Ta
 
         List<ModelFeatures> posts = mMyPostsModel.get(MODEL_LIST);
 
-        mPostListAdapter.setPosts(posts);
+        mPostListAdapter.setModels(posts);
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.opentalkz.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +11,11 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 
+import com.yashoid.sequencelayout.Sequence;
 import com.yashoid.sequencelayout.SequenceLayout;
 import com.opentalkz.R;
+
+import java.util.List;
 
 public class Toolbar extends SequenceLayout {
 
@@ -22,6 +24,9 @@ public class Toolbar extends SequenceLayout {
     private TextView mTextNotifier;
     private View mImageAppName;
     private ImageView mButtonAction;
+
+    private List<Sequence> mAppNameSequences = null;
+    private List<Sequence> mTitleSequences = null;
 
     public Toolbar(Context context) {
         super(context);
@@ -45,6 +50,9 @@ public class Toolbar extends SequenceLayout {
         LayoutInflater.from(context).inflate(R.layout.toolbar, this, true);
 
         addSequences(R.xml.sequences_toolbar);
+        mTitleSequences = addSequences(R.xml.sequences_toolbar_title);
+        removeSequences(mTitleSequences);
+        mAppNameSequences = addSequences(R.xml.sequences_toolbar_appname);
 
         mButtonAction = findViewById(R.id.button_action);
         mImageNotifier = findViewById(R.id.image_notifier);
@@ -56,6 +64,7 @@ public class Toolbar extends SequenceLayout {
 
         int actionIconResId = a.getResourceId(R.styleable.Toolbar_actionIcon, 0);
         String title = a.getString(R.styleable.Toolbar_title);
+        boolean showAppName = a.getBoolean(R.styleable.Toolbar_showAppName, false);
 
         a.recycle();
 
@@ -65,6 +74,7 @@ public class Toolbar extends SequenceLayout {
 
         setTitle(title);
         setNotifierCount(0);
+        setShowAppName(showAppName);
     }
 
     public void setNotifierCount(int count) {
@@ -81,15 +91,17 @@ public class Toolbar extends SequenceLayout {
     }
 
     public void setTitle(CharSequence title) {
-        if (TextUtils.isEmpty(title)) {
-            mTextTitle.setVisibility(INVISIBLE);
+        mTextTitle.setText(title);
+    }
+
+    public void setShowAppName(boolean show) {
+        if (show) {
+            setAppNameLayout();
             mImageAppName.setVisibility(VISIBLE);
         }
         else {
-            mTextTitle.setVisibility(VISIBLE);
+            setTitleLayout();
             mImageAppName.setVisibility(INVISIBLE);
-
-            mTextTitle.setText(title);
         }
     }
 
@@ -103,6 +115,16 @@ public class Toolbar extends SequenceLayout {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    private void setAppNameLayout() {
+        removeSequences(mTitleSequences);
+        addSequences(mAppNameSequences);
+    }
+
+    private void setTitleLayout() {
+        removeSequences(mAppNameSequences);
+        addSequences(mTitleSequences);
     }
 
 }

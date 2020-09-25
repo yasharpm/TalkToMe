@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yashoid.sequencelayout.SequenceLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/communitylist_background"
+    android:clipChildren="false"
+
+    app:sequences="@xml/sequences_communitylist">
+
+    <com.opentalkz.view.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:actionIcon="@drawable/ic_action_back"
+        app:title="@string/communitylist_title"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_regular"
+        android:textSize="@dimen/communitylist_intro_textsize"
+        android:textColor="@color/communitylist_intro_textcolor"
+        android:text="@string/communitylist_intro"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:fontFamily="@font/dana_medium"
+        android:textSize="@dimen/communitylist_select_textsize"
+        android:textColor="@color/communitylist_select_textcolor"
+        android:text="@string/communitylist_select"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_community"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:clipChildren="false"
+        android:clipToPadding="false"/>
+
+</com.yashoid.sequencelayout.SequenceLayout>

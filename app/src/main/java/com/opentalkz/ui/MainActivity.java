@@ -12,17 +12,19 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.opentalkz.Scheme;
+import com.opentalkz.model.community.Community;
+import com.opentalkz.model.community.CommunityList;
+import com.opentalkz.model.community.CommunityListActivity;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
+import com.yashoid.mmv.SingleShotTarget;
 import com.yashoid.mmv.Target;
 import com.opentalkz.TTMOffice;
 import com.opentalkz.evaluation.Eval;
 import com.opentalkz.evaluation.Events;
 import com.opentalkz.evaluation.Screens;
-import com.opentalkz.model.post.Post;
-import com.opentalkz.model.post.PostList;
 import com.opentalkz.model.post.PostListPagerFragment;
 import com.opentalkz.model.post.PostListViewBunchAdapter;
 import com.opentalkz.model.post.RandomPostList;
@@ -36,23 +38,22 @@ import com.opentalkz.view.popup.Popup;
 import com.opentalkz.view.popup.PopupItem;
 import com.opentalkz.view.viewbunch.ViewBunch;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Target, RandomPostList,
         ViewBunch.OnItemClickListener, View.OnClickListener, Screens, Events {
 
-    private static final String EXTRA_POST_ID = "post_id";
-
     public static final String PREF_FIRST_RUN = "first_run";
 
     private static final PopupItem MY_POSTS = new PopupItem(R.string.main_more_myposts, R.drawable.ic_post);
+    private static final PopupItem COMMUNITIES = new PopupItem(R.string.main_more_communities, R.drawable.ic_communities);
     private static final PopupItem SETTINGS = new PopupItem(R.string.main_more_settings, R.drawable.ic_settings);
     private static final PopupItem ABOUT_US = new PopupItem(R.string.main_more_aboutus, R.drawable.ic_about);
-    private static final PopupItem GUIDE_ME = new PopupItem(R.string.main_more_guide, R.drawable.ic_guide);
+    private static final PopupItem GUIDE = new PopupItem(R.string.main_more_guide, R.drawable.ic_guide);
 
     private static final PopupItem[] MORE_ITEMS = {
             MY_POSTS,
+            COMMUNITIES,
             SETTINGS,
             ABOUT_US,
 //            GUIDE_ME,
@@ -62,14 +63,6 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
         Intent intent = new Intent(context, MainActivity.class);
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        return intent;
-    }
-
-    public static Intent getIntent(Context context, String postId) {
-        Intent intent = getIntent(context);
-
-        intent.putExtra(EXTRA_POST_ID, postId);
 
         return intent;
     }
@@ -123,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
         mTextNewPost.setOnClickListener(this);
 
         Managers.registerTarget(this, FEATURES);
+        Managers.registerTarget(mCommunityListTarget, CommunityList.FEATURES);
 
         if (isFirstRun()) {
             mLoadableContent.removeView(mViewBunch);
@@ -160,45 +154,6 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
 
             intent.setData(null);
         }
-
-        final String postId = intent.getStringExtra(EXTRA_POST_ID);
-
-        if (TextUtils.isEmpty(postId)) {
-            return;
-        }
-
-        intent.removeExtra(EXTRA_POST_ID);
-        setIntent(intent);
-
-        final ModelFeatures postsFeatures = new ModelFeatures.Builder()
-                .add(TYPE, PostList.TYPE_POST_LIST)
-                .build();
-
-        Managers.registerTarget(new PersistentTarget() {
-
-            @Override
-            public void setModel(Model model) {
-                Managers.unregisterTarget(this);
-
-                ModelFeatures postFeatures = new ModelFeatures.Builder()
-                        .add(TYPE, Post.TYPE_POST)
-                        .add(Post.ID, postId)
-                        .build();
-
-                List<ModelFeatures> posts = new ArrayList<>();
-                posts.add(postFeatures);
-
-                model.set(PostList.MODEL_LIST, posts);
-
-                Fragment fragment = PostListPagerFragment.newInstance(postsFeatures, 1, 0);
-
-                addOnOverlay(fragment);
-            }
-
-            @Override
-            public void onFeaturesChanged(String... featureNames) { }
-
-        }, postsFeatures);
     }
 
     private boolean isFirstRun() {
@@ -241,6 +196,9 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
             if (item == MY_POSTS) {
                 startActivity(MyPostsActivity.getIntent(MainActivity.this));
             }
+            else if (item == COMMUNITIES) {
+                startActivity(CommunityListActivity.getIntent(MainActivity.this));
+            }
             else if (item == SETTINGS) {
                 startActivity(SettingsActivity.getIntent(MainActivity.this));
             }
@@ -255,6 +213,57 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
     public void onClick(View v) {
         startActivity(NewPostActivity.getIntent(this));
     }
+
+    private Target mCommunityListTarget = new PersistentTarget() {
+
+        private Model mCommunityList;
+
+        @Override
+        public void setModel(Model model) {
+            mCommunityList = model;
+
+            updateTitle();
+        }
+
+        @Override
+        public void onFeaturesChanged(String... featureNames) {
+            updateTitle();
+        }
+
+        private void updateTitle() {
+            String selectedCommunityId = mCommunityList.get(CommunityList.SELECTED_COMMUNITY_ID);
+
+            if (selectedCommunityId == null) {
+                mToolbar.setTitle("");
+                return;
+            }
+
+            List<ModelFeatures> communities = mCommunityList.get(CommunityList.MODEL_LIST);
+
+            if (communities != null) {
+                for (ModelFeatures community : communities) {
+                    if (TextUtils.equals(selectedCommunityId, (String) community.get(Community.ID))) {
+                        SingleShotTarget.get(community, new SingleShotTarget.ModelCallback() {
+
+                            @Override
+                            public void onModelReady(Model model) {
+                                String communityName = model.get(Community.NAME);
+
+                                String title = "- " + (communityName == null ? getString(R.string.main_unnamed_community) : communityName);
+
+                                mToolbar.setTitle(title);
+                            }
+
+                        });
+                        return;
+                    }
+                }
+            }
+
+            mToolbar.setTitle("- " + getString(R.string.main_unnamed_community));
+        }
+
+    };
 
     @Override
     public void setModel(Model model) {
@@ -330,7 +339,7 @@ public class MainActivity extends AppCompatActivity implements Target, RandomPos
         Eval.setCurrentScreen(this, SCREEN_POSTS_PAGER);
     }
 
-    private void addOnOverlay(Fragment fragment) {
+    public void addOnOverlay(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.overlay, fragment)

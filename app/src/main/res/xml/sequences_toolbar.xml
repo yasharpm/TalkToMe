@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Sequences>
 
-    <Horizontal>
-        <Span id="button_action" size="@dimen/toolbar_actionsize"/>
-        <Span size="@dimen/toolbar_notifier_margin"/>
-        <Span id="image_notifier" size="wrap"/>
-        <Span size="1w"/>
-        <Span id="image_appname" size="wrap"/>
-        <Span size="@dimen/toolbar_logo_margin"/>
-        <Span id="image_logo" size="@dimen/toolbar_logo_size"/>
-        <Span size="@dimen/toolbar_padding_horizontal"/>
-    </Horizontal>
-
     <Vertical>
         <Span size="1w"/>
         <Span id="button_action" size="@dimen/toolbar_actionsize"/>
@@ -43,12 +32,6 @@
         <Span id="image_logo" size="@dimen/toolbar_logo_size"/>
         <Span size="1w"/>
     </Vertical>
-
-    <Horizontal>
-        <Span size="1w"/>
-        <Span id="text_title" size="wrap"/>
-        <Span size="1w"/>
-    </Horizontal>
 
     <Vertical>
         <Span size="1w"/>

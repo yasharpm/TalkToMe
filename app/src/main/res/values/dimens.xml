@@ -16,6 +16,7 @@
 
     <!-- Toolbar -->
     <dimen name="toolbar_title_textsize">18sp</dimen>
+    <dimen name="toolbar_title_margin_horizontal">8dp</dimen>
     <dimen name="toolbar_actionsize">36dp</dimen>
     <dimen name="toolbar_notifier_margin">-12dp</dimen>
     <dimen name="toolbar_notifier_textsize">12sp</dimen>
@@ -190,6 +191,36 @@
     <dimen name="mypostsempty_post_margin_vertical">8dp</dimen>
     <dimen name="mypostsempty_post_margin_right">24dp</dimen>
     <dimen name="mypostsempty_elevation">@dimen/item_elevation</dimen>
+
+
+    <!-- Add Community Activity -->
+    <dimen name="addcommunity_name_textsize">28sp</dimen>
+    <dimen name="addcommunity_description_textsize">20sp</dimen>
+    <dimen name="addcommunity_description_linespacingextra">4dp</dimen>
+    <dimen name="addcommunity_add_textsize">18sp</dimen>
+    <dimen name="addcommunity_add_padding_vertical">12dp</dimen>
+    <dimen name="addcommunity_add_elevation">4dp</dimen>
+    <dimen name="addcommunity_alreadyexists_textsize">18sp</dimen>
+    <dimen name="addcommunity_padding_horizontal">24dp</dimen>
+
+
+    <!-- Community List Activity -->
+    <dimen name="communitylist_intro_textsize">16sp</dimen>
+    <dimen name="communitylist_select_textsize">18sp</dimen>
+    <dimen name="communitylist_padding_top">16dp</dimen>
+    <dimen name="communitylist_padding_bottom">16dp</dimen>
+    <dimen name="communitylist_padding_horizontal">16dp</dimen>
+    <dimen name="communitylist_select_margin_top">16dp</dimen>
+    <dimen name="communitylist_select_margin_bottom">12dp</dimen>
+
+
+    <!-- Community Item View -->
+    <dimen name="item_community_elevation">@dimen/item_elevation</dimen>
+    <dimen name="item_community_name_textsize">18sp</dimen>
+    <dimen name="item_community_description_textsize">16sp</dimen>
+    <dimen name="item_community_padding_vertical">12dp</dimen>
+    <dimen name="item_community_padding_horizontal">12dp</dimen>
+    <dimen name="item_community_name_margin_bottom">4dp</dimen>
 
 
     <!-- Settings Activity -->

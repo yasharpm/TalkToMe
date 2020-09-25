@@ -4,6 +4,7 @@
     <declare-styleable name="Toolbar">
         <attr name="actionIcon" format="reference"/>
         <attr name="title" format="string"/>
+        <attr name="showAppName" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="ItemContentView">
