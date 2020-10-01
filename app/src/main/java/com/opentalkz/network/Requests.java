@@ -75,7 +75,8 @@ public class Requests {
         return (PreparedRequest<GetTokenResponse>) request.prepare(body);
     }
 
-    public static PreparedRequest<PostResponse> newPost(String content, String language, String country) {
+    public static PreparedRequest<PostResponse> newPost(String content, String language,
+                                                        String country, String communityId) {
         NetworkRequest request = sRequests.get(NEW_POST);
 
         if (request == null) {
@@ -91,6 +92,7 @@ public class Requests {
             body.put("post", content);
             body.put("language", language);
             body.put("country", country);
+            body.put("community", communityId == null ? JSONObject.NULL : communityId);
         } catch (JSONException e) { }
 
         return (PreparedRequest<PostResponse>) request.prepare(body);
@@ -141,9 +143,9 @@ public class Requests {
 
         if (request == null) {
             request = TTMOffice.network().getRequest(
-                    PostResponse.class,
+                    CommunityResponse.class,
                     "GET",
-                    BASE_URL + "community?id={id}"
+                    BASE_URL + "community?id_name={id}"
             );
 
             sRequests.put(GET_COMMUNITY, request);

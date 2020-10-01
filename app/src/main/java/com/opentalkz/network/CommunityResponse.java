@@ -10,13 +10,14 @@ public class CommunityResponse implements Community {
     private long mCreatedTime;
     private long mUpdatedTime;
     private String mId;
+    private String mIdName;
 
     public ModelFeatures asModelFeatures() {
         ModelFeatures.Builder builder = new ModelFeatures.Builder();
 
         builder.add(TYPE, TYPE_COMMUNITY);
 
-        builder.add(ID, mId);
+        builder.add(ID, mIdName);
         builder.add(NAME, mName);
         builder.add(DESCRIPTION, mDescription);
 

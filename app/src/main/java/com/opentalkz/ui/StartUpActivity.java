@@ -58,7 +58,7 @@ public class StartUpActivity extends AppCompatActivity implements Screens {
 
         Scheme.extrasToUri(intent);
 
-        final Uri data = intent.getData();
+        final Uri data = Scheme.convertUri(intent.getData());
 
         if (data != null) {
             if (Scheme.canHandle(data)) {

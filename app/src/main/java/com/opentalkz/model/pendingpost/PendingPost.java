@@ -5,11 +5,13 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.opentalkz.model.post.RandomPostList;
 import com.yashoid.mmv.Action;
 import com.yashoid.mmv.Managers;
 import com.yashoid.mmv.Model;
 import com.yashoid.mmv.ModelFeatures;
 import com.yashoid.mmv.PersistentTarget;
+import com.yashoid.mmv.SingleShotTarget;
 import com.yashoid.network.RequestResponse;
 import com.yashoid.network.RequestResponseCallback;
 import com.opentalkz.R;
@@ -64,7 +66,7 @@ public interface PendingPost extends Basics, Stateful {
 
             @Override
             public Object perform(final Model model, Object... params) {
-                String content = model.get(CONTENT);
+                final String content = model.get(CONTENT);
 
                 if (TextUtils.isEmpty(content)) {
                     Toast.makeText(mContext, R.string.pendingpost_no_content, Toast.LENGTH_SHORT).show();
@@ -78,24 +80,35 @@ public interface PendingPost extends Basics, Stateful {
 
                 model.set(STATE, STATE_LOADING);
 
-                TTMOffice.runner(mContext).runUserAction(Requests.newPost(content, "fa", "IR"), new RequestResponseCallback<PostResponse>() {
+                SingleShotTarget.get(RandomPostList.FEATURES, new SingleShotTarget.ModelCallback() {
 
                     @Override
-                    public void onRequestResponse(RequestResponse<PostResponse> response) {
-                        if (response.isSuccessful()) {
+                    public void onModelReady(Model randomPostsModel) {
+                        String communityId = randomPostsModel.get(RandomPostList.COMMUNITY_ID);
+
+                        TTMOffice.runner(mContext).runUserAction(Requests.newPost(content,
+                                "fa", "IR", communityId),
+                                new RequestResponseCallback<PostResponse>() {
+
+                            @Override
+                            public void onRequestResponse(RequestResponse<PostResponse> response) {
+                                if (response.isSuccessful()) {
 //                            addPostToMyPosts(postId, (String) model.get(CONTENT));
 
-                            model.set(STATE, STATE_SUCCESS);
+                                    model.set(STATE, STATE_SUCCESS);
 
-                            Toast.makeText(mContext, R.string.pendingpost_success, Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            Log.e(TYPE_PENDING_POST, "Failed to add post.", response.getException());
+                                    Toast.makeText(mContext, R.string.pendingpost_success, Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Log.e(TYPE_PENDING_POST, "Failed to add post.", response.getException());
 
-                            model.set(STATE, STATE_FAILURE);
+                                    model.set(STATE, STATE_FAILURE);
 
-                            Toast.makeText(mContext, R.string.pendingpost_error, Toast.LENGTH_LONG).show();
-                        }
+                                    Toast.makeText(mContext, R.string.pendingpost_error, Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                        });
                     }
 
                 });

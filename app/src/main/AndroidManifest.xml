@@ -46,14 +46,31 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data
                     android:scheme="http"
-                    android:host="opentalkz.com"
-                    android:path="/post.html"/>
+                    android:host="opentalkz.com"/>
+                <data
+                    android:scheme="http"
+                    android:host="opentalkz.net"/>
+                <data
+                    android:scheme="http"
+                    android:host="opentalkz.ir"/>
                 <data
                     android:scheme="https"
-                    android:host="opentalkz.com"
-                    android:path="/post.html"/>
+                    android:host="opentalkz.com"/>
                 <data
-                    android:scheme="opentalkz"/>
+                    android:scheme="https"
+                    android:host="opentalkz.net"/>
+                <data
+                    android:scheme="https"
+                    android:host="opentalkz.ir"/>
+                <data
+                    android:scheme="opentalkz"
+                    android:host="post"/>
+                <data
+                    android:scheme="opentalkz"
+                    android:host="community"/>
+                <data
+                    android:scheme="opentalkz"
+                    android:host="settings"/>
             </intent-filter>
         </activity>
 

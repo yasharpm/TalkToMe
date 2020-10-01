@@ -37,6 +37,13 @@ public class Scheme {
 
     private static final String SCHEME = "opentalkz";
 
+    private static final String[] DOMAINS = new String[] {
+            SCHEME + ".com",
+            SCHEME + ".net",
+            SCHEME + ".ir"
+    };
+
+    private static final String HOST_POST = "post";
     private static final String HOST_COMMUNITY = "community";
     private static final String HOST_SETTINGS = "settings";
 
@@ -61,7 +68,45 @@ public class Scheme {
     }
 
     public static Uri makePostUri(String postId) {
-        return Uri.parse("https://opentalkz.com/post.html?id=" + postId);
+        return Uri.parse(SCHEME + "://" + HOST_POST + "?id=" + postId);
+    }
+
+    public static Uri convertUri(Uri uri) {
+        if (uri == null || SCHEME.equalsIgnoreCase(uri.getScheme())) {
+            return uri;
+        }
+
+        String domain = uri.getHost();
+
+        boolean domainIsRight = false;
+
+        for (String domainName: DOMAINS) {
+            if (domainName.equalsIgnoreCase(domain)) {
+                domainIsRight = true;
+                break;
+            }
+        }
+
+        if (!domainIsRight) {
+            return uri;
+        }
+
+        StringBuilder sUri = new StringBuilder()
+                .append(SCHEME).append("://");
+
+        List<String> pathSegments = uri.getPathSegments();
+
+        for (String pathSegment: pathSegments) {
+            sUri.append(pathSegment);
+        }
+
+        String query = uri.getQuery();
+
+        if (!TextUtils.isEmpty(query)) {
+            sUri.append("?").append(query);
+        }
+
+        return Uri.parse(sUri.toString());
     }
 
     private static int getType(Uri uri) {
@@ -69,20 +114,21 @@ public class Scheme {
             return TYPE_UNIDENTIFIED;
         }
 
-        if (SCHEME.equalsIgnoreCase(uri.getScheme())) {
-            if (HOST_SETTINGS.equalsIgnoreCase(uri.getHost())) {
-                return TYPE_SETTINGS;
-            }
-            else if (HOST_COMMUNITY.equalsIgnoreCase(uri.getHost())) {
-                return TYPE_COMMUNITY;
-            }
-
+        if (!SCHEME.equalsIgnoreCase(uri.getScheme())) {
             return TYPE_UNIDENTIFIED;
         }
 
-        String query = uri.getQueryParameter("id");
+        if (HOST_POST.equalsIgnoreCase(uri.getHost())) {
+            return TYPE_POST;
+        }
+        else if (HOST_SETTINGS.equalsIgnoreCase(uri.getHost())) {
+            return TYPE_SETTINGS;
+        }
+        else if (HOST_COMMUNITY.equalsIgnoreCase(uri.getHost())) {
+            return TYPE_COMMUNITY;
+        }
 
-        return TextUtils.isEmpty(query) ? TYPE_UNIDENTIFIED : TYPE_POST;
+        return TYPE_UNIDENTIFIED;
     }
 
     public static boolean canHandle(Uri uri) {

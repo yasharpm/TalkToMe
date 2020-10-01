@@ -51,7 +51,10 @@ public interface RandomPostList extends ModelList {
             return null;
         }
 
-        public Object _model_created(Model model, Object... params) {
+        @Override
+        protected void onModelInitialized(Model model) {
+            super.onModelInitialized(model);
+
             model.set(LAST_COMMUNITY_ID, null);
             model.set(COMMUNITY_POSTS, new HashMap());
 
@@ -130,7 +133,9 @@ public interface RandomPostList extends ModelList {
                         if (!postsSeen) {
                             List<ModelFeatures> posts = (List<ModelFeatures>) snapShot.get(MODEL_LIST);
 
-                            SeenPostsTracker.get(mContext).onSeenPosts(posts);
+                            if (posts != null) {
+                                SeenPostsTracker.get(mContext).onSeenPosts(posts);
+                            }
 
                             snapShot.put(POSTS_SEEN, true);
                         }
@@ -144,8 +149,6 @@ public interface RandomPostList extends ModelList {
                 }
 
             }, FEATURES);
-
-            return null;
         }
 
         @Override

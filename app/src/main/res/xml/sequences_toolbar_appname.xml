@@ -5,7 +5,7 @@
         <Span id="button_action" size="@dimen/toolbar_actionsize"/>
         <Span size="@dimen/toolbar_notifier_margin"/>
         <Span id="image_notifier" size="wrap"/>
-        <Span size="@dimen/toolbar_title_margin_horizontal" visibilityElement="image_notifier"/>
+        <Span size="@dimen/toolbar_title_margin_horizontal" visibleIf="image_notifier"/>
         <Span size="1w"/>
         <Span id="text_title" size="wrap"/>
         <Span size="@dimen/toolbar_title_margin_horizontal"/>

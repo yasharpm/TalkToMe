@@ -16,8 +16,6 @@ public class CommunityViewHolder extends TargetViewHolder {
         return new CommunityViewHolder(new CommunityItemView(parent.getContext()), onItemClickListener);
     }
 
-    private Model mModel = null;
-
     private CommunityViewHolder(@NonNull View itemView, final ModelListAdapter.OnItemClickListener onItemClickListener) {
         super(itemView);
 
@@ -27,9 +25,9 @@ public class CommunityViewHolder extends TargetViewHolder {
             public void onClick(View v) {
                 ModelFeatures features = null;
 
-                if (mModel != null) {
+                if (getModel() != null) {
                     features = new ModelFeatures.Builder()
-                            .addAll(mModel.getAllFeatures())
+                            .addAll(getModel().getAllFeatures())
                             .build();
                 }
 
