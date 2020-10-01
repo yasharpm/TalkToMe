@@ -2,6 +2,7 @@ package com.opentalkz;
 
 import android.app.Application;
 
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.opentalkz.model.community.Community;
 import com.opentalkz.model.community.CommunityList;
 import com.opentalkz.model.post.UserPostList;
@@ -25,6 +26,8 @@ public class TalkToMeApplication extends Application implements Events {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG);
 
         Managers.enableCache(this, TTMOffice.get());
         Managers.bindLifeCycle(this);
